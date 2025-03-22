@@ -49,5 +49,6 @@ func _on_rocket_part_body_entered(body: Node) -> void:
 		if is_instance_of(child, Joint2D):
 			var joint = child as Joint2D
 			joint.node_a = ""
+			joint.node_b = ""
 
 	rocket_exploded.emit()

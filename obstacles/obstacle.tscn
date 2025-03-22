@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://chm0050y35420"]
+
+[ext_resource type="Texture2D" uid="uid://cdexqe4c4xkvq" path="res://sprites/Cloud.png" id="1_uojbh"]
+[ext_resource type="Script" uid="uid://cfmlobwt3ogkp" path="res://Scripts/MovementFunction.gd" id="2_34vs7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8btp0"]
+radius = 25.0
+height = 102.0
+
+[node name="Obstacle" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_8btp0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(38, 19)
+scale = Vector2(6, 6)
+texture = ExtResource("1_uojbh")
+
+[node name="func_x" type="Node" parent="."]
+script = ExtResource("2_34vs7")
+amplitude = 17.5
+variable = 0
+
+[node name="func_y" type="Node" parent="."]
+script = ExtResource("2_34vs7")
+
+[node name="func_angle" type="Node" parent="."]
+script = ExtResource("2_34vs7")
+variable = 2
