@@ -1,3 +1,116 @@
-[gd_scene format=3 uid="uid://0vsqqcewppqr"]
+[gd_scene load_steps=7 format=3 uid="uid://0vsqqcewppqr"]
+
+[ext_resource type="Script" uid="uid://brr8txdyxkdlk" path="res://newspaper.gd" id="1_tcvqs"]
+[ext_resource type="Texture2D" uid="uid://cfq7wopg34q2f" path="res://sprites/Empty_news.png" id="2_8sy2j"]
+[ext_resource type="FontFile" uid="uid://bjp6ea3e3k1wi" path="res://Times-New-Roman/Times New Roman/times new roman.ttf" id="3_tcvqs"]
+
+[sub_resource type="Animation" id="Animation_tcvqs"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 43.9823]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(574, 650), Vector2(574, 333)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(1.2, 1.2)]
+}
+
+[sub_resource type="Animation" id="Animation_hf1f1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(574, 330)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.19775, 1.19826)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_um2tt"]
+_data = {
+&"RESET": SubResource("Animation_hf1f1"),
+&"new_animation": SubResource("Animation_tcvqs")
+}
 
 [node name="newspaper" type="Node2D"]
+script = ExtResource("1_tcvqs")
+
+[node name="WrittenPaperNoBackground" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(574, 330)
+scale = Vector2(1.19775, 1.19826)
+texture = ExtResource("2_8sy2j")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="WrittenPaperNoBackground"]
+offset_left = -406.0
+offset_top = -100.0
+offset_right = -299.0
+offset_bottom = -50.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_tcvqs")
+theme_override_font_sizes/normal_font_size = 35
+text = "TEST"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../WrittenPaperNoBackground")
+libraries = {
+&"": SubResource("AnimationLibrary_um2tt")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
