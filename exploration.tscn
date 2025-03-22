@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dw6mypb0mlu15"]
+[gd_scene load_steps=10 format=3 uid="uid://dw6mypb0mlu15"]
 
 [ext_resource type="PackedScene" uid="uid://y8ju2utt1nsd" path="res://rocket.tscn" id="1_1yu1n"]
 [ext_resource type="Texture2D" uid="uid://db4swb5w3qhwr" path="res://assets/body.png" id="2_1yu1n"]
+[ext_resource type="Texture2D" uid="uid://o4ydiqa067vr" path="res://sprites/panel.png" id="2_770sp"]
 [ext_resource type="Script" uid="uid://5ye8esp8kr1" path="res://progress_bar.gd" id="4_wyjkc"]
 [ext_resource type="Script" uid="uid://cf6dt8toe3la7" path="res://speedometer.gd" id="5_c4mc6"]
 [ext_resource type="PackedScene" uid="uid://b7qc0gwls2n0v" path="res://sky_box.tscn" id="6_5taav"]
@@ -26,6 +27,14 @@ texture = ExtResource("2_1yu1n")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 1700.0
+offset_top = 454.27
+offset_right = 1892.0
+offset_bottom = 838.27
+texture = ExtResource("2_770sp")
+
 [node name="ProgressBar" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
@@ -35,32 +44,47 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/ProgressBar"]
 layout_mode = 0
-offset_left = 1013.0
-offset_top = 51.0
-offset_right = 1114.0
-offset_bottom = 551.0
+offset_left = 1723.0
+offset_top = 627.0
+offset_right = 1788.0
+offset_bottom = 817.0
 value = 20.0
 fill_mode = 3
 script = ExtResource("4_wyjkc")
-metadata/_edit_use_anchors_ = true
 
 [node name="Speedometer" type="Label" parent="CanvasLayer"]
-offset_left = 897.0
-offset_top = 302.0
-offset_right = 981.0
-offset_bottom = 325.0
+offset_left = 1794.0
+offset_top = 600.0
+offset_right = 1878.0
+offset_bottom = 623.0
 text = "1200.0 m/s"
 horizontal_alignment = 2
 script = ExtResource("5_c4mc6")
 
 [node name="Altimeter" type="Label" parent="CanvasLayer"]
-offset_left = 883.0
-offset_top = 322.0
-offset_right = 967.0
-offset_bottom = 345.0
+offset_left = 1793.0
+offset_top = 578.0
+offset_right = 1877.0
+offset_bottom = 601.0
 text = "1200.0 m"
 horizontal_alignment = 2
 script = ExtResource("6_88ct5")
+
+[node name="AltitudeLabel" type="Label" parent="CanvasLayer"]
+offset_left = 1719.0
+offset_top = 579.0
+offset_right = 1785.0
+offset_bottom = 628.0
+text = "Altitude:
+"
+
+[node name="SpeedLabel" type="Label" parent="CanvasLayer"]
+offset_left = 1719.0
+offset_top = 599.0
+offset_right = 1782.0
+offset_bottom = 648.0
+text = "Speed:
+"
 
 [node name="Skybox" parent="." instance=ExtResource("6_5taav")]
 
