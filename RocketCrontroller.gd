@@ -1,10 +1,14 @@
 extends Node2D
 
+signal rocket_exploded
+
 var thruster_left : RigidBody2D
 var thruster_right : RigidBody2D
 var side_thruster_left : RigidBody2D
 var side_thruster_right : RigidBody2D
 var body : RigidBody2D
+
+var joints: Node2D
 
 func _ready() -> void:
 	thruster_left = self.get_node("thruster_left")
@@ -12,6 +16,7 @@ func _ready() -> void:
 	side_thruster_left = self.get_node("side_thruster_left")
 	side_thruster_right = self.get_node("side_thruster_right")
 	body = self.get_node("body_0")
+	joints = self.get_node("joints")
 
 func _physics_process(delta: float) -> void:
 	var impulse = Vector2.UP * 30000.0;
@@ -36,4 +41,13 @@ func _physics_process(delta: float) -> void:
 		print(thruster_right.transform.get_rotation())
 		thruster_right.apply_force(local_impulse)
 		print("impulse on thruster 1")
+
+func _on_rocket_part_body_entered(body: Node) -> void:
 	
+	# Detach all joints
+	for child in joints.get_children():
+		if is_instance_of(child, Joint2D):
+			var joint = child as Joint2D
+			joint.node_a = ""
+
+	rocket_exploded.emit()
