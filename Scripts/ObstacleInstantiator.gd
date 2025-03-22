@@ -1,7 +1,7 @@
 extends Node
 
-@export var min_distance = 5000.0
-@export var max_distance = 10000.0
+@export var min_distance = 17500.0
+@export var max_distance = 50000.0
 @export var spawn_box_size = 1000.0
 @export var base_probability = 0.04
 
@@ -68,14 +68,11 @@ func spawn_obstacle():
 		probs.push_back(obstacle_def.prob(height))
 	var total = probs.reduce(sum, 0.0)
 	
-	print(total)
-	
 	var sample = randf_range(0.0, total)
 	
 	for i in range(0, probs.size()):
 		if sample < probs[i]:
 			# Spawn this one
-			print("spawn "  + str(target))
 			var obstacle = obstacle_defs[i].instantiate()
 			obstacle.position = target;
 			obstacle_container.add_child(obstacle)

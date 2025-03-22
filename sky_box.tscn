@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7qc0gwls2n0v"]
+[gd_scene load_steps=7 format=3 uid="uid://b7qc0gwls2n0v"]
 
 [ext_resource type="Texture2D" uid="uid://c2k47rl76iiqb" path="res://assets/background.png" id="1_kfcbd"]
 [ext_resource type="Texture2D" uid="uid://rpi346wi5kes" path="res://assets/stars1.png" id="2_aelsl"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://lamyfoa1wl4v" path="res://assets/stars3.png" id="4_7alow"]
 [ext_resource type="Texture2D" uid="uid://b4nkqpsg6f788" path="res://assets/sky3.png" id="5_er6a6"]
 [ext_resource type="Texture2D" uid="uid://bpk23c1661yqn" path="res://assets/stars5.png" id="6_6anwk"]
-[ext_resource type="Texture2D" uid="uid://cyw62536jvrnj" path="res://assets/sky2.png" id="7_aelsl"]
 
 [node name="Skybox" type="Node2D"]
 

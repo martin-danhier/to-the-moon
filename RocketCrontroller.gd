@@ -19,6 +19,9 @@ var gun : Node2D
 
 var kaput = false
 
+var fuel_level = 100.0
+var battery_level = 100.0
+
 # only used when rocket dies
 var time_elapsed : float
 var spawned_newspaper = false
@@ -52,42 +55,47 @@ func _physics_process(delta: float) -> void:
 	crash_max_speed = max(crash_max_speed, int(body.linear_velocity.length() / 200.0))
 	crash_max_altitude = max(crash_max_altitude, (-int(body.position.y)) / 20)
 
-	var impulse = Vector2.UP * 30000.0;
+	var impulse = Vector2.UP * 17000.0;
 
 	var angular_velocity = body.angular_velocity
 
 	if abs(angular_velocity) > 3.14 * 3:
 		explode_rocket()
 
-	if Input.is_action_pressed("thruster_side_1"):
+	if Input.is_action_pressed("thruster_side_1") and fuel_level > 0.0:
 		var local_impulse = impulse.rotated(side_thruster_left.transform.get_rotation()) / 10.0
 		side_thruster_left.apply_force(local_impulse)
+		fuel_level -= 0.006
 
-	if Input.is_action_pressed("thruster_side_0"):
+	if Input.is_action_pressed("thruster_side_0") and fuel_level > 0.0:
 		var local_impulse = impulse.rotated(side_thruster_right.transform.get_rotation()) / 10.0
 		side_thruster_right.apply_force(local_impulse)
+		fuel_level -= 0.006
 
-	if Input.is_action_pressed("thruster_0"):
+	if Input.is_action_pressed("thruster_0") and fuel_level > 0.0:
 		var local_impulse = impulse.rotated(thruster_left.transform.get_rotation())
 		thruster_left.apply_force(local_impulse)
 		thruster_left_sprite.play("thrusting")
+		fuel_level -= 0.01
 	else:
 		thruster_left_sprite.play("idle")
 
-	if Input.is_action_pressed("thruster_1"):
+	if Input.is_action_pressed("thruster_1") and fuel_level > 0.0:
 		var local_impulse = impulse.rotated(thruster_right.transform.get_rotation())
 		thruster_right.apply_force(local_impulse)
 		thruster_right_sprite.play("thrusting")
+		fuel_level -= 0.01
 	else:
 		thruster_right_sprite.play("idle")
 	
-	if Input.is_action_pressed("fire"):
+	if Input.is_action_pressed("fire") and battery_level > 0.0:
+		battery_level -= 0.6
+		print("fire in the hole")
 		laser_beam.visible = true
 		
-		var space_state = gun.get_world_2d().direct_space_state
-		# use global coordinates, not local to node
-		var to = Vector2(0, -1000).rotated(body.transform.get_rotation())
-		var query = PhysicsRayQueryParameters2D.create(gun.position, to)
+		var space_state = get_tree().root.world_2d.direct_space_state
+		var to = Vector2(0, -3000).rotated(body.transform.get_rotation()) + gun.global_position
+		var query = PhysicsRayQueryParameters2D.create(gun.global_position, to)
 		var result = space_state.intersect_ray(query)
 		
 		if result:
@@ -95,6 +103,9 @@ func _physics_process(delta: float) -> void:
 				result.collider.get_parent().call_deferred("queue_free")
 	else:
 		laser_beam.visible = false
+		
+	(get_tree().root.get_node("exploration/CanvasLayer/Fuel") as ProgressBar).value = fuel_level
+	(get_tree().root.get_node("exploration/CanvasLayer/Battery") as ProgressBar).value = battery_level
 
 func _process(delta: float) -> void:
 	if kaput and !spawned_newspaper:
@@ -108,9 +119,18 @@ func _process(delta: float) -> void:
 			newspaper.position = camera.global_position
 			get_tree().root.add_child(newspaper)
 			
-			var head_to_get = randi() % 5
-			var file = FileAccess.open("res://newspaper_headlines/" + str(head_to_get) + ".txt", FileAccess.READ)
-			var headline_text = file.get_as_text()
+			var head_to_get = randi() % 2
+			var headline_text : String
+			
+			if crash_max_altitude < 1000.0:
+				var file = FileAccess.open("res://newspaper_headlines/bad/" + str(head_to_get) + ".txt", FileAccess.READ)
+				headline_text = file.get_as_text()
+			elif crash_max_altitude < 2000.0 and crash_max_altitude > 1000.0:
+				var file = FileAccess.open("res://newspaper_headlines/semi_good/" + str(head_to_get) + ".txt", FileAccess.READ)
+				headline_text = file.get_as_text()
+			else:
+				var file = FileAccess.open("res://newspaper_headlines/good/" + str(head_to_get) + ".txt", FileAccess.READ)
+				headline_text = file.get_as_text()
 			
 			var hl : Label = newspaper.get_node("Offset/WrittenPaperNoBackground/Headline")
 			hl.text = headline_text
@@ -120,7 +140,7 @@ func _process(delta: float) -> void:
 			
 			var screenshot : TextureRect = newspaper.get_node("Offset/WrittenPaperNoBackground/TextureRect")
 			var final =  Image.create(1920 / 2, 1080 / 2, false, Image.FORMAT_RGB8)
-			final.blit_rect(crash_texture, Rect2i(1920/4, 1080/4, 1920/2, 1080/2), Vector2i(0, 0))
+			final.blit_rect(crash_texture, Rect2i(1920/4, 1080/4+200, 1920/2, 1080/2+200), Vector2i(0, 0))
 			screenshot.texture = ImageTexture.create_from_image(final)
 			
 			# prevent the camera from moving again
