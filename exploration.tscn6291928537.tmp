@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://b7qc0gwls2n0v"]
 
-[ext_resource type="Texture2D" uid="uid://j8fhby7840i6" path="res://assets/stars.png" id="1_c4mc6"]
 [ext_resource type="Script" path="res://RocketCrontroller.gd" id="1_tut6i"]
 [ext_resource type="Texture2D" uid="uid://chpld2yyt3kgh" path="res://assets/thruster.png" id="1_wjony"]
 [ext_resource type="Texture2D" uid="uid://db4swb5w3qhwr" path="res://assets/body.png" id="2_1yu1n"]
+[ext_resource type="Texture2D" uid="uid://efum42c6qm7f" path="res://stockfoot_003.jpg" id="2_tut6i"]
 [ext_resource type="Script" uid="uid://u4t3i403ooes" path="res://progress_bar.gd" id="5_c4mc6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ct6xg"]
@@ -25,12 +25,12 @@ position = Vector2(0, -1)
 
 [node name="Parallax2D" type="Parallax2D" parent="Background"]
 scroll_scale = Vector2(0.01, 0.01)
-repeat_size = Vector2(0, 480)
+repeat_size = Vector2(0, 720)
 repeat_times = 2000
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D"]
 scale = Vector2(2, 2)
-texture = ExtResource("1_c4mc6")
+texture = ExtResource("2_tut6i")
 centered = false
 
 [node name="Rocket" type="Node2D" parent="."]
@@ -141,16 +141,16 @@ position = Vector2(5, 59)
 scale = Vector2(1.99219, 0.0273437)
 texture = ExtResource("2_1yu1n")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="ProgressBar" type="CanvasLayer" parent="."]
 
-[node name="ProgressBar" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="ProgressBar"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_c4mc6")
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/ProgressBar"]
+[node name="ProgressBar" type="ProgressBar" parent="ProgressBar/Control"]
 offset_left = 1013.0
 offset_top = 51.0
 offset_right = 1114.0
@@ -158,7 +158,7 @@ offset_bottom = 551.0
 value = 20.0
 fill_mode = 3
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/ProgressBar"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="ProgressBar/Control"]
 offset_left = 897.0
 offset_top = 102.0
 offset_right = 944.0
