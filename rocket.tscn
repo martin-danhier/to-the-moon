@@ -115,10 +115,6 @@ mass = 14.0
 contact_monitor = true
 max_contacts_reported = 1
 
-[node name="Camera2D" type="Camera2D" parent="body_0"]
-position = Vector2(0, -7.185)
-zoom = Vector2(0.9, 0.9)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="body_0"]
 shape = SubResource("RectangleShape2D_tut6i")
 
@@ -500,6 +496,12 @@ sprite_frames = SubResource("SpriteFrames_ldhc3")
 animation = &"firing"
 autoplay = "firing"
 frame_progress = 0.335008
+
+[node name="Node2D" type="Node2D" parent="body_0"]
+
+[node name="Camera2D" type="Camera2D" parent="body_0"]
+position = Vector2(-1, -4)
+zoom = Vector2(0.9, 0.9)
 
 [node name="thruster_left" type="RigidBody2D" parent="."]
 position = Vector2(-59, 30)
