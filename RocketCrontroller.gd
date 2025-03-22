@@ -8,6 +8,11 @@ var side_thruster_left : RigidBody2D
 var side_thruster_right : RigidBody2D
 var body : RigidBody2D
 
+var thruster_left_sprite : AnimatedSprite2D
+var thruster_right_sprite : AnimatedSprite2D
+var side_thruster_left_sprite : AnimatedSprite2D
+var side_thruster_right_sprite : AnimatedSprite2D
+
 var kaput = false
 
 func _ready() -> void:
@@ -16,6 +21,9 @@ func _ready() -> void:
 	side_thruster_left = self.get_node("side_thruster_left")
 	side_thruster_right = self.get_node("side_thruster_right")
 	body = self.get_node("body_0")
+	
+	thruster_left_sprite = self.get_node("thruster_left/AnimatedSprite2D")
+	thruster_right_sprite = self.get_node("thruster_right/AnimatedSprite2D")
 
 func _physics_process(delta: float) -> void:
 	if kaput == true:
@@ -39,10 +47,17 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("thruster_1"):
 		var local_impulse = impulse.rotated(thruster_left.transform.get_rotation())
 		thruster_left.apply_force(local_impulse)
+		thruster_left_sprite.play("thrusting")
+	else:
+		thruster_left_sprite.play("idle")
 
 	if Input.is_action_pressed("thruster_0"):
 		var local_impulse = impulse.rotated(thruster_right.transform.get_rotation())
 		thruster_right.apply_force(local_impulse)
+		thruster_right_sprite.play("thrusting")
+	else:
+		thruster_right_sprite.play("idle")
+		
 
 func explode_rocket():
 	# Detach all joints
@@ -63,5 +78,5 @@ func explode_rocket():
 
 
 func _on_rocket_part_body_entered(body: Node) -> void:
-	if not body.name.contains("ground"):
-		explode_rocket()	
+	if body.name.contains("obstacle"):
+		explode_rocket()

@@ -67,5 +67,5 @@ script = ExtResource("6_88ct5")
 [node name="Rocket" parent="." instance=ExtResource("1_1yu1n")]
 position = Vector2(-23, -128)
 
-[node name="Obstacle" parent="." instance=ExtResource("7_5taav")]
+[node name="obstacle" parent="." instance=ExtResource("7_5taav")]
 position = Vector2(-4, -458)
