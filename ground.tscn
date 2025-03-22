@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://l10ttag0717q"]
+
+[ext_resource type="Texture2D" uid="uid://d1eq2tj5rro76" path="res://assets/spaceport.png" id="1_t7tip"]
+[ext_resource type="Texture2D" uid="uid://c5neiyina7fdv" path="res://assets/trees.png" id="2_tv015"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7tip"]
+size = Vector2(1248, 106)
+
+[node name="Ground" type="Node2D"]
+
+[node name="ground" type="Node2D" parent="."]
+
+[node name="Left" type="Parallax2D" parent="ground"]
+repeat_size = Vector2(1248, 0)
+repeat_times = 20
+
+[node name="Sprite2D" type="Sprite2D" parent="ground/Left"]
+position = Vector2(560, 340)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("2_tv015")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ground/Left"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/Left/StaticBody2D"]
+position = Vector2(561, 522)
+shape = SubResource("RectangleShape2D_t7tip")
+
+[node name="port" type="Parallax2D" parent="ground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ground/port"]
+position = Vector2(560, 340)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("1_t7tip")
