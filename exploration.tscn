@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7qc0gwls2n0v"]
+[gd_scene load_steps=8 format=3 uid="uid://b7qc0gwls2n0v"]
 
+[ext_resource type="Script" uid="uid://jhp1evdhvaie" path="res://RocketCrontroller.gd" id="1_tut6i"]
 [ext_resource type="Texture2D" uid="uid://chpld2yyt3kgh" path="res://assets/thruster.png" id="1_wjony"]
 [ext_resource type="Texture2D" uid="uid://db4swb5w3qhwr" path="res://assets/body.png" id="2_1yu1n"]
 
@@ -18,6 +19,7 @@ size = Vector2(510, 14)
 [node name="exploration" type="Node2D"]
 
 [node name="Rocket" type="Node2D" parent="."]
+script = ExtResource("1_tut6i")
 
 [node name="thruster_left" type="RigidBody2D" parent="Rocket"]
 position = Vector2(-20, 0)
