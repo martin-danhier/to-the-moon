@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dw6mypb0mlu15"]
+[gd_scene load_steps=8 format=3 uid="uid://dw6mypb0mlu15"]
 
 [ext_resource type="PackedScene" uid="uid://dygxaobmlmp8j" path="res://rocket.tscn" id="1_1yu1n"]
 [ext_resource type="Texture2D" uid="uid://j8fhby7840i6" path="res://assets/stars.png" id="1_tut6i"]
 [ext_resource type="Texture2D" uid="uid://db4swb5w3qhwr" path="res://assets/body.png" id="2_1yu1n"]
 [ext_resource type="Script" path="res://progress_bar.gd" id="4_wyjkc"]
 [ext_resource type="Script" uid="uid://cf6dt8toe3la7" path="res://speedometer.gd" id="5_c4mc6"]
+[ext_resource type="Script" uid="uid://beqlt2q17j7xk" path="res://altimeter.gd" id="6_88ct5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1yu1n"]
 size = Vector2(510, 14)
@@ -77,3 +78,12 @@ offset_bottom = 325.0
 text = "1200.0 m/s"
 horizontal_alignment = 2
 script = ExtResource("5_c4mc6")
+
+[node name="Altimeter" type="Label" parent="CanvasLayer"]
+offset_left = 883.0
+offset_top = 322.0
+offset_right = 967.0
+offset_bottom = 345.0
+text = "1200.0 m"
+horizontal_alignment = 2
+script = ExtResource("6_88ct5")
