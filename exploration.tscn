@@ -1,17 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7qc0gwls2n0v"]
+[gd_scene load_steps=10 format=3 uid="uid://b7qc0gwls2n0v"]
 
-[ext_resource type="Script" path="res://RocketCrontroller.gd" id="1_tut6i"]
+[ext_resource type="Script" uid="uid://jhp1evdhvaie" path="res://RocketCrontroller.gd" id="1_tut6i"]
 [ext_resource type="Texture2D" uid="uid://chpld2yyt3kgh" path="res://assets/thruster.png" id="1_wjony"]
 [ext_resource type="Texture2D" uid="uid://db4swb5w3qhwr" path="res://assets/body.png" id="2_1yu1n"]
+[ext_resource type="Texture2D" uid="uid://bn7uvcm0llg0a" path="res://assets/side_thruster.png" id="4_wyjkc"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ct6xg"]
-height = 68.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tut6i"]
+size = Vector2(70, 220)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wjony"]
-height = 68.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wyjkc"]
+size = Vector2(44.89, 114)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wjony"]
-size = Vector2(20, 123)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4mc6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_88ct5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1yu1n"]
 size = Vector2(510, 14)
@@ -19,99 +21,152 @@ size = Vector2(510, 14)
 [node name="exploration" type="Node2D"]
 
 [node name="Rocket" type="Node2D" parent="."]
+position = Vector2(0, -153)
 script = ExtResource("1_tut6i")
 
-[node name="thruster_left" type="RigidBody2D" parent="Rocket"]
-position = Vector2(-20, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket/thruster_left"]
-shape = SubResource("CapsuleShape2D_ct6xg")
-
-[node name="Sprite" type="Sprite2D" parent="Rocket/thruster_left"]
-position = Vector2(2.38419e-07, 9.53674e-07)
-scale = Vector2(0.078125, 0.132812)
-texture = ExtResource("1_wjony")
-
-[node name="thruster_right" type="RigidBody2D" parent="Rocket"]
-position = Vector2(20, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket/thruster_right"]
-shape = SubResource("CapsuleShape2D_wjony")
-
-[node name="Sprite" type="Sprite2D" parent="Rocket/thruster_right"]
-scale = Vector2(0.078125, 0.132812)
-texture = ExtResource("1_wjony")
-
 [node name="body_0" type="RigidBody2D" parent="Rocket"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket/body_0"]
-position = Vector2(0, -36.5)
-shape = SubResource("RectangleShape2D_wjony")
-
-[node name="Sprite2D" type="Sprite2D" parent="Rocket/body_0"]
-position = Vector2(3.57628e-07, -36.5)
-scale = Vector2(0.078125, 0.240234)
-texture = ExtResource("2_1yu1n")
+position = Vector2(0, -24)
+mass = 14.0
 
 [node name="Camera2D" type="Camera2D" parent="Rocket/body_0"]
+position = Vector2(0, 80)
+zoom = Vector2(1.48, 1.48)
 
-[node name="body_to_left_side" type="GrooveJoint2D" parent="Rocket"]
-position = Vector2(-10.105, -29)
-rotation = 1.5708
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket/body_0"]
+shape = SubResource("RectangleShape2D_tut6i")
+
+[node name="Sprite2D" type="Sprite2D" parent="Rocket/body_0"]
+position = Vector2(4.17233e-06, 3.8147e-06)
+scale = Vector2(0.273438, 0.429688)
+texture = ExtResource("2_1yu1n")
+
+[node name="thruster_left" type="RigidBody2D" parent="Rocket"]
+position = Vector2(-59, 30)
+mass = 6.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Rocket/thruster_left"]
+scale = Vector2(0.175, 0.225)
+texture = ExtResource("1_wjony")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket/thruster_left"]
+shape = SubResource("RectangleShape2D_wyjkc")
+
+[node name="thruster_right" type="RigidBody2D" parent="Rocket"]
+position = Vector2(59, 30)
+mass = 6.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Rocket/thruster_right"]
+scale = Vector2(0.175, 0.225)
+texture = ExtResource("1_wjony")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket/thruster_right"]
+shape = SubResource("RectangleShape2D_wyjkc")
+
+[node name="side_thruster_left" type="RigidBody2D" parent="Rocket"]
+position = Vector2(-45.45, -123.34)
+
+[node name="Sprite2D" type="Sprite2D" parent="Rocket/side_thruster_left"]
+scale = Vector2(0.175, 0.225)
+texture = ExtResource("4_wyjkc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket/side_thruster_left"]
+shape = SubResource("RectangleShape2D_c4mc6")
+
+[node name="side_thruster_right" type="RigidBody2D" parent="Rocket"]
+position = Vector2(45.45, -123.34)
+
+[node name="Sprite2D" type="Sprite2D" parent="Rocket/side_thruster_right"]
+scale = Vector2(-0.175, 0.225)
+texture = ExtResource("4_wyjkc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket/side_thruster_right"]
+shape = SubResource("RectangleShape2D_88ct5")
+
+[node name="left_to_body" type="GrooveJoint2D" parent="Rocket"]
+position = Vector2(-35, -22)
 node_a = NodePath("../body_0")
 node_b = NodePath("../thruster_left")
 length = 1.0
 initial_offset = 1.0
 
-[node name="body_to_left_top" type="GrooveJoint2D" parent="Rocket"]
-position = Vector2(-10.02, -29)
+[node name="left_to_body2" type="GrooveJoint2D" parent="Rocket"]
+position = Vector2(-35, 81.29)
 node_a = NodePath("../body_0")
 node_b = NodePath("../thruster_left")
 length = 1.0
 initial_offset = 1.0
 
-[node name="body_to_left_side2" type="GrooveJoint2D" parent="Rocket"]
-position = Vector2(-10.105, 19)
+[node name="right_to_body" type="GrooveJoint2D" parent="Rocket"]
+position = Vector2(35, -22)
+node_a = NodePath("../body_0")
+node_b = NodePath("../thruster_right")
+length = 1.0
+initial_offset = 1.0
+
+[node name="right_to_body2" type="GrooveJoint2D" parent="Rocket"]
+position = Vector2(35, 81.29)
+node_a = NodePath("../body_0")
+node_b = NodePath("../thruster_right")
+length = 1.0
+initial_offset = 1.0
+
+[node name="side_left_to_body3" type="GrooveJoint2D" parent="Rocket"]
+position = Vector2(-35, -130.77)
+node_a = NodePath("../body_0")
+node_b = NodePath("../side_thruster_left")
+length = 1.0
+initial_offset = 1.0
+
+[node name="side_left_to_body4" type="GrooveJoint2D" parent="Rocket"]
+position = Vector2(-35, -115.225)
+node_a = NodePath("../body_0")
+node_b = NodePath("../side_thruster_left")
+length = 1.0
+initial_offset = 1.0
+
+[node name="side_right_to_body3" type="GrooveJoint2D" parent="Rocket"]
+position = Vector2(35, -130.77)
+node_a = NodePath("../body_0")
+node_b = NodePath("../side_thruster_right")
+length = 1.0
+initial_offset = 1.0
+
+[node name="side_right_to_body4" type="GrooveJoint2D" parent="Rocket"]
+position = Vector2(35, -115.225)
+node_a = NodePath("../body_0")
+node_b = NodePath("../side_thruster_right")
+length = 1.0
+initial_offset = 1.0
+
+[node name="side_left_to_body5" type="GrooveJoint2D" parent="Rocket"]
+position = Vector2(-35, -130.77)
 rotation = 1.5708
 node_a = NodePath("../body_0")
-node_b = NodePath("../thruster_left")
+node_b = NodePath("../side_thruster_left")
 length = 1.0
 initial_offset = 1.0
 
-[node name="body_to_left_top2" type="GrooveJoint2D" parent="Rocket"]
-position = Vector2(-10.02, 19)
-node_a = NodePath("../body_0")
-node_b = NodePath("../thruster_left")
-length = 1.0
-initial_offset = 1.0
-
-[node name="body_to_right_side3" type="GrooveJoint2D" parent="Rocket"]
-position = Vector2(9.895, -29)
+[node name="side_left_to_body6" type="GrooveJoint2D" parent="Rocket"]
+position = Vector2(-35, -115.225)
 rotation = 1.5708
 node_a = NodePath("../body_0")
-node_b = NodePath("../thruster_right")
+node_b = NodePath("../side_thruster_left")
 length = 1.0
 initial_offset = 1.0
 
-[node name="body_to_right_top3" type="GrooveJoint2D" parent="Rocket"]
-position = Vector2(9.98, -29)
+[node name="side_right_to_body5" type="GrooveJoint2D" parent="Rocket"]
+position = Vector2(35, -130.77)
+rotation = -1.5708
 node_a = NodePath("../body_0")
-node_b = NodePath("../thruster_right")
+node_b = NodePath("../side_thruster_right")
 length = 1.0
 initial_offset = 1.0
 
-[node name="body_to_right_side4" type="GrooveJoint2D" parent="Rocket"]
-position = Vector2(9.895, 19)
-rotation = 1.5708
+[node name="side_right_to_body6" type="GrooveJoint2D" parent="Rocket"]
+position = Vector2(35, -115.225)
+rotation = -1.5708
 node_a = NodePath("../body_0")
-node_b = NodePath("../thruster_right")
-length = 1.0
-initial_offset = 1.0
-
-[node name="body_to_right_top4" type="GrooveJoint2D" parent="Rocket"]
-position = Vector2(9.98, 19)
-node_a = NodePath("../body_0")
-node_b = NodePath("../thruster_right")
+node_b = NodePath("../side_thruster_right")
 length = 1.0
 initial_offset = 1.0
 
