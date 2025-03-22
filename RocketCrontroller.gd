@@ -102,7 +102,7 @@ func _process(delta: float) -> void:
 			print("photo!")
 			photo_taken = true
 		elif time_elapsed >= 3.0:
-			print("showing!xwww")
+			print("showing!")
 			var newspaper = load("res://newspaper.tscn").instantiate()
 			newspaper.position = camera.global_position
 			get_tree().root.add_child(newspaper)
@@ -118,9 +118,15 @@ func _process(delta: float) -> void:
 			infos.text = "Altitude atteinte : blamdhf"
 			
 			var screenshot : TextureRect = newspaper.get_node("Offset/WrittenPaperNoBackground/TextureRect")
-			screenshot.texture = ImageTexture.create_from_image(crash_texture)
+			var final =  Image.create(1920 / 2, 1080 / 2, false, Image.FORMAT_RGB8)
+			final.blit_rect(crash_texture, Rect2i(1920/4, 1080/4, 1920/2, 1080/2), Vector2i(0, 0))
+			screenshot.texture = ImageTexture.create_from_image(final)
 			
+			# prevent the camera from moving again
 			camera.reparent(get_tree().root)
+			
+			# hide UI because it's useless now
+			get_tree().root.get_node("exploration/CanvasLayer").visible = false
 			
 			spawned_newspaper = true
 

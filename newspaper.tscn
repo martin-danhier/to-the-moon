@@ -148,10 +148,10 @@ scale = Vector2(1.19775, 1.19826)
 texture = ExtResource("2_8sy2j")
 
 [node name="Headline" type="Label" parent="Offset/WrittenPaperNoBackground"]
-offset_left = -417.0
-offset_top = -88.0
-offset_right = 3.99997
-offset_bottom = 65.0
+offset_left = -443.304
+offset_top = -92.0089
+offset_right = -22.3039
+offset_bottom = 60.9911
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_tcvqs")
 theme_override_font_sizes/font_size = 30
@@ -159,18 +159,18 @@ text = "TEST"
 autowrap_mode = 3
 
 [node name="TextureRect" type="TextureRect" parent="Offset/WrittenPaperNoBackground"]
-offset_left = 70.9664
-offset_top = -105.987
-offset_right = 367.966
-offset_bottom = 182.013
+offset_left = 64.0
+offset_top = -106.0
+offset_right = 462.0
+offset_bottom = 167.0
 expand_mode = 1
 stretch_mode = 5
 
 [node name="Infos" type="Label" parent="Offset/WrittenPaperNoBackground"]
-offset_left = -411.0
-offset_top = 149.0
-offset_right = -6.00003
-offset_bottom = 207.0
+offset_left = -433.516
+offset_top = 155.453
+offset_right = -28.5161
+offset_bottom = 213.453
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_tcvqs")
 theme_override_font_sizes/font_size = 25
