@@ -19,13 +19,15 @@ var gun : Node2D
 
 var kaput = false
 
+# only used when rocket dies
 var time_elapsed : float
 var spawned_newspaper = false
 var photo_taken = false
+var crash_texture : Image
+var crash_max_altitude : float
+var crash_max_speed : float
 
 var camera : Camera2D
-
-var crash_texture : Image
 
 func _ready() -> void:
 	thruster_left = self.get_node("thruster_left")
@@ -46,6 +48,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if kaput == true:
 		return
+		
+	crash_max_speed = max(crash_max_speed, int(body.linear_velocity.length() / 200.0))
+	crash_max_altitude = max(crash_max_altitude, (-int(body.position.y)) / 20)
 
 	var impulse = Vector2.UP * 30000.0;
 
@@ -95,14 +100,10 @@ func _process(delta: float) -> void:
 	if kaput and !spawned_newspaper:
 		time_elapsed += delta
 		
-		print(time_elapsed)
-		
 		if time_elapsed < 3.0 and time_elapsed > 0.2 and !photo_taken:
 			crash_texture = get_viewport().get_texture().get_image()
-			print("photo!")
 			photo_taken = true
 		elif time_elapsed >= 3.0:
-			print("showing!")
 			var newspaper = load("res://newspaper.tscn").instantiate()
 			newspaper.position = camera.global_position
 			get_tree().root.add_child(newspaper)
@@ -115,7 +116,7 @@ func _process(delta: float) -> void:
 			hl.text = headline_text
 			
 			var infos : Label = newspaper.get_node("Offset/WrittenPaperNoBackground/Infos")
-			infos.text = "Altitude atteinte : blamdhf"
+			infos.text = "Altitude atteinte : " + str(crash_max_altitude) + " m\nVitesse maximale : " + str(crash_max_speed) + " m/s\n"
 			
 			var screenshot : TextureRect = newspaper.get_node("Offset/WrittenPaperNoBackground/TextureRect")
 			var final =  Image.create(1920 / 2, 1080 / 2, false, Image.FORMAT_RGB8)
@@ -127,6 +128,9 @@ func _process(delta: float) -> void:
 			
 			# hide UI because it's useless now
 			get_tree().root.get_node("exploration/CanvasLayer").visible = false
+			
+			# clicking to "Suite" relaunch this scene
+			# TODO: should launch editor
 			
 			spawned_newspaper = true
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://0vsqqcewppqr"]
+[gd_scene load_steps=11 format=3 uid="uid://0vsqqcewppqr"]
 
 [ext_resource type="Texture2D" uid="uid://cfq7wopg34q2f" path="res://sprites/Empty_news.png" id="2_8sy2j"]
+[ext_resource type="Shader" uid="uid://dbr4jltj7hf41" path="res://sepia.gdshader" id="3_hf1f1"]
 [ext_resource type="FontFile" uid="uid://bjp6ea3e3k1wi" path="res://Times-New-Roman/Times New Roman/times new roman.ttf" id="3_tcvqs"]
 [ext_resource type="AudioStream" uid="uid://d2jcqyi3h0dav" path="res://sounds/tadaladala.ogg" id="4_hf1f1"]
 
@@ -34,7 +35,7 @@ func _set_headline_text(new_headline_text):
 	
 
 func _button_pressed():
-	get_tree().quit()
+	pass
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	pass
@@ -125,6 +126,12 @@ _data = {
 &"new_animation": SubResource("Animation_tcvqs")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_um2tt"]
+shader = ExtResource("3_hf1f1")
+shader_parameter/weighted = true
+shader_parameter/outerRadius = 1.0
+shader_parameter/MainAlpha = 1.0
+
 [sub_resource type="Shortcut" id="Shortcut_tcvqs"]
 
 [node name="newspaper" type="Node2D"]
@@ -159,6 +166,7 @@ text = "TEST"
 autowrap_mode = 3
 
 [node name="TextureRect" type="TextureRect" parent="Offset/WrittenPaperNoBackground"]
+material = SubResource("ShaderMaterial_um2tt")
 offset_left = 64.0
 offset_top = -106.0
 offset_right = 462.0
