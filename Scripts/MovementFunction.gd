@@ -35,7 +35,7 @@ func get_variable() -> float:
 			return target.rotation
 		_:
 			return 0.0
-			
+
 func set_variable(value: float) -> void:
 	match variable:
 		Variable.X:
@@ -53,6 +53,3 @@ func _physics_process(delta: float) -> void:
 			set_variable(base_value + delta_value)
 		MovementFunction.LINEAR:
 			set_variable(get_variable() + velocity * delta)
-			
-	
-		
