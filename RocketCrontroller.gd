@@ -36,28 +36,27 @@ func _physics_process(delta: float) -> void:
 	if abs(angular_velocity) > 3.14 * 3:
 		explode_rocket()
 
-	if Input.is_action_pressed("thruster_side_0"):
+	if Input.is_action_pressed("thruster_side_1"):
 		var local_impulse = impulse.rotated(side_thruster_left.transform.get_rotation()) / 10.0
 		side_thruster_left.apply_force(local_impulse)
 
-	if Input.is_action_pressed("thruster_side_1"):
+	if Input.is_action_pressed("thruster_side_0"):
 		var local_impulse = impulse.rotated(side_thruster_right.transform.get_rotation()) / 10.0
 		side_thruster_right.apply_force(local_impulse)
 
-	if Input.is_action_pressed("thruster_1"):
+	if Input.is_action_pressed("thruster_0"):
 		var local_impulse = impulse.rotated(thruster_left.transform.get_rotation())
 		thruster_left.apply_force(local_impulse)
 		thruster_left_sprite.play("thrusting")
 	else:
 		thruster_left_sprite.play("idle")
 
-	if Input.is_action_pressed("thruster_0"):
+	if Input.is_action_pressed("thruster_1"):
 		var local_impulse = impulse.rotated(thruster_right.transform.get_rotation())
 		thruster_right.apply_force(local_impulse)
 		thruster_right_sprite.play("thrusting")
 	else:
 		thruster_right_sprite.play("idle")
-		
 
 func explode_rocket():
 	# Detach all joints
@@ -73,10 +72,13 @@ func explode_rocket():
 	side_thruster_left.apply_torque_impulse(randf_range(-2000.0, 2000.0))
 	side_thruster_right.apply_torque_impulse(randf_range(-2000.0, 2000.0))
 	
+	thruster_right_sprite.play("idle")
+	thruster_left_sprite.play("idle")
+	
 	kaput = true
 	rocket_exploded.emit()
 
 
 func _on_rocket_part_body_entered(body: Node) -> void:
-	if body.name.contains("obstacle"):
+	if body.name.contains("obstacle_body"):
 		explode_rocket()
