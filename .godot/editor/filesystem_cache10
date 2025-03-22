@@ -1,14 +1,14 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1742654749
+::res://::1742656173
 editor.tscn::PackedScene::2298463884704212292::1742651526::0::1::::<><><>0<>0<><>::
-exploration.tscn::PackedScene::4665660152658967923::1742654749::0::1::::<><><>0<>0<><>::res://RocketCrontroller.gd<>uid://chpld2yyt3kgh::::res://assets/thruster.png<>uid://db4swb5w3qhwr::::res://assets/body.png<>uid://efum42c6qm7f::::res://stockfoot_003.jpg<>uid://u4t3i403ooes::::res://progress_bar.gd
+exploration.tscn::PackedScene::4665660152658967923::1742656173::0::1::::<><><>0<>0<><>::uid://j8fhby7840i6::::res://assets/stars.png<>res://RocketCrontroller.gd<>uid://chpld2yyt3kgh::::res://assets/thruster.png<>uid://db4swb5w3qhwr::::res://assets/body.png<>uid://u4t3i403ooes::::res://progress_bar.gd
 icon.svg::CompressedTexture2D::4776151693302089717::1742648345::1742651184::1::::<><><>0<>0<>866e27131139a85dbd722e6d2d47e52a<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 newspaper.tscn::PackedScene::1799195346033299269::1742651526::0::1::::<><><>0<>0<><>::
 README.md::TextFile::-1::1742642685::0::1::::<><><>0<>0<><>::
 progress_bar.gd::GDScript::1464847918880279906::1742654745::0::1::::<>Control<><>0<>0<><>::
 RocketCrontroller.gd::GDScript::-1::1742652049::0::1::::<>Node2D<><>0<>0<><>::
 stockfoot_003.jpg::CompressedTexture2D::292314597724430949::1742652027::1742652141::1::::<><><>0<>0<>445dbc6b5012d4d2b205139a9842c363<>res://.godot/imported/stockfoot_003.jpg-2b213fd89e784d20ee6e99b2799102fb.ctex::
-::res://assets/::1742655511
+::res://assets/::1742655514
 body.png::CompressedTexture2D::7290450142825890201::1742652049::1742652141::1::::<><><>0<>0<>4201e957cefe986d4e49a586fd2e13ca<>res://.godot/imported/body.png-b8c73c77b587abd445085cbdae951373.ctex::
 stars.png::CompressedTexture2D::700140235245288459::1742655511::1742655514::1::::<><><>0<>0<>961a2662c6b0b2104a266815db117008<>res://.godot/imported/stars.png-0cec3e64e602a6d2ff05e29e04abb435.ctex::
 thruster.png::CompressedTexture2D::5295803639788183947::1742652049::1742652141::1::::<><><>0<>0<>b528c794e6cd50459a0a288329a81216<>res://.godot/imported/thruster.png-5c193e49495ad723b3cc21bafdc91ab9.ctex::
