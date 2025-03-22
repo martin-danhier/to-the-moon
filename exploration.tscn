@@ -29,60 +29,94 @@ texture = ExtResource("2_1yu1n")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 texture_filter = 1
-offset_left = 1700.0
-offset_top = 454.27
-offset_right = 1892.0
-offset_bottom = 838.27
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -220.0
+offset_top = -625.73
+offset_right = -28.0
+offset_bottom = -241.73
+grow_horizontal = 0
+grow_vertical = 0
 texture = ExtResource("2_770sp")
 
-[node name="ProgressBar" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/ProgressBar"]
-layout_mode = 0
-offset_left = 1723.0
-offset_top = 627.0
-offset_right = 1788.0
-offset_bottom = 817.0
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -197.0
+offset_top = -449.0
+offset_right = -132.0
+offset_bottom = -259.0
+grow_horizontal = 0
+grow_vertical = 0
 value = 20.0
 fill_mode = 3
 script = ExtResource("4_wyjkc")
 
 [node name="Speedometer" type="Label" parent="CanvasLayer"]
-offset_left = 1794.0
-offset_top = 600.0
-offset_right = 1878.0
-offset_bottom = 623.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -505.0
+offset_right = -44.0
+offset_bottom = -482.0
+grow_horizontal = 0
+grow_vertical = 0
 text = "1200.0 m/s"
 horizontal_alignment = 2
 script = ExtResource("5_c4mc6")
 
 [node name="Altimeter" type="Label" parent="CanvasLayer"]
-offset_left = 1793.0
-offset_top = 578.0
-offset_right = 1877.0
-offset_bottom = 601.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -527.0
+offset_right = -44.0
+offset_bottom = -504.0
+grow_horizontal = 0
+grow_vertical = 0
 text = "1200.0 m"
 horizontal_alignment = 2
 script = ExtResource("6_88ct5")
 
 [node name="AltitudeLabel" type="Label" parent="CanvasLayer"]
-offset_left = 1719.0
-offset_top = 579.0
-offset_right = 1785.0
-offset_bottom = 628.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -208.0
+offset_top = -528.0
+offset_right = -142.0
+offset_bottom = -479.0
+grow_horizontal = 0
+grow_vertical = 0
 text = "Altitude:
 "
 
 [node name="SpeedLabel" type="Label" parent="CanvasLayer"]
-offset_left = 1719.0
-offset_top = 599.0
-offset_right = 1782.0
-offset_bottom = 648.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -208.0
+offset_top = -506.0
+offset_right = -145.0
+offset_bottom = -457.0
+grow_horizontal = 0
+grow_vertical = 0
 text = "Speed:
 "
 

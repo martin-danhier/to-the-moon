@@ -1,13 +1,57 @@
-[gd_scene load_steps=16 format=3 uid="uid://y8ju2utt1nsd"]
+[gd_scene load_steps=23 format=3 uid="uid://y8ju2utt1nsd"]
 
 [ext_resource type="Script" uid="uid://jhp1evdhvaie" path="res://RocketCrontroller.gd" id="1_tpb7v"]
 [ext_resource type="Texture2D" uid="uid://db4swb5w3qhwr" path="res://assets/body.png" id="2_cum1y"]
+[ext_resource type="Texture2D" uid="uid://b6s8ewr4piw5t" path="res://sprites/laser_beam.png" id="4_7htxx"]
 [ext_resource type="Texture2D" uid="uid://b1dmwlsgiyj1k" path="res://sprites/thruster.png" id="4_546ky"]
 [ext_resource type="Texture2D" uid="uid://bn7uvcm0llg0a" path="res://assets/side_thruster.png" id="4_awr8v"]
 [ext_resource type="Texture2D" uid="uid://8j2xphuhed2t" path="res://assets/gun.png" id="5_cum1y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tut6i"]
 size = Vector2(70, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lm57y"]
+atlas = ExtResource("4_7htxx")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xk1bh"]
+atlas = ExtResource("4_7htxx")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edwur"]
+atlas = ExtResource("4_7htxx")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aw411"]
+atlas = ExtResource("4_7htxx")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mg04i"]
+atlas = ExtResource("4_7htxx")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ldhc3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lm57y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xk1bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edwur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aw411")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mg04i")
+}],
+"loop": true,
+"name": &"firing",
+"speed": 25.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_awr8v"]
 atlas = ExtResource("4_546ky")
@@ -73,7 +117,7 @@ max_contacts_reported = 1
 
 [node name="Camera2D" type="Camera2D" parent="body_0"]
 position = Vector2(0, -7.185)
-zoom = Vector2(0.7, 0.7)
+zoom = Vector2(0.9, 0.9)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="body_0"]
 shape = SubResource("RectangleShape2D_tut6i")
@@ -87,6 +131,375 @@ texture = ExtResource("2_cum1y")
 position = Vector2(0, -123)
 scale = Vector2(0.4375, 0.4375)
 texture = ExtResource("5_cum1y")
+
+[node name="LaserBeam" type="Node2D" parent="body_0"]
+visible = false
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-1, -156.875)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame = 4
+frame_progress = 1.0
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-1, -201)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-1, -245)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-1, -289)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-1, -333)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-1, -377)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.912, -420.75)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame = 4
+frame_progress = 1.0
+
+[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.911999, -464.875)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.911999, -508.875)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.911999, -552.875)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D12" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.911999, -596.875)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D13" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.911999, -640.875)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D14" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.912001, -684.75)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame = 4
+frame_progress = 1.0
+
+[node name="AnimatedSprite2D15" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.912001, -728.875)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D16" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.912001, -772.875)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D17" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.912001, -816.875)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D18" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.912001, -860.875)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D19" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.912001, -904.875)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D20" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.912, -948.875)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame = 4
+frame_progress = 1.0
+
+[node name="AnimatedSprite2D21" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.911999, -993)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D22" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.911999, -1037)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D23" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.911999, -1081)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D24" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.911999, -1125)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D25" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.911999, -1169)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D26" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.823998, -1212.75)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame = 4
+frame_progress = 1.0
+
+[node name="AnimatedSprite2D27" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.823997, -1256.88)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D28" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.823997, -1300.88)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D29" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.823997, -1344.88)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D30" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.823997, -1388.88)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D31" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.823997, -1432.88)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D32" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.823999, -1476.75)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame = 4
+frame_progress = 1.0
+
+[node name="AnimatedSprite2D33" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.823999, -1520.88)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D34" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.823999, -1564.88)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D35" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.823999, -1608.88)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D36" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.823999, -1652.88)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
+
+[node name="AnimatedSprite2D37" type="AnimatedSprite2D" parent="body_0/LaserBeam"]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-0.823999, -1696.88)
+scale = Vector2(1.193, 1.38281)
+sprite_frames = SubResource("SpriteFrames_ldhc3")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.335008
 
 [node name="thruster_left" type="RigidBody2D" parent="."]
 position = Vector2(-59, 30)
@@ -229,18 +642,6 @@ position = Vector2(35, -115.225)
 rotation = -1.5708
 node_a = NodePath("../body_0")
 node_b = NodePath("../side_thruster_right")
-length = 1.0
-initial_offset = 1.0
-
-[node name="gun_left" type="GrooveJoint2D" parent="."]
-position = Vector2(-13, -135)
-node_b = NodePath("../body_0")
-length = 1.0
-initial_offset = 1.0
-
-[node name="gun_right" type="GrooveJoint2D" parent="."]
-position = Vector2(13, -135)
-node_b = NodePath("../body_0")
 length = 1.0
 initial_offset = 1.0
 

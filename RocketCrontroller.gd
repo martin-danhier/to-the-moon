@@ -13,6 +13,10 @@ var thruster_right_sprite : AnimatedSprite2D
 var side_thruster_left_sprite : AnimatedSprite2D
 var side_thruster_right_sprite : AnimatedSprite2D
 
+var laser_beam : Node2D
+
+var gun : Node2D
+
 var kaput = false
 
 func _ready() -> void:
@@ -24,6 +28,10 @@ func _ready() -> void:
 	
 	thruster_left_sprite = self.get_node("thruster_left/AnimatedSprite2D")
 	thruster_right_sprite = self.get_node("thruster_right/AnimatedSprite2D")
+	
+	laser_beam = self.get_node("body_0/LaserBeam")
+	
+	gun = self.get_node("body_0/Gun")
 
 func _physics_process(delta: float) -> void:
 	if kaput == true:
@@ -57,6 +65,22 @@ func _physics_process(delta: float) -> void:
 		thruster_right_sprite.play("thrusting")
 	else:
 		thruster_right_sprite.play("idle")
+	
+	if Input.is_action_pressed("fire"):
+		laser_beam.visible = true
+		
+		var space_state = gun.get_world_2d().direct_space_state
+		# use global coordinates, not local to node
+		var to = Vector2(0, -1000).rotated(body.transform.get_rotation())
+		var query = PhysicsRayQueryParameters2D.create(gun.position, to)
+		var result = space_state.intersect_ray(query)
+		
+		if result:
+			if result.collider.name.contains("obstacle_body"):
+				result.collider.get_parent().call_deferred("queue_free")
+	else:
+		laser_beam.visible = false
+		
 
 func explode_rocket():
 	# Detach all joints
@@ -74,6 +98,7 @@ func explode_rocket():
 	
 	thruster_right_sprite.play("idle")
 	thruster_left_sprite.play("idle")
+	laser_beam.visible = false
 	
 	kaput = true
 	rocket_exploded.emit()

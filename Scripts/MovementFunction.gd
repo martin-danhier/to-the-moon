@@ -46,7 +46,6 @@ func set_variable(value: float) -> void:
 			target.rotation = value
 
 func _physics_process(delta: float) -> void:
-
 	match movement_function:
 		MovementFunction.SINE:
 			var delta_value = amplitude * sin(2 * PI * (1 / period) * (Time.get_ticks_usec() / 1000000.0))

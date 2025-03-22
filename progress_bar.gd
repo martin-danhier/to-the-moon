@@ -9,6 +9,5 @@ func _process(delta: float) -> void:
 	update()
 
 func update():
-	value = -rocket.position.y/10000
-	print("aaa", rocket.position)
+	value = -rocket.position.y / 10000
 	
