@@ -53,6 +53,3 @@ func _physics_process(delta: float) -> void:
 			set_variable(base_value + delta_value)
 		MovementFunction.LINEAR:
 			set_variable(get_variable() + velocity * delta)
-
-
-

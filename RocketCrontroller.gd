@@ -53,4 +53,3 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("thruster_0"):
 		var local_impulse = impulse.rotated(thruster_right.transform.get_rotation())
 		thruster_right.apply_force(local_impulse)
-
