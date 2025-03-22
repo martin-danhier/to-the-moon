@@ -23,16 +23,16 @@ shape = SubResource("CapsuleShape2D_8btp0")
 
 [node name="func_x" type="Node" parent="."]
 script = ExtResource("2_34vs7")
-amplitude = 17.5
 variable = 0
 movement_function = 1
+amplitude = 17.5
 
 [node name="func_y" type="Node" parent="."]
 script = ExtResource("2_34vs7")
+movement_function = 1
 amplitude = 7.135
 period = 2.465
 velocity = 0.955
-movement_function = 1
 
 [node name="func_angle" type="Node" parent="."]
 script = ExtResource("2_34vs7")
