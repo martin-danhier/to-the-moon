@@ -1,5 +1,7 @@
 extends Node2D
 
+signal rocket_exploded
+
 var thruster_left : RigidBody2D
 var thruster_right : RigidBody2D
 var side_thruster_left : RigidBody2D
@@ -24,19 +26,7 @@ func _physics_process(delta: float) -> void:
 	var angular_velocity = body.angular_velocity
 
 	if abs(angular_velocity) > 3.14 * 3:
-		# dirty way of grabbing all joint
-		for child in get_children():
-			if is_instance_of(child, GrooveJoint2D):
-				var c : GrooveJoint2D = child;
-				c.node_a = ""
-				c.node_b = ""
-		kaput = true
-
-		# make it looks like everything went wrong
-		thruster_left.apply_torque_impulse(randf_range(-2000.0, 2000.0))
-		thruster_right.apply_torque_impulse(randf_range(-2000.0, 2000.0))
-		side_thruster_left.apply_torque_impulse(randf_range(-2000.0, 2000.0))
-		side_thruster_right.apply_torque_impulse(randf_range(-2000.0, 2000.0))
+		explode_rocket()
 
 	if Input.is_action_pressed("thruster_side_0"):
 		var local_impulse = impulse.rotated(side_thruster_left.transform.get_rotation()) / 10.0
@@ -54,13 +44,23 @@ func _physics_process(delta: float) -> void:
 		var local_impulse = impulse.rotated(thruster_right.transform.get_rotation())
 		thruster_right.apply_force(local_impulse)
 
-func _on_rocket_part_body_entered(body: Node) -> void:
-	
+func explode_rocket():
 	# Detach all joints
-	for child in joints.get_children():
-		if is_instance_of(child, Joint2D):
-			var joint = child as Joint2D
-			joint.node_a = ""
-			joint.node_b = ""
-
+	for child in get_children():
+		if is_instance_of(child, GrooveJoint2D):
+			var c : GrooveJoint2D = child;
+			c.node_a = ""
+			c.node_b = ""
+	
+	# make it looks like everything went wrong
+	thruster_left.apply_torque_impulse(randf_range(-2000.0, 2000.0))
+	thruster_right.apply_torque_impulse(randf_range(-2000.0, 2000.0))
+	side_thruster_left.apply_torque_impulse(randf_range(-2000.0, 2000.0))
+	side_thruster_right.apply_torque_impulse(randf_range(-2000.0, 2000.0))
+	
+	kaput = true
 	rocket_exploded.emit()
+
+
+func _on_rocket_part_body_entered(body: Node) -> void:
+	explode_rocket()	
