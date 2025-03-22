@@ -1,10 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7qc0gwls2n0v"]
+[gd_scene load_steps=16 format=3 uid="uid://b7qc0gwls2n0v"]
 
-[ext_resource type="Texture2D" uid="uid://j8fhby7840i6" path="res://assets/stars.png" id="1_c4mc6"]
-[ext_resource type="Script" path="res://RocketCrontroller.gd" id="1_tut6i"]
-[ext_resource type="Texture2D" uid="uid://chpld2yyt3kgh" path="res://assets/thruster.png" id="1_wjony"]
-[ext_resource type="Texture2D" uid="uid://db4swb5w3qhwr" path="res://assets/body.png" id="2_1yu1n"]
-[ext_resource type="Script" uid="uid://u4t3i403ooes" path="res://progress_bar.gd" id="5_c4mc6"]
+[ext_resource type="Texture2D" uid="uid://c2k47rl76iiqb" path="res://assets/background.png" id="1_kfcbd"]
+[ext_resource type="Texture2D" uid="uid://rpi346wi5kes" path="res://assets/stars1.png" id="2_aelsl"]
+[ext_resource type="Texture2D" uid="uid://c08lk2aprvpnf" path="res://assets/stars2.png" id="3_77kbd"]
+[ext_resource type="Texture2D" uid="uid://lamyfoa1wl4v" path="res://assets/stars3.png" id="4_7alow"]
+[ext_resource type="Texture2D" uid="uid://bg5ersw1virho" path="res://assets/stars4.png" id="5_xpryw"]
+[ext_resource type="Texture2D" uid="uid://bpk23c1661yqn" path="res://assets/stars5.png" id="6_6anwk"]
+[ext_resource type="Texture2D" uid="uid://cyw62536jvrnj" path="res://assets/sky2.png" id="7_aelsl"]
+[ext_resource type="Script" path="res://RocketCrontroller.gd" id="7_j4hsb"]
+[ext_resource type="Texture2D" uid="uid://chpld2yyt3kgh" path="res://assets/thruster.png" id="8_38o0q"]
+[ext_resource type="Texture2D" uid="uid://db4swb5w3qhwr" path="res://assets/body.png" id="9_d3ikm"]
+[ext_resource type="Script" uid="uid://5ye8esp8kr1" path="res://progress_bar.gd" id="10_0oxlt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ct6xg"]
 height = 68.0
@@ -24,17 +30,85 @@ size = Vector2(510, 14)
 position = Vector2(0, -1)
 
 [node name="Parallax2D" type="Parallax2D" parent="Background"]
-scroll_scale = Vector2(0.01, 0.01)
-repeat_size = Vector2(0, 480)
-repeat_times = 2000
+repeat_size = Vector2(480, 480)
+repeat_times = 10
 
-[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D"]
+[node name="background" type="Sprite2D" parent="Background/Parallax2D"]
+texture_filter = 1
+texture = ExtResource("1_kfcbd")
+centered = false
+
+[node name="Parallax2D1" type="Parallax2D" parent="Background"]
+scroll_scale = Vector2(0.001, 0.001)
+repeat_size = Vector2(480, 480)
+repeat_times = 100
+
+[node name="stars1" type="Sprite2D" parent="Background/Parallax2D1"]
+texture_filter = 1
 scale = Vector2(2, 2)
-texture = ExtResource("1_c4mc6")
+texture = ExtResource("2_aelsl")
+centered = false
+
+[node name="Parallax2D2" type="Parallax2D" parent="Background"]
+scroll_scale = Vector2(0.002, 0.002)
+repeat_size = Vector2(480, 480)
+repeat_times = 100
+
+[node name="stars2" type="Sprite2D" parent="Background/Parallax2D2"]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("3_77kbd")
+centered = false
+
+[node name="Parallax2D3" type="Parallax2D" parent="Background"]
+visible = false
+scroll_scale = Vector2(0.01, 0.01)
+repeat_size = Vector2(480, 480)
+repeat_times = 100
+
+[node name="stars3" type="Sprite2D" parent="Background/Parallax2D3"]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("4_7alow")
+centered = false
+
+[node name="Parallax2D4" type="Parallax2D" parent="Background"]
+visible = false
+scroll_scale = Vector2(0.015, 0.015)
+repeat_size = Vector2(480, 480)
+repeat_times = 100
+
+[node name="stars4" type="Sprite2D" parent="Background/Parallax2D4"]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("5_xpryw")
+centered = false
+
+[node name="Parallax2D5" type="Parallax2D" parent="Background"]
+visible = false
+scroll_scale = Vector2(0.02, 0.02)
+repeat_size = Vector2(480, 480)
+repeat_times = 100
+
+[node name="stars5" type="Sprite2D" parent="Background/Parallax2D5"]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("6_6anwk")
+centered = false
+
+[node name="Parallax2Dsky" type="Parallax2D" parent="Background"]
+scroll_scale = Vector2(0.005, 0.005)
+repeat_size = Vector2(480, 0)
+repeat_times = 100
+
+[node name="sky" type="Sprite2D" parent="Background/Parallax2Dsky"]
+texture_filter = 1
+position = Vector2(422, -1033)
+texture = ExtResource("7_aelsl")
 centered = false
 
 [node name="Rocket" type="Node2D" parent="."]
-script = ExtResource("1_tut6i")
+script = ExtResource("7_j4hsb")
 
 [node name="thruster_left" type="RigidBody2D" parent="Rocket"]
 position = Vector2(-20, 0)
@@ -45,7 +119,7 @@ shape = SubResource("CapsuleShape2D_ct6xg")
 [node name="Sprite" type="Sprite2D" parent="Rocket/thruster_left"]
 position = Vector2(2.38419e-07, 9.53674e-07)
 scale = Vector2(0.078125, 0.132812)
-texture = ExtResource("1_wjony")
+texture = ExtResource("8_38o0q")
 
 [node name="thruster_right" type="RigidBody2D" parent="Rocket"]
 position = Vector2(20, 0)
@@ -55,7 +129,7 @@ shape = SubResource("CapsuleShape2D_wjony")
 
 [node name="Sprite" type="Sprite2D" parent="Rocket/thruster_right"]
 scale = Vector2(0.078125, 0.132812)
-texture = ExtResource("1_wjony")
+texture = ExtResource("8_38o0q")
 
 [node name="body_0" type="RigidBody2D" parent="Rocket"]
 
@@ -66,7 +140,7 @@ shape = SubResource("RectangleShape2D_wjony")
 [node name="Sprite2D" type="Sprite2D" parent="Rocket/body_0"]
 position = Vector2(3.57628e-07, -36.5)
 scale = Vector2(0.078125, 0.240234)
-texture = ExtResource("2_1yu1n")
+texture = ExtResource("9_d3ikm")
 
 [node name="Camera2D" type="Camera2D" parent="Rocket/body_0"]
 
@@ -139,29 +213,19 @@ shape = SubResource("RectangleShape2D_1yu1n")
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(5, 59)
 scale = Vector2(1.99219, 0.0273437)
-texture = ExtResource("2_1yu1n")
+texture = ExtResource("9_d3ikm")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ProgressBar" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("5_c4mc6")
-
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/ProgressBar"]
-offset_left = 1013.0
-offset_top = 51.0
-offset_right = 1114.0
-offset_bottom = 551.0
-value = 20.0
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("rocket")]
+anchors_preset = -1
+anchor_left = 0.0147569
+offset_left = 1007.0
+offset_top = 63.0
+offset_right = 1108.0
+offset_bottom = 563.0
+size_flags_horizontal = 8
 fill_mode = 3
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/ProgressBar"]
-offset_left = 897.0
-offset_top = 102.0
-offset_right = 944.0
-offset_bottom = 566.0
-value = 20.0
-fill_mode = 3
+script = ExtResource("10_0oxlt")
+rocket = NodePath("../../Rocket/body_0")
+metadata/_edit_use_anchors_ = true
