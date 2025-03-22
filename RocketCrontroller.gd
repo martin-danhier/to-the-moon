@@ -1,5 +1,7 @@
 extends Node2D
 
+signal rocket_exploded
+
 var thruster_left : RigidBody2D
 var thruster_right : RigidBody2D
 var body : RigidBody2D
@@ -22,11 +24,13 @@ func _process(delta: float) -> void:
 
 func _on_rocket_part_body_entered(body: Node) -> void:
 	
+	# Detach all joints
 	for child in joints.get_children():
 		if is_instance_of(child, Joint2D):
 			var joint = child as Joint2D
 			joint.node_a = ""
-			
-	
+
+	rocket_exploded.emit()
+
 	pass # Replace with function body.
 	
