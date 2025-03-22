@@ -14,7 +14,7 @@ func _ready() -> void:
 	body = self.get_node("body_0")
 
 func _physics_process(delta: float) -> void:
-	var impulse = Vector2.UP * 17000.0;
+	var impulse = Vector2.UP * 30000.0;
 	
 	if Input.is_action_pressed("thruster_side_0"):
 		var local_impulse = impulse.rotated(side_thruster_left.transform.get_rotation()) / 10.0

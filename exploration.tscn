@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://be21k12i1aoae"]
+[gd_scene load_steps=7 format=3 uid="uid://dw6mypb0mlu15"]
 
-[ext_resource type="Texture2D" uid="uid://j8fhby7840i6" path="res://assets/stars.png" id="1_c4mc6"]
+[ext_resource type="PackedScene" uid="uid://dygxaobmlmp8j" path="res://rocket.tscn" id="1_1yu1n"]
+[ext_resource type="Texture2D" uid="uid://j8fhby7840i6" path="res://assets/stars.png" id="1_tut6i"]
 [ext_resource type="Texture2D" uid="uid://db4swb5w3qhwr" path="res://assets/body.png" id="2_1yu1n"]
-[ext_resource type="PackedScene" uid="uid://dygxaobmlmp8j" path="res://rocket.tscn" id="4_iokxi"]
-[ext_resource type="Script" path="res://progress_bar.gd" id="5_c4mc6"]
+[ext_resource type="Script" path="res://progress_bar.gd" id="4_wyjkc"]
+[ext_resource type="Script" uid="uid://cf6dt8toe3la7" path="res://speedometer.gd" id="5_c4mc6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1yu1n"]
 size = Vector2(510, 14)
@@ -21,8 +22,11 @@ repeat_times = 100
 [node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D"]
 texture_filter = 1
 scale = Vector2(2, 2)
-texture = ExtResource("1_c4mc6")
+texture = ExtResource("1_tut6i")
 centered = false
+
+[node name="Rocket" parent="." instance=ExtResource("1_1yu1n")]
+position = Vector2(0, -153)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -42,7 +46,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("5_c4mc6")
+script = ExtResource("4_wyjkc")
 metadata/_edit_use_anchors_ = true
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/ProgressBar"]
@@ -65,6 +69,11 @@ value = 20.0
 fill_mode = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="Rocket" parent="." instance=ExtResource("4_iokxi")]
-position = Vector2(-17, -38)
-rotation = -0.000145683
+[node name="Speedometer" type="Label" parent="CanvasLayer"]
+offset_left = 897.0
+offset_top = 302.0
+offset_right = 981.0
+offset_bottom = 325.0
+text = "1200.0 m/s"
+horizontal_alignment = 2
+script = ExtResource("5_c4mc6")

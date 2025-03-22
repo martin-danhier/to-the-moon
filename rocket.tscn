@@ -1,0 +1,165 @@
+[gd_scene load_steps=9 format=3 uid="uid://dygxaobmlmp8j"]
+
+[ext_resource type="Script" uid="uid://jhp1evdhvaie" path="res://RocketCrontroller.gd" id="1_tpb7v"]
+[ext_resource type="Texture2D" uid="uid://db4swb5w3qhwr" path="res://assets/body.png" id="2_cum1y"]
+[ext_resource type="Texture2D" uid="uid://chpld2yyt3kgh" path="res://assets/thruster.png" id="3_546ky"]
+[ext_resource type="Texture2D" uid="uid://bn7uvcm0llg0a" path="res://assets/side_thruster.png" id="4_awr8v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tut6i"]
+size = Vector2(70, 220)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wyjkc"]
+size = Vector2(44.89, 114)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4mc6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_88ct5"]
+
+[node name="Rocket" type="Node2D"]
+script = ExtResource("1_tpb7v")
+
+[node name="body_0" type="RigidBody2D" parent="."]
+position = Vector2(0, -24)
+mass = 14.0
+
+[node name="Camera2D" type="Camera2D" parent="body_0"]
+position = Vector2(0, -150)
+zoom = Vector2(0.7, 0.7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="body_0"]
+shape = SubResource("RectangleShape2D_tut6i")
+
+[node name="Sprite2D" type="Sprite2D" parent="body_0"]
+position = Vector2(4.17233e-06, 3.8147e-06)
+scale = Vector2(0.273438, 0.429688)
+texture = ExtResource("2_cum1y")
+
+[node name="thruster_left" type="RigidBody2D" parent="."]
+position = Vector2(-59, 30)
+mass = 6.0
+
+[node name="Sprite2D" type="Sprite2D" parent="thruster_left"]
+scale = Vector2(0.175, 0.225)
+texture = ExtResource("3_546ky")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="thruster_left"]
+shape = SubResource("RectangleShape2D_wyjkc")
+
+[node name="thruster_right" type="RigidBody2D" parent="."]
+position = Vector2(59, 30)
+mass = 6.0
+
+[node name="Sprite2D" type="Sprite2D" parent="thruster_right"]
+scale = Vector2(0.175, 0.225)
+texture = ExtResource("3_546ky")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="thruster_right"]
+shape = SubResource("RectangleShape2D_wyjkc")
+
+[node name="side_thruster_left" type="RigidBody2D" parent="."]
+position = Vector2(-45.45, -123.34)
+
+[node name="Sprite2D" type="Sprite2D" parent="side_thruster_left"]
+scale = Vector2(0.175, 0.225)
+texture = ExtResource("4_awr8v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="side_thruster_left"]
+shape = SubResource("RectangleShape2D_c4mc6")
+
+[node name="side_thruster_right" type="RigidBody2D" parent="."]
+position = Vector2(45.45, -123.34)
+
+[node name="Sprite2D" type="Sprite2D" parent="side_thruster_right"]
+scale = Vector2(-0.175, 0.225)
+texture = ExtResource("4_awr8v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="side_thruster_right"]
+shape = SubResource("RectangleShape2D_88ct5")
+
+[node name="left_to_body" type="GrooveJoint2D" parent="."]
+position = Vector2(-35, -22)
+node_a = NodePath("../body_0")
+node_b = NodePath("../thruster_left")
+length = 1.0
+initial_offset = 1.0
+
+[node name="left_to_body2" type="GrooveJoint2D" parent="."]
+position = Vector2(-35, 81.29)
+node_a = NodePath("../body_0")
+node_b = NodePath("../thruster_left")
+length = 1.0
+initial_offset = 1.0
+
+[node name="right_to_body" type="GrooveJoint2D" parent="."]
+position = Vector2(35, -22)
+node_a = NodePath("../body_0")
+node_b = NodePath("../thruster_right")
+length = 1.0
+initial_offset = 1.0
+
+[node name="right_to_body2" type="GrooveJoint2D" parent="."]
+position = Vector2(35, 81.29)
+node_a = NodePath("../body_0")
+node_b = NodePath("../thruster_right")
+length = 1.0
+initial_offset = 1.0
+
+[node name="side_left_to_body3" type="GrooveJoint2D" parent="."]
+position = Vector2(-35, -130.77)
+node_a = NodePath("../body_0")
+node_b = NodePath("../side_thruster_left")
+length = 1.0
+initial_offset = 1.0
+
+[node name="side_left_to_body4" type="GrooveJoint2D" parent="."]
+position = Vector2(-35, -115.225)
+node_a = NodePath("../body_0")
+node_b = NodePath("../side_thruster_left")
+length = 1.0
+initial_offset = 1.0
+
+[node name="side_right_to_body3" type="GrooveJoint2D" parent="."]
+position = Vector2(35, -130.77)
+node_a = NodePath("../body_0")
+node_b = NodePath("../side_thruster_right")
+length = 1.0
+initial_offset = 1.0
+
+[node name="side_right_to_body4" type="GrooveJoint2D" parent="."]
+position = Vector2(35, -115.225)
+node_a = NodePath("../body_0")
+node_b = NodePath("../side_thruster_right")
+length = 1.0
+initial_offset = 1.0
+
+[node name="side_left_to_body5" type="GrooveJoint2D" parent="."]
+position = Vector2(-35, -130.77)
+rotation = 1.5708
+node_a = NodePath("../body_0")
+node_b = NodePath("../side_thruster_left")
+length = 1.0
+initial_offset = 1.0
+
+[node name="side_left_to_body6" type="GrooveJoint2D" parent="."]
+position = Vector2(-35, -115.225)
+rotation = 1.5708
+node_a = NodePath("../body_0")
+node_b = NodePath("../side_thruster_left")
+length = 1.0
+initial_offset = 1.0
+
+[node name="side_right_to_body5" type="GrooveJoint2D" parent="."]
+position = Vector2(35, -130.77)
+rotation = -1.5708
+node_a = NodePath("../body_0")
+node_b = NodePath("../side_thruster_right")
+length = 1.0
+initial_offset = 1.0
+
+[node name="side_right_to_body6" type="GrooveJoint2D" parent="."]
+position = Vector2(35, -115.225)
+rotation = -1.5708
+node_a = NodePath("../body_0")
+node_b = NodePath("../side_thruster_right")
+length = 1.0
+initial_offset = 1.0
