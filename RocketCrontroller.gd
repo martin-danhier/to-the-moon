@@ -19,6 +19,14 @@ var gun : Node2D
 
 var kaput = false
 
+var time_elapsed : float
+var spawned_newspaper = false
+var photo_taken = false
+
+var camera : Camera2D
+
+var crash_texture : Image
+
 func _ready() -> void:
 	thruster_left = self.get_node("thruster_left")
 	thruster_right = self.get_node("thruster_right")
@@ -30,6 +38,8 @@ func _ready() -> void:
 	thruster_right_sprite = self.get_node("thruster_right/AnimatedSprite2D")
 	
 	laser_beam = self.get_node("body_0/LaserBeam")
+	
+	camera = self.get_node("body_0/Camera2D")
 	
 	gun = self.get_node("body_0/Gun")
 
@@ -80,7 +90,39 @@ func _physics_process(delta: float) -> void:
 				result.collider.get_parent().call_deferred("queue_free")
 	else:
 		laser_beam.visible = false
+
+func _process(delta: float) -> void:
+	if kaput and !spawned_newspaper:
+		time_elapsed += delta
 		
+		print(time_elapsed)
+		
+		if time_elapsed < 3.0 and time_elapsed > 0.2 and !photo_taken:
+			crash_texture = get_viewport().get_texture().get_image()
+			print("photo!")
+			photo_taken = true
+		elif time_elapsed >= 3.0:
+			print("showing!xwww")
+			var newspaper = load("res://newspaper.tscn").instantiate()
+			newspaper.position = camera.global_position
+			get_tree().root.add_child(newspaper)
+			
+			var head_to_get = randi() % 5
+			var file = FileAccess.open("res://newspaper_headlines/" + str(head_to_get) + ".txt", FileAccess.READ)
+			var headline_text = file.get_as_text()
+			
+			var hl : Label = newspaper.get_node("Offset/WrittenPaperNoBackground/Headline")
+			hl.text = headline_text
+			
+			var infos : Label = newspaper.get_node("Offset/WrittenPaperNoBackground/Infos")
+			infos.text = "Altitude atteinte : blamdhf"
+			
+			var screenshot : TextureRect = newspaper.get_node("Offset/WrittenPaperNoBackground/TextureRect")
+			screenshot.texture = ImageTexture.create_from_image(crash_texture)
+			
+			camera.reparent(get_tree().root)
+			
+			spawned_newspaper = true
 
 func explode_rocket():
 	# Detach all joints
