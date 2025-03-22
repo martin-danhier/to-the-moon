@@ -1,3 +1,207 @@
-[gd_scene format=3 uid="uid://0vsqqcewppqr"]
+[gd_scene load_steps=11 format=3 uid="uid://0vsqqcewppqr"]
+
+[ext_resource type="Texture2D" uid="uid://cfq7wopg34q2f" path="res://sprites/Empty_news.png" id="2_8sy2j"]
+[ext_resource type="Shader" uid="uid://dbr4jltj7hf41" path="res://sepia.gdshader" id="3_hf1f1"]
+[ext_resource type="FontFile" uid="uid://bjp6ea3e3k1wi" path="res://Times-New-Roman/Times New Roman/times new roman.ttf" id="3_tcvqs"]
+[ext_resource type="AudioStream" uid="uid://d2jcqyi3h0dav" path="res://sounds/tadaladala.ogg" id="4_hf1f1"]
+
+[sub_resource type="GDScript" id="GDScript_tcvqs"]
+script/source = "extends Node2D
+
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var headline: Label = $Offset/WrittenPaperNoBackground/Headline
+@onready var texture_rect: TextureRect = $Offset/WrittenPaperNoBackground/TextureRect
+@onready var infos: Label = $Offset/WrittenPaperNoBackground/Infos
+@onready var button: Button = $Offset/WrittenPaperNoBackground/Button
+
+var headline_text : String;
+
+func _ready():
+	var altitude = 1000
+	var time = 720
+	
+	button.pressed.connect(_button_pressed)
+	
+	animation_player.play(\"new_animation\")
+	
+	texture_rect.texture = get_viewport().get_texture()
+	
+func _set_altitude(altitude_text, time_text):
+	infos.text = \"Altitude atteinte: \" + altitude_text + \"m in \" + time_text + \" s\"
+	
+func _set_headline_text(new_headline_text):
+	headline_text = new_headline_text
+	headline.text = headline_text
+	
+
+func _button_pressed():
+	pass
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	pass
+"
+
+[sub_resource type="Animation" id="Animation_hf1f1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(574, 330)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.19775, 1.19826)]
+}
+
+[sub_resource type="Animation" id="Animation_tcvqs"]
+resource_name = "new_animation"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 43.9823]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(574, 650), Vector2(574, 333)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(1.2, 1.2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_um2tt"]
+_data = {
+&"RESET": SubResource("Animation_hf1f1"),
+&"new_animation": SubResource("Animation_tcvqs")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_um2tt"]
+shader = ExtResource("3_hf1f1")
+shader_parameter/weighted = true
+shader_parameter/outerRadius = 1.0
+shader_parameter/MainAlpha = 1.0
+
+[sub_resource type="Shortcut" id="Shortcut_tcvqs"]
 
 [node name="newspaper" type="Node2D"]
+script = SubResource("GDScript_tcvqs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Offset/WrittenPaperNoBackground")
+libraries = {
+&"": SubResource("AnimationLibrary_um2tt")
+}
+
+[node name="Offset" type="Node2D" parent="."]
+position = Vector2(-984, -511)
+rotation = -0.0654692
+scale = Vector2(1.64, 1.64)
+
+[node name="WrittenPaperNoBackground" type="Sprite2D" parent="Offset"]
+texture_filter = 3
+position = Vector2(574, 330)
+scale = Vector2(1.19775, 1.19826)
+texture = ExtResource("2_8sy2j")
+
+[node name="Headline" type="Label" parent="Offset/WrittenPaperNoBackground"]
+offset_left = -443.304
+offset_top = -92.0089
+offset_right = -22.3039
+offset_bottom = 60.9911
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_tcvqs")
+theme_override_font_sizes/font_size = 30
+text = "TEST"
+autowrap_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="Offset/WrittenPaperNoBackground"]
+material = SubResource("ShaderMaterial_um2tt")
+offset_left = 64.0
+offset_top = -106.0
+offset_right = 462.0
+offset_bottom = 167.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Infos" type="Label" parent="Offset/WrittenPaperNoBackground"]
+offset_left = -433.516
+offset_top = 155.453
+offset_right = -28.5161
+offset_bottom = 213.453
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_tcvqs")
+theme_override_font_sizes/font_size = 25
+text = "Infos"
+
+[node name="Button" type="Button" parent="Offset/WrittenPaperNoBackground"]
+offset_left = 323.941
+offset_top = 171.916
+offset_right = 406.941
+offset_bottom = 209.916
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_tcvqs")
+theme_override_font_sizes/font_size = 21
+shortcut = SubResource("Shortcut_tcvqs")
+text = "Suite"
+flat = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_hf1f1")
+autoplay = true
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="focus_entered" from="Offset/WrittenPaperNoBackground/Headline" to="." method="_on_label_focus_entered"]

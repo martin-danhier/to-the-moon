@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://jhp1evdhvaie" path="res://RocketCrontroller.gd" id="1_tpb7v"]
 [ext_resource type="Texture2D" uid="uid://db4swb5w3qhwr" path="res://assets/body.png" id="2_cum1y"]
 [ext_resource type="Texture2D" uid="uid://b6s8ewr4piw5t" path="res://sprites/laser_beam.png" id="4_7htxx"]
-[ext_resource type="Texture2D" uid="uid://b1dmwlsgiyj1k" path="res://sprites/thruster.png" id="4_546ky"]
+[ext_resource type="Texture2D" uid="uid://cy3enmph0xk5j" path="res://sprites/thruster.png" id="4_546ky"]
 [ext_resource type="Texture2D" uid="uid://bn7uvcm0llg0a" path="res://assets/side_thruster.png" id="4_awr8v"]
 [ext_resource type="Texture2D" uid="uid://8j2xphuhed2t" path="res://assets/gun.png" id="5_cum1y"]
 

@@ -1,0 +1,35 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://bjp6ea3e3k1wi"
+path="res://.godot/imported/times new roman.ttf-9a34092ab7559d60b11c1e5e7a410386.fontdata"
+
+[deps]
+
+source_file="res://Times-New-Roman/Times New Roman/times new roman.ttf"
+dest_files=["res://.godot/imported/times new roman.ttf-9a34092ab7559d60b11c1e5e7a410386.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=2
+generate_mipmaps=true
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=2
+subpixel_positioning=4
+keep_rounding_remainders=true
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=false
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}
