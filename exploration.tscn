@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://b7qc0gwls2n0v"]
 
-[ext_resource type="Script" uid="uid://jhp1evdhvaie" path="res://RocketCrontroller.gd" id="1_tut6i"]
+[ext_resource type="Script" path="res://RocketCrontroller.gd" id="1_tut6i"]
 [ext_resource type="Texture2D" uid="uid://chpld2yyt3kgh" path="res://assets/thruster.png" id="1_wjony"]
 [ext_resource type="Texture2D" uid="uid://db4swb5w3qhwr" path="res://assets/body.png" id="2_1yu1n"]
 
@@ -52,6 +52,8 @@ shape = SubResource("RectangleShape2D_wjony")
 position = Vector2(3.57628e-07, -36.5)
 scale = Vector2(0.078125, 0.240234)
 texture = ExtResource("2_1yu1n")
+
+[node name="Camera2D" type="Camera2D" parent="Rocket/body_0"]
 
 [node name="body_to_left_side" type="GrooveJoint2D" parent="Rocket"]
 position = Vector2(-10.105, -29)
@@ -112,8 +114,6 @@ node_a = NodePath("../body_0")
 node_b = NodePath("../thruster_right")
 length = 1.0
 initial_offset = 1.0
-
-[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
