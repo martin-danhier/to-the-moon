@@ -15,7 +15,7 @@ size = Vector2(510, 14)
 [node name="Skybox" type="Node2D"]
 
 [node name="Background" type="Node2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(-3, 275)
 
 [node name="Parallax2D" type="Parallax2D" parent="Background"]
 repeat_size = Vector2(480, 480)

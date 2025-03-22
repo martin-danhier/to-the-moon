@@ -4,11 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://c5neiyina7fdv" path="res://assets/trees.png" id="2_tv015"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7tip"]
-size = Vector2(1248, 106)
+size = Vector2(26243, 108)
 
 [node name="Ground" type="Node2D"]
 
 [node name="ground" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ground"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/StaticBody2D"]
+position = Vector2(589.5, 523)
+shape = SubResource("RectangleShape2D_t7tip")
 
 [node name="Left" type="Parallax2D" parent="ground"]
 repeat_size = Vector2(1248, 0)
@@ -18,12 +24,6 @@ repeat_times = 20
 position = Vector2(560, 340)
 scale = Vector2(1.3, 1.3)
 texture = ExtResource("2_tv015")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="ground/Left"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ground/Left/StaticBody2D"]
-position = Vector2(561, 522)
-shape = SubResource("RectangleShape2D_t7tip")
 
 [node name="port" type="Parallax2D" parent="ground"]
 

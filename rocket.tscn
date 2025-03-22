@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://jhp1evdhvaie" path="res://RocketCrontroller.gd" id="1_tpb7v"]
 [ext_resource type="Texture2D" uid="uid://db4swb5w3qhwr" path="res://assets/body.png" id="2_cum1y"]
 [ext_resource type="Texture2D" uid="uid://b6s8ewr4piw5t" path="res://sprites/laser_beam.png" id="4_7htxx"]
-[ext_resource type="Texture2D" uid="uid://b1dmwlsgiyj1k" path="res://sprites/thruster.png" id="4_546ky"]
+[ext_resource type="Texture2D" uid="uid://cy3enmph0xk5j" path="res://sprites/thruster.png" id="4_546ky"]
 [ext_resource type="Texture2D" uid="uid://bn7uvcm0llg0a" path="res://assets/side_thruster.png" id="4_awr8v"]
 [ext_resource type="Texture2D" uid="uid://8j2xphuhed2t" path="res://assets/gun.png" id="5_cum1y"]
 
@@ -114,10 +114,6 @@ position = Vector2(0, -24)
 mass = 14.0
 contact_monitor = true
 max_contacts_reported = 1
-
-[node name="Camera2D" type="Camera2D" parent="body_0"]
-position = Vector2(0, -7.185)
-zoom = Vector2(0.9, 0.9)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="body_0"]
 shape = SubResource("RectangleShape2D_tut6i")
@@ -500,6 +496,12 @@ sprite_frames = SubResource("SpriteFrames_ldhc3")
 animation = &"firing"
 autoplay = "firing"
 frame_progress = 0.335008
+
+[node name="Node2D" type="Node2D" parent="body_0"]
+
+[node name="Camera2D" type="Camera2D" parent="body_0"]
+position = Vector2(-1, -4)
+zoom = Vector2(0.9, 0.9)
 
 [node name="thruster_left" type="RigidBody2D" parent="."]
 position = Vector2(-59, 30)
