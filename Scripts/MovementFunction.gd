@@ -26,13 +26,15 @@ enum Variable {
 @onready var base_value : float = get_variable()
 @onready var random_phase : float = randf_range(0.0, period)
 
-@onready var random_period_modifier : float = randf_range(0.0, period / 10.0)
-@onready var random_amplitude_modifier : float = randf_range(0.0, amplitude / 10.0)
-
 
 func _ready() -> void:
+	var random_period_modifier : float = randf_range(0.0, period / 10.0)
+	var random_amplitude_modifier : float = randf_range(0.0, amplitude / 10.0)
+	var random_velocity_modifier: float = randf_range(0.0, velocity / 10.0)
+	
 	amplitude += random_amplitude_modifier
 	period += random_period_modifier
+	velocity += random_velocity_modifier
 
 func get_variable() -> float:
 	match variable:
