@@ -2,13 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://j8fhby7840i6" path="res://assets/stars.png" id="1_c4mc6"]
 [ext_resource type="Texture2D" uid="uid://db4swb5w3qhwr" path="res://assets/body.png" id="2_1yu1n"]
-[ext_resource type="PackedScene" uid="uid://dygxaobmlmp8j" path="res://rocket.tscn" id="4_iokxi"]
+[ext_resource type="PackedScene" uid="uid://y8ju2utt1nsd" path="res://rocket.tscn" id="4_iokxi"]
 [ext_resource type="Script" path="res://progress_bar.gd" id="5_c4mc6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1yu1n"]
 size = Vector2(510, 14)
 
-[node name="exploration" type="Node2D"]
+[node name="exploration2" type="Node2D"]
 
 [node name="Background" type="Node2D" parent="."]
 position = Vector2(0, -1)

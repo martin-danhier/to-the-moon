@@ -1,4 +1,7 @@
 res://exploration.tscn
 res://editor.tscn
 res://newspaper.tscn
-res://progress_bar.gd
+res://sky_box.tscn
+res://rocket.tscn
+res://Scripts/MovementFunction.gd
+res://RocketCrontroller.gd

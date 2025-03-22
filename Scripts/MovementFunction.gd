@@ -1,15 +1,15 @@
 extends Node
 
 enum MovementFunction {
-    STATIC,
-    SINE,
-    LINEAR
+	STATIC,
+	SINE,
+	LINEAR
 }
 
 enum Variable {
-    X,
-    Y,
-    ANGLE
+	X,
+	Y,
+	ANGLE
 }
 
 # Used for SINE
@@ -26,33 +26,33 @@ enum Variable {
 @onready var base_value : float = get_variable()
 
 func get_variable() -> float:
-    match variable:
-        Variable.X:
-            return target.position.x
-        Variable.Y:
-            return target.position.y
-        Variable.ANGLE:
-            return target.rotation
-        _:
-            return 0.0
-            
+	match variable:
+		Variable.X:
+			return target.position.x
+		Variable.Y:
+			return target.position.y
+		Variable.ANGLE:
+			return target.rotation
+		_:
+			return 0.0
+
 func set_variable(value: float) -> void:
-    match variable:
-        Variable.X:
-            target.position.x = value
-        Variable.Y:
-            target.position.y = value
-        Variable.ANGLE:
-            target.rotation = value
+	match variable:
+		Variable.X:
+			target.position.x = value
+		Variable.Y:
+			target.position.y = value
+		Variable.ANGLE:
+			target.rotation = value
 
 func _physics_process(delta: float) -> void:
 
-    match movement_function:
-        MovementFunction.SINE:
-            var delta_value = amplitude * sin(2 * PI * (1 / period) * (Time.get_ticks_usec() / 1000000.0))
-            set_variable(base_value + delta_value)
-        MovementFunction.LINEAR:
-            set_variable(get_variable() + velocity * delta)
-            
-    
-        
+	match movement_function:
+		MovementFunction.SINE:
+			var delta_value = amplitude * sin(2 * PI * (1 / period) * (Time.get_ticks_usec() / 1000000.0))
+			set_variable(base_value + delta_value)
+		MovementFunction.LINEAR:
+			set_variable(get_variable() + velocity * delta)
+
+
+
