@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7qc0gwls2n0v"]
+[gd_scene load_steps=10 format=3 uid="uid://b7qc0gwls2n0v"]
 
-[ext_resource type="Script" path="res://RocketCrontroller.gd" id="1_tut6i"]
+[ext_resource type="Script" uid="uid://jhp1evdhvaie" path="res://RocketCrontroller.gd" id="1_tut6i"]
 [ext_resource type="Texture2D" uid="uid://chpld2yyt3kgh" path="res://assets/thruster.png" id="1_wjony"]
 [ext_resource type="Texture2D" uid="uid://db4swb5w3qhwr" path="res://assets/body.png" id="2_1yu1n"]
+[ext_resource type="Texture2D" uid="uid://caa0i1i4ji6wo" path="res://Sprites/placeholder.png" id="4_wyjkc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ct6xg"]
 height = 68.0
@@ -16,6 +17,9 @@ size = Vector2(20, 123)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1yu1n"]
 size = Vector2(510, 14)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_c4mc6"]
+radius = 50.2494
+
 [node name="exploration" type="Node2D"]
 
 [node name="Rocket" type="Node2D" parent="."]
@@ -23,6 +27,10 @@ script = ExtResource("1_tut6i")
 
 [node name="thruster_left" type="RigidBody2D" parent="Rocket"]
 position = Vector2(-20, 0)
+collision_layer = 3
+collision_mask = 3
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket/thruster_left"]
 shape = SubResource("CapsuleShape2D_ct6xg")
@@ -34,6 +42,10 @@ texture = ExtResource("1_wjony")
 
 [node name="thruster_right" type="RigidBody2D" parent="Rocket"]
 position = Vector2(20, 0)
+collision_layer = 3
+collision_mask = 3
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket/thruster_right"]
 shape = SubResource("CapsuleShape2D_wjony")
@@ -43,6 +55,10 @@ scale = Vector2(0.078125, 0.132812)
 texture = ExtResource("1_wjony")
 
 [node name="body_0" type="RigidBody2D" parent="Rocket"]
+collision_layer = 3
+collision_mask = 3
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rocket/body_0"]
 position = Vector2(0, -36.5)
@@ -55,63 +71,65 @@ texture = ExtResource("2_1yu1n")
 
 [node name="Camera2D" type="Camera2D" parent="Rocket/body_0"]
 
-[node name="body_to_left_side" type="GrooveJoint2D" parent="Rocket"]
+[node name="joints" type="Node2D" parent="Rocket"]
+
+[node name="body_to_left_side" type="GrooveJoint2D" parent="Rocket/joints"]
 position = Vector2(-10.105, -29)
 rotation = 1.5708
-node_a = NodePath("../body_0")
-node_b = NodePath("../thruster_left")
+node_a = NodePath("../../body_0")
+node_b = NodePath("../../thruster_left")
 length = 1.0
 initial_offset = 1.0
 
-[node name="body_to_left_top" type="GrooveJoint2D" parent="Rocket"]
+[node name="body_to_left_top" type="GrooveJoint2D" parent="Rocket/joints"]
 position = Vector2(-10.02, -29)
-node_a = NodePath("../body_0")
-node_b = NodePath("../thruster_left")
+node_a = NodePath("../../body_0")
+node_b = NodePath("../../thruster_left")
 length = 1.0
 initial_offset = 1.0
 
-[node name="body_to_left_side2" type="GrooveJoint2D" parent="Rocket"]
+[node name="body_to_left_side2" type="GrooveJoint2D" parent="Rocket/joints"]
 position = Vector2(-10.105, 19)
 rotation = 1.5708
-node_a = NodePath("../body_0")
-node_b = NodePath("../thruster_left")
+node_a = NodePath("../../body_0")
+node_b = NodePath("../../thruster_left")
 length = 1.0
 initial_offset = 1.0
 
-[node name="body_to_left_top2" type="GrooveJoint2D" parent="Rocket"]
+[node name="body_to_left_top2" type="GrooveJoint2D" parent="Rocket/joints"]
 position = Vector2(-10.02, 19)
-node_a = NodePath("../body_0")
-node_b = NodePath("../thruster_left")
+node_a = NodePath("../../body_0")
+node_b = NodePath("../../thruster_left")
 length = 1.0
 initial_offset = 1.0
 
-[node name="body_to_right_side3" type="GrooveJoint2D" parent="Rocket"]
+[node name="body_to_right_side3" type="GrooveJoint2D" parent="Rocket/joints"]
 position = Vector2(9.895, -29)
 rotation = 1.5708
-node_a = NodePath("../body_0")
-node_b = NodePath("../thruster_right")
+node_a = NodePath("../../body_0")
+node_b = NodePath("../../thruster_right")
 length = 1.0
 initial_offset = 1.0
 
-[node name="body_to_right_top3" type="GrooveJoint2D" parent="Rocket"]
+[node name="body_to_right_top3" type="GrooveJoint2D" parent="Rocket/joints"]
 position = Vector2(9.98, -29)
-node_a = NodePath("../body_0")
-node_b = NodePath("../thruster_right")
+node_a = NodePath("../../body_0")
+node_b = NodePath("../../thruster_right")
 length = 1.0
 initial_offset = 1.0
 
-[node name="body_to_right_side4" type="GrooveJoint2D" parent="Rocket"]
+[node name="body_to_right_side4" type="GrooveJoint2D" parent="Rocket/joints"]
 position = Vector2(9.895, 19)
 rotation = 1.5708
-node_a = NodePath("../body_0")
-node_b = NodePath("../thruster_right")
+node_a = NodePath("../../body_0")
+node_b = NodePath("../../thruster_right")
 length = 1.0
 initial_offset = 1.0
 
-[node name="body_to_right_top4" type="GrooveJoint2D" parent="Rocket"]
+[node name="body_to_right_top4" type="GrooveJoint2D" parent="Rocket/joints"]
 position = Vector2(9.98, 19)
-node_a = NodePath("../body_0")
-node_b = NodePath("../thruster_right")
+node_a = NodePath("../../body_0")
+node_b = NodePath("../../thruster_right")
 length = 1.0
 initial_offset = 1.0
 
@@ -125,3 +143,21 @@ shape = SubResource("RectangleShape2D_1yu1n")
 position = Vector2(5, 59)
 scale = Vector2(1.99219, 0.0273437)
 texture = ExtResource("2_1yu1n")
+
+[node name="Obstacle" type="Node2D" parent="."]
+position = Vector2(0, -394)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Obstacle"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle/StaticBody2D"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_c4mc6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle/StaticBody2D"]
+texture = ExtResource("4_wyjkc")
+
+[connection signal="body_entered" from="Rocket/thruster_left" to="Rocket" method="_on_rocket_part_body_entered"]
+[connection signal="body_entered" from="Rocket/thruster_right" to="Rocket" method="_on_rocket_part_body_entered"]
+[connection signal="body_entered" from="Rocket/body_0" to="Rocket" method="_on_rocket_part_body_entered"]
