@@ -63,4 +63,5 @@ func explode_rocket():
 
 
 func _on_rocket_part_body_entered(body: Node) -> void:
-	explode_rocket()	
+	if not body.name.contains("ground"):
+		explode_rocket()	
