@@ -84,11 +84,16 @@ func _physics_process(delta: float) -> void:
 
 func explode_rocket():
 	# Detach all joints
+	var explosion = load("res://explosion.tscn")
 	for child in get_children():
 		if is_instance_of(child, GrooveJoint2D):
 			var c : GrooveJoint2D = child;
 			c.node_a = ""
 			c.node_b = ""
+			
+	var local_explosion = explosion.instantiate()
+	local_explosion.position = body.global_position
+	get_tree().root.add_child(local_explosion)
 	
 	# make it looks like everything went wrong
 	thruster_left.apply_torque_impulse(randf_range(-2000.0, 2000.0))
@@ -104,6 +109,8 @@ func explode_rocket():
 	rocket_exploded.emit()
 
 
-func _on_rocket_part_body_entered(body: Node) -> void:
-	if body.name.contains("obstacle_body"):
+func _on_rocket_part_body_entered(target: Node) -> void:
+	if target.name.contains("obstacle_body"):
+		explode_rocket()
+	elif body.linear_velocity.length() > 100.0:
 		explode_rocket()

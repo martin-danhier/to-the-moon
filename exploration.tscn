@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://y8ju2utt1nsd" path="res://rocket.tscn" id="1_1yu1n"]
 [ext_resource type="Texture2D" uid="uid://o4ydiqa067vr" path="res://sprites/panel.png" id="2_770sp"]
-[ext_resource type="FontFile" uid="uid://drbk31g2wemd3" path="res://sprites/CONCHARS.png" id="3_pgb1d"]
 [ext_resource type="Script" uid="uid://5ye8esp8kr1" path="res://progress_bar.gd" id="4_wyjkc"]
 [ext_resource type="Script" uid="uid://cf6dt8toe3la7" path="res://speedometer.gd" id="5_c4mc6"]
+[ext_resource type="FontFile" uid="uid://ceixrq4nnx0fy" path="res://assets/PressStart2P-Regular.ttf" id="6_00hbf"]
 [ext_resource type="PackedScene" uid="uid://b7qc0gwls2n0v" path="res://sky_box.tscn" id="6_5taav"]
 [ext_resource type="Script" uid="uid://beqlt2q17j7xk" path="res://altimeter.gd" id="6_88ct5"]
 [ext_resource type="PackedScene" uid="uid://chm0050y35420" path="res://obstacles/obstacle.tscn" id="7_5taav"]
@@ -41,6 +41,7 @@ offset_right = -132.0
 offset_bottom = -259.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("6_00hbf")
 value = 20.0
 fill_mode = 3
 script = ExtResource("4_wyjkc")
@@ -57,7 +58,7 @@ offset_right = -41.0
 offset_bottom = -462.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("3_pgb1d")
+theme_override_fonts/font = ExtResource("6_00hbf")
 theme_override_font_sizes/font_size = 14
 text = "1200.0 m/s"
 horizontal_alignment = 2
@@ -75,7 +76,7 @@ offset_right = -44.0
 offset_bottom = -504.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("3_pgb1d")
+theme_override_fonts/font = ExtResource("6_00hbf")
 theme_override_font_sizes/font_size = 14
 text = "1200.0 m"
 horizontal_alignment = 2
@@ -93,7 +94,7 @@ offset_right = -64.0
 offset_bottom = -499.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("3_pgb1d")
+theme_override_fonts/font = ExtResource("6_00hbf")
 text = "Altitude:
 "
 
@@ -109,7 +110,7 @@ offset_right = -113.0
 offset_bottom = -452.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("3_pgb1d")
+theme_override_fonts/font = ExtResource("6_00hbf")
 text = "Speed:
 "
 
