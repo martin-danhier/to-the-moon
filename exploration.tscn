@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dw6mypb0mlu15"]
+[gd_scene load_steps=9 format=3 uid="uid://dw6mypb0mlu15"]
 
 [ext_resource type="PackedScene" uid="uid://y8ju2utt1nsd" path="res://rocket.tscn" id="1_1yu1n"]
 [ext_resource type="Texture2D" uid="uid://db4swb5w3qhwr" path="res://assets/body.png" id="2_1yu1n"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cf6dt8toe3la7" path="res://speedometer.gd" id="5_c4mc6"]
 [ext_resource type="PackedScene" uid="uid://b7qc0gwls2n0v" path="res://sky_box.tscn" id="6_5taav"]
 [ext_resource type="Script" uid="uid://beqlt2q17j7xk" path="res://altimeter.gd" id="6_88ct5"]
+[ext_resource type="PackedScene" uid="uid://chm0050y35420" path="res://obstacles/obstacle.tscn" id="7_5taav"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1yu1n"]
 size = Vector2(510, 14)
@@ -65,3 +66,6 @@ script = ExtResource("6_88ct5")
 
 [node name="Rocket" parent="." instance=ExtResource("1_1yu1n")]
 position = Vector2(-23, -128)
+
+[node name="Obstacle" parent="." instance=ExtResource("7_5taav")]
+position = Vector2(-4, -458)

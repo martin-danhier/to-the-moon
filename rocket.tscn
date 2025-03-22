@@ -181,3 +181,9 @@ position = Vector2(13, -135)
 node_b = NodePath("../body_0")
 length = 1.0
 initial_offset = 1.0
+
+[connection signal="body_entered" from="body_0" to="." method="_on_rocket_part_body_entered"]
+[connection signal="body_entered" from="thruster_left" to="." method="_on_rocket_part_body_entered"]
+[connection signal="body_entered" from="thruster_right" to="." method="_on_rocket_part_body_entered"]
+[connection signal="body_entered" from="side_thruster_left" to="." method="_on_rocket_part_body_entered"]
+[connection signal="body_entered" from="side_thruster_right" to="." method="_on_rocket_part_body_entered"]
