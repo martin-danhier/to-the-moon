@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dw6mypb0mlu15"]
+[gd_scene load_steps=7 format=3 uid="uid://b7qc0gwls2n0v"]
 
-[ext_resource type="PackedScene" uid="uid://dygxaobmlmp8j" path="res://rocket.tscn" id="1_1yu1n"]
+[ext_resource type="PackedScene" uid="uid://y8ju2utt1nsd" path="res://rocket.tscn" id="1_1yu1n"]
 [ext_resource type="Texture2D" uid="uid://j8fhby7840i6" path="res://assets/stars.png" id="1_tut6i"]
 [ext_resource type="Texture2D" uid="uid://db4swb5w3qhwr" path="res://assets/body.png" id="2_1yu1n"]
 [ext_resource type="Script" path="res://progress_bar.gd" id="4_wyjkc"]
-[ext_resource type="Script" uid="uid://cf6dt8toe3la7" path="res://speedometer.gd" id="5_c4mc6"]
+[ext_resource type="Script" path="res://speedometer.gd" id="5_c4mc6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1yu1n"]
 size = Vector2(510, 14)
