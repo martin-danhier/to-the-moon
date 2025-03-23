@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b7qc0gwls2n0v" path="res://sky_box.tscn" id="6_5taav"]
 [ext_resource type="Script" uid="uid://beqlt2q17j7xk" path="res://altimeter.gd" id="6_88ct5"]
 [ext_resource type="PackedScene" uid="uid://buog8pexxuncu" path="res://ObstacleInstantiator.tscn" id="7_pgb1d"]
-[ext_resource type="PackedScene" path="res://ground.tscn" id="9_pgb1d"]
+[ext_resource type="PackedScene" uid="uid://l10ttag0717q" path="res://ground.tscn" id="9_pgb1d"]
 [ext_resource type="Texture2D" uid="uid://j4d3q7xy2f5j" path="res://assets/target.png" id="10_00hbf"]
 [ext_resource type="PackedScene" path="res://ObstacleAlert.tscn" id="10_qabf2"]
 [ext_resource type="Texture2D" uid="uid://cw1pibrseh2m8" path="res://sprites/coin.png" id="10_qgrag"]
@@ -51,8 +51,8 @@ base_probability = 0.02
 
 [node name="Rocket" parent="." instance=ExtResource("1_1yu1n")]
 position = Vector2(886, -292)
-bpm = null
-music_offset_seconds = null
+bpm = 140.0
+music_offset_seconds = 0.35
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

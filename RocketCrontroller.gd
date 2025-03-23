@@ -118,7 +118,9 @@ func _physics_process(delta: float) -> void:
 
 	# Music sync
 	var is_on_beat = false
-	var elapsed_beats = (music_sound.get_playback_position() + AudioServer.get_time_since_last_mix() + music_offset_seconds) * (bpm / 60.0)
+	var playback_position = music_sound.get_playback_position()
+	var time_since_last_mix = AudioServer.get_time_since_last_mix()
+	var elapsed_beats = (playback_position + time_since_last_mix + music_offset_seconds) * (bpm / 60.0)
 	var fraction_of_current_beat = elapsed_beats - int(elapsed_beats)
 	if fraction_of_current_beat < 0.5:
 		if not processed_beat:
@@ -211,8 +213,7 @@ func _physics_process(delta: float) -> void:
 			target.global_position = to
 
 			if result:
-				if result.collider.name.contains("obstacle_body"):
-					# delete obstacles
+				if result.collider.name.contains("obstacle_body") and explosion_spawned == false:					# delete obstacles
 					result.collider.get_parent().call_deferred("queue_free")
 
 					# spawn explosion

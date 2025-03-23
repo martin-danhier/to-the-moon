@@ -9,8 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://dxcmk4b7c8hlb" path="res://sounds/thruster2.ogg" id="7_awr8v"]
 [ext_resource type="AudioStream" uid="uid://yca1tex1fi0n" path="res://sounds/little_thruster.ogg" id="8_7htxx"]
 [ext_resource type="AudioStream" uid="uid://b1q48y6uvukic" path="res://sounds/pew.ogg" id="9_mnerj"]
-[ext_resource type="AudioStream" uid="uid://d4b7wfd8n1pva" path="res://sounds/small_explosion_delayed.ogg" id="9_xk1bh"]
-[ext_resource type="AudioStream" uid="uid://6jv45elghbro" path="res://sounds/large_explosion.ogg" id="10_edwur"]
+[ext_resource type="AudioStream" uid="uid://bj4p1nl62tngp" path="res://sounds/small_explosion_delayed.ogg" id="9_xk1bh"]
+[ext_resource type="AudioStream" uid="uid://cxe4wd8thloed" path="res://sounds/large_explosion.ogg" id="10_edwur"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lm57y"]
 atlas = ExtResource("4_7htxx")
@@ -114,8 +114,6 @@ height = 193.2
 
 [node name="Rocket" type="Node2D"]
 script = ExtResource("1_tpb7v")
-bpm = null
-music_offset_seconds = null
 
 [node name="LaserBeam" type="Node2D" parent="."]
 position = Vector2(0, -233)
