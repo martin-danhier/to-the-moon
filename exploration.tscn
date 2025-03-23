@@ -51,8 +51,6 @@ base_probability = 0.02
 
 [node name="Rocket" parent="." instance=ExtResource("1_1yu1n")]
 position = Vector2(886, -292)
-bpm = 140.0
-music_offset_seconds = 0.35
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
