@@ -439,6 +439,7 @@ expand_mode = 1
 position = Vector2(959, 538)
 
 [node name="Rocket" parent="." instance=ExtResource("11_3btpq")]
+process_mode = 4
 position = Vector2(929.87, 823)
 scale = Vector2(2.905, 2.905)
 
