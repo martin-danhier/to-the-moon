@@ -20,7 +20,7 @@ Il sera à vous de manoeuvrer prudemment dans ce milieu hostile en gérant vos r
 [↑] - Activer le canon laser
 
 ## Crédits
-Danhier Martin, Ducarme Colin, Higginson Vincent, Smolders Vincent
+Danhier Martin, Ducarme Colin, Higginson Vincent, Smolders Daniel
 
 Fait en 24h durant la Game Jam Louvain-li-Nix 2025
 
