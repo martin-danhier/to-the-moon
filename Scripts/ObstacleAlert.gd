@@ -34,7 +34,7 @@ func check_alerts():
 				alert = active_alerts[obstacle]
 			
 			var x = obstacle_pos.x
-			var y = camera.get_screen_center_position().y - 550 # set alert position
+			var y = camera.get_screen_center_position().y - 630 # set alert position
 			
 			alert.position = Vector2(x, y)
 		elif obstacle in active_alerts:
