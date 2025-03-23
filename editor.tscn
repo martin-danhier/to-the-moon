@@ -309,12 +309,18 @@ offset_left = -43.0328
 offset_top = -74.3848
 offset_right = 44.9672
 offset_bottom = -21.3848
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_t27w5")
 theme_override_font_sizes/font_size = 6
 text = "Sélectionnez"
 autowrap_mode = 3
 
 [node name="Coin" type="TextureRect" parent="Shop/Basic"]
+visible = false
+layout_mode = 0
 offset_left = 43.888
 offset_top = 39.3327
 offset_right = 58.888
@@ -323,7 +329,9 @@ texture = ExtResource("4_1ys5w")
 expand_mode = 1
 
 [node name="Price" type="Label" parent="Shop/Basic"]
+visible = false
 texture_filter = 1
+layout_mode = 0
 offset_left = 15.6066
 offset_top = 41.9241
 offset_right = 41.6066
@@ -341,12 +349,18 @@ offset_left = -43.0328
 offset_top = -11.9056
 offset_right = 44.9672
 offset_bottom = 41.0944
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_t27w5")
 theme_override_font_sizes/font_size = 6
 text = "une partie"
 autowrap_mode = 3
 
 [node name="Coin" type="TextureRect" parent="Shop/Standard"]
+visible = false
+layout_mode = 0
 offset_left = 43.888
 offset_top = 39.3327
 offset_right = 58.888
@@ -355,7 +369,9 @@ texture = ExtResource("4_1ys5w")
 expand_mode = 1
 
 [node name="Price" type="Label" parent="Shop/Standard"]
+visible = false
 texture_filter = 1
+layout_mode = 0
 offset_left = 15.6066
 offset_top = 41.9241
 offset_right = 41.6066
@@ -373,12 +389,18 @@ offset_left = -42.5738
 offset_top = 49.963
 offset_right = 45.4262
 offset_bottom = 102.963
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_t27w5")
 theme_override_font_sizes/font_size = 6
 text = "de la fusée"
 autowrap_mode = 3
 
 [node name="Coin" type="TextureRect" parent="Shop/Advanced"]
+visible = false
+layout_mode = 0
 offset_left = 43.888
 offset_top = 39.3327
 offset_right = 58.888
@@ -387,7 +409,9 @@ texture = ExtResource("4_1ys5w")
 expand_mode = 1
 
 [node name="Price" type="Label" parent="Shop/Advanced"]
+visible = false
 texture_filter = 1
+layout_mode = 0
 offset_left = 15.6066
 offset_top = 41.9241
 offset_right = 41.6066

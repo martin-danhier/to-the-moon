@@ -33,6 +33,10 @@ func _ready() -> void:
 	var rand1 = randi()%3
 	var up1 = upgrade[rand1]
 	price_1.text = str(price[rand1])
+	if int(research_counter.text) < int(price_1.text):
+		price_1.add_theme_color_override("font_color", Color(0.75, 0.1, 0.1))
+	else:
+		price_1.add_theme_color_override("font_color", Color(0.1, 0.75, 0.1))
 	
 	if (part1 == "Coiffe") && (up1 == " avancé") : up1 = " avancée"
 	
@@ -41,6 +45,10 @@ func _ready() -> void:
 	var rand2 = randi()%3
 	var up2 = upgrade[rand2]
 	price_2.text = str(price[rand2])
+	if int(research_counter.text) < int(price_2.text):
+		price_2.add_theme_color_override("font_color", Color(0.75, 0.1, 0.1))
+	else:
+		price_2.add_theme_color_override("font_color", Color(0.1, 0.75, 0.1))
 	
 	if (part2 == "Coiffe" && up2 == " avancé") : up2 = " avancée"
 	
@@ -55,11 +63,19 @@ func pay_research1() -> void:
 	var c = int(research_counter.text)
 	if c >= p :
 		research_counter.text = str(c - p)
+	if int(research_counter.text) < int(price_1.text):
+		price_1.add_theme_color_override("font_color", Color(0.75, 0.1, 0.1))
+	else:
+		price_1.add_theme_color_override("font_color", Color(0.1, 0.75, 0.1))
 	
 func pay_research2() -> void:
 	var p = int(price_2.text)
 	var c = int(research_counter.text)
 	if c >= p :
 		research_counter.text = str(c - p)
+	if int(research_counter.text) < int(price_2.text):
+		price_2.add_theme_color_override("font_color", Color(0.75, 0.1, 0.1))
+	else:
+		price_2.add_theme_color_override("font_color", Color(0.1, 0.75, 0.1))
 		
 # Au moment de changer de scène, pas oublier de retrieve les nouvelles valeurs de research_counter et coin
