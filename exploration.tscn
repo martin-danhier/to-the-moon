@@ -43,7 +43,6 @@ bg_color = Color(0.794522, 0.756747, 0.322887, 1)
 [node name="Skybox" parent="." instance=ExtResource("6_5taav")]
 
 [node name="Moon" parent="." instance=ExtResource("19_8exjl")]
-moon_y = 5000
 
 [node name="ObstacleInstantiator" parent="." instance=ExtResource("7_pgb1d")]
 position = Vector2(-9, 0)
