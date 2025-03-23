@@ -30,7 +30,8 @@ var obstacle_defs = []
 
 func _ready():
 	# Define object types here
-	obstacle_defs.push_back(ObstacleDefinition.new(1500.0, 500.0, preload("res://obstacles/obstacle.tscn")))
+	#obstacle_defs.push_back(ObstacleDefinition.new(1500.0, 500.0, preload("res://obstacles/obstacle.tscn")))
+	obstacle_defs.push_back(ObstacleDefinition.new(3000, 1000, preload("res://obstacles/asteroid.tscn")))
 
 func _process(delta: float) -> void:
 	var obstacle_count = obstacle_container.get_child_count()
