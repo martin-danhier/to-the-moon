@@ -58,6 +58,10 @@ var coin_prefab
 var coin_value : Label
 var coin_count : int = 0
 
+var explosion_spawned = false
+
+var laser_fired = false
+
 func get_nearest_obstacle() -> Node2D:
 	var children = get_tree().root.get_node("exploration/ObstacleInstantiator/obstacle_container").get_children()
 
@@ -199,7 +203,8 @@ func _physics_process(delta: float) -> void:
 		thruster_right_sprite.play("idle")
 		thruster_sound_right.stop()
 
-	if Input.is_action_pressed("fire") and battery_level > 0.0 and is_on_beat and laser_cooldown <= 0.0:
+	if Input.is_action_pressed("fire") and battery_level > 0.0 and (is_on_beat or not laser_fired) and laser_cooldown <= 0.0:
+		laser_fired = true
 		battery_level -= 2.3
 
 		laser_cooldown = 0.3
@@ -241,6 +246,8 @@ func _physics_process(delta: float) -> void:
 
 	else:
 		laser_beam.visible = false
+		if not Input.is_action_pressed("fire"):
+			laser_fired = false
 
 	(get_tree().root.get_node("exploration/CanvasLayer/Fuel") as ProgressBar).value = fuel_level
 	(get_tree().root.get_node("exploration/CanvasLayer/Battery") as ProgressBar).value = battery_level
