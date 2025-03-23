@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dw6mypb0mlu15"]
+[gd_scene load_steps=32 format=3 uid="uid://dw6mypb0mlu15"]
 
 [ext_resource type="PackedScene" uid="uid://y8ju2utt1nsd" path="res://rocket.tscn" id="1_1yu1n"]
 [ext_resource type="Texture2D" uid="uid://o4ydiqa067vr" path="res://sprites/panel.png" id="2_770sp"]
@@ -19,6 +19,12 @@
 [ext_resource type="AudioStream" uid="uid://b23fom84brarr" path="res://sounds/altitude.ogg" id="15_5bsn5"]
 [ext_resource type="PackedScene" uid="uid://cis8w73i4tr15" path="res://coin.tscn" id="18_nyiyb"]
 [ext_resource type="PackedScene" uid="uid://dpkvn53a20ow8" path="res://moon.tscn" id="19_8exjl"]
+[ext_resource type="Script" uid="uid://bl4ygpql0lm70" path="res://tutorial.gd" id="20_gohs8"]
+[ext_resource type="Texture2D" uid="uid://dex2xs8g7j8xb" path="res://assets/keyboard/w.png" id="20_l4i1d"]
+[ext_resource type="Texture2D" uid="uid://deykko5revl8x" path="res://assets/keyboard/x.png" id="21_gohs8"]
+[ext_resource type="Texture2D" uid="uid://caoih2kqd45h" path="res://assets/keyboard/left.png" id="22_lshir"]
+[ext_resource type="Texture2D" uid="uid://chg4pb76y6puo" path="res://assets/keyboard/right.png" id="23_hxvgr"]
+[ext_resource type="Texture2D" uid="uid://6rxij5q7ar1x" path="res://assets/keyboard/up.png" id="24_bupm6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pgb1d"]
 bg_color = Color(0.258746, 0.824952, 0.629899, 1)
@@ -49,6 +55,9 @@ max_distance = 5000.0
 base_probability = 0.02
 
 [node name="Ground" parent="." instance=ExtResource("9_pgb1d")]
+
+[node name="Moon" parent="." instance=ExtResource("19_8exjl")]
+position = Vector2(0, -3000)
 
 [node name="Rocket" parent="." instance=ExtResource("1_1yu1n")]
 position = Vector2(886, -292)
@@ -289,6 +298,37 @@ volume_db = -2.8
 position = Vector2(847, 1610)
 moving = false
 
-[node name="Moon" parent="." instance=ExtResource("19_8exjl")]
+[node name="Tutorial" type="Node2D" parent="."]
+script = ExtResource("20_gohs8")
+
+[node name="W" type="Sprite2D" parent="Tutorial"]
+texture_filter = 1
+position = Vector2(784, -210)
+scale = Vector2(4, 4)
+texture = ExtResource("20_l4i1d")
+
+[node name="X" type="Sprite2D" parent="Tutorial"]
+texture_filter = 1
+position = Vector2(989, -210)
+scale = Vector2(4, 4)
+texture = ExtResource("21_gohs8")
+
+[node name="Left" type="Sprite2D" parent="Tutorial"]
+texture_filter = 1
+position = Vector2(810, -486)
+scale = Vector2(4, 4)
+texture = ExtResource("22_lshir")
+
+[node name="Right" type="Sprite2D" parent="Tutorial"]
+texture_filter = 1
+position = Vector2(962, -486)
+scale = Vector2(4, 4)
+texture = ExtResource("23_hxvgr")
+
+[node name="Up" type="Sprite2D" parent="Tutorial"]
+texture_filter = 1
+position = Vector2(886, -560)
+scale = Vector2(4, 4)
+texture = ExtResource("24_bupm6")
 
 [connection signal="coin_grabbed" from="Coin" to="Rocket" method="_on_coin_coin_grabbed"]
