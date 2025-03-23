@@ -24,7 +24,7 @@ func check_alerts():
 		
 		var dx = abs(obstacle_pos.x - rocket_pos.x)
 		var dy = -(obstacle_pos.y - rocket_pos.y)
-		if dx < 1500 and dy < 2500 and dy > 800: # set obstacle detection range
+		if dx < 1500 and dy < 3000 and dy > 840: # set obstacle detection range
 			var alert
 			if obstacle not in active_alerts:
 				alert = alert_scene.instantiate()
