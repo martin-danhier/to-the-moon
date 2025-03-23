@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://jhp1evdhvaie" path="res://RocketCrontroller.gd" id="1_tpb7v"]
 [ext_resource type="Texture2D" uid="uid://b3bjkv6iqxlr0" path="res://sprites/rocket_body.png" id="2_546ky"]
+[ext_resource type="Texture2D" uid="uid://bwlj0otfrhb2k" path="res://sprites/gun/basic.png" id="3_xk1bh"]
 [ext_resource type="Texture2D" uid="uid://b6s8ewr4piw5t" path="res://sprites/laser_beam.png" id="4_7htxx"]
 [ext_resource type="Texture2D" uid="uid://cy3enmph0xk5j" path="res://sprites/thruster.png" id="4_546ky"]
 [ext_resource type="Texture2D" uid="uid://bn7uvcm0llg0a" path="res://assets/side_thruster.png" id="4_awr8v"]
-[ext_resource type="Texture2D" uid="uid://8j2xphuhed2t" path="res://assets/gun.png" id="5_cum1y"]
 [ext_resource type="AudioStream" uid="uid://dxcmk4b7c8hlb" path="res://sounds/thruster2.ogg" id="7_awr8v"]
 [ext_resource type="AudioStream" uid="uid://yca1tex1fi0n" path="res://sounds/little_thruster.ogg" id="8_7htxx"]
 [ext_resource type="AudioStream" uid="uid://b1q48y6uvukic" path="res://sounds/pew.ogg" id="9_mnerj"]
@@ -861,16 +861,17 @@ position = Vector2(-1, -4)
 offset = Vector2(0, -200)
 zoom = Vector2(0.8, 0.8)
 
+[node name="Gun" type="Sprite2D" parent="body_0"]
+texture_filter = 1
+position = Vector2(-1.3113e-06, -200)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_xk1bh")
+
 [node name="Sprite2D" type="Sprite2D" parent="body_0"]
 texture_filter = 1
 position = Vector2(-5.96046e-07, -44)
 scale = Vector2(1.1875, 1.1875)
 texture = ExtResource("2_546ky")
-
-[node name="Gun" type="Sprite2D" parent="body_0"]
-position = Vector2(0, -202)
-scale = Vector2(0.4375, 0.4375)
-texture = ExtResource("5_cum1y")
 
 [node name="Node2D" type="Node2D" parent="body_0"]
 
