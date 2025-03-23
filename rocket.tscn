@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://y8ju2utt1nsd"]
+[gd_scene load_steps=44 format=3 uid="uid://y8ju2utt1nsd"]
 
 [ext_resource type="Script" uid="uid://jhp1evdhvaie" path="res://RocketCrontroller.gd" id="1_tpb7v"]
 [ext_resource type="Texture2D" uid="uid://b3bjkv6iqxlr0" path="res://sprites/rocket_body.png" id="2_546ky"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://b1q48y6uvukic" path="res://sounds/pew.ogg" id="9_mnerj"]
 [ext_resource type="AudioStream" uid="uid://bj4p1nl62tngp" path="res://sounds/small_explosion_delayed.ogg" id="9_xk1bh"]
 [ext_resource type="AudioStream" uid="uid://cxe4wd8thloed" path="res://sounds/large_explosion.ogg" id="10_edwur"]
+[ext_resource type="AudioStream" uid="uid://b1g2rqtahnp78" path="res://sounds/chaching.ogg" id="13_aw411"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_awr8v"]
 radius = 33.0
@@ -487,6 +488,11 @@ volume_db = -2.0
 pitch_scale = 1.54
 max_polyphony = 11
 parameters/looping = false
+
+[node name="coin_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_aw411")
+volume_db = 2.0
+max_polyphony = 3
 
 [connection signal="body_entered" from="body_0" to="." method="_on_rocket_part_body_entered"]
 [connection signal="body_entered" from="thruster_left" to="." method="_on_rocket_part_body_entered"]
