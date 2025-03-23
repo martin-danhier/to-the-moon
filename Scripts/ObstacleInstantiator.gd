@@ -3,10 +3,12 @@ extends Node
 @export var min_distance = 17500.0
 @export var max_distance = 50000.0
 @export var spawn_box_size = 1000.0
-@export var base_probability = 0.04
+@export var base_probability = 0.07
 
 @onready var rocket_body: RigidBody2D = get_node("/root/exploration/Rocket/body_0")
 @onready var obstacle_container = get_node("obstacle_container")
+
+var max_total: float = 0.0
 
 class ObstacleDefinition:
 	var mean: float
@@ -22,6 +24,9 @@ class ObstacleDefinition:
 		var coefficient = 1.0 / (std * sqrt(2 * PI))
 		var exponent = exp(-((height - mean) * (height - mean)) / (2 * std * std))
 		return coefficient * exponent
+		
+	func max_prob() -> float:
+		return prob(mean)
 
 	func instantiate() -> Node2D:
 		return scene.instantiate()
@@ -30,8 +35,13 @@ var obstacle_defs = []
 
 func _ready():
 	# Define object types here
+
 	#obstacle_defs.push_back(ObstacleDefinition.new(1500.0, 500.0, preload("res://obstacles/obstacle.tscn")))
 	obstacle_defs.push_back(ObstacleDefinition.new(3000, 1000, preload("res://obstacles/asteroid.tscn")))
+
+	# Compute max total
+	for obstacle_def in obstacle_defs:
+		max_total += obstacle_def.max_prob()
 
 func _process(delta: float) -> void:
 	var obstacle_count = obstacle_container.get_child_count()
@@ -43,14 +53,15 @@ func _process(delta: float) -> void:
 		spawn_probability = (-rocket_body.global_position.y * base_probability)  / (obstacle_count * obstacle_count)
 
 	var sampled = randf()
+	
+	# First random check to reduce the number of calls to maybe_spawn obstacle
 	if sampled < spawn_probability:
-		spawn_obstacle()
+		maybe_spawn_obstacle()
 
 func sum(x, acc):
 	return x + acc
 
-
-func spawn_obstacle():
+func maybe_spawn_obstacle():
 	# Find where the rocket is pointing at
 	var direction = rocket_body.linear_velocity.normalized()
 	# Determine a position for the new object
@@ -66,13 +77,13 @@ func spawn_obstacle():
 	target.y += randf_range(-spawn_box_size, spawn_box_size)
 
 	var height = -target.y
-
+	
+	# Determine the probabilities to spawn something there
 	var probs = []
 	for obstacle_def in obstacle_defs:
 		probs.push_back(obstacle_def.prob(height))
-	var total = probs.reduce(sum, 0.0)
 
-	var sample = randf_range(0.0, total)
+	var sample = randf_range(0.0, max_total)
 
 	for i in range(0, probs.size()):
 		if sample < probs[i]:
