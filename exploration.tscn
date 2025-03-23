@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dw6mypb0mlu15"]
+[gd_scene load_steps=18 format=3 uid="uid://dw6mypb0mlu15"]
 
 [ext_resource type="PackedScene" uid="uid://y8ju2utt1nsd" path="res://rocket.tscn" id="1_1yu1n"]
 [ext_resource type="Texture2D" uid="uid://o4ydiqa067vr" path="res://sprites/panel.png" id="2_770sp"]
@@ -9,8 +9,41 @@
 [ext_resource type="Script" uid="uid://beqlt2q17j7xk" path="res://altimeter.gd" id="6_88ct5"]
 [ext_resource type="PackedScene" uid="uid://buog8pexxuncu" path="res://ObstacleInstantiator.tscn" id="7_pgb1d"]
 [ext_resource type="PackedScene" uid="uid://l10ttag0717q" path="res://ground.tscn" id="9_pgb1d"]
+[ext_resource type="Texture2D" uid="uid://j4d3q7xy2f5j" path="res://assets/target.png" id="10_00hbf"]
+[ext_resource type="PackedScene" path="res://ObstacleAlert.tscn" id="10_qabf2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pgb1d"]
+bg_color = Color(0.258746, 0.824952, 0.629899, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_00hbf"]
+bg_color = Color(0.15001, 0.624652, 0.413983, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8wdfd"]
+bg_color = Color(0.270053, 0.634283, 0.879059, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gaj1u"]
+bg_color = Color(0.160777, 0.4999, 0.716603, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v7tqu"]
+bg_color = Color(0.726731, 0.78459, 0.401348, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qabf2"]
+bg_color = Color(0.794522, 0.756747, 0.322887, 1)
 
 [node name="exploration" type="Node2D"]
+
+[node name="Skybox" parent="." instance=ExtResource("6_5taav")]
+
+[node name="ObstacleInstantiator" parent="." instance=ExtResource("7_pgb1d")]
+position = Vector2(-9, 0)
+min_distance = 1700.0
+max_distance = 5000.0
+base_probability = 0.02
+
+[node name="Ground" parent="." instance=ExtResource("9_pgb1d")]
+
+[node name="Rocket" parent="." instance=ExtResource("1_1yu1n")]
+position = Vector2(886, -292)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -35,16 +68,54 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -197.0
-offset_top = -449.0
-offset_right = -132.0
-offset_bottom = -259.0
+offset_left = -274.0
+offset_top = -609.0
+offset_right = -222.0
+offset_bottom = -257.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("6_00hbf")
+theme_override_styles/background = SubResource("StyleBoxFlat_pgb1d")
+theme_override_styles/fill = SubResource("StyleBoxFlat_00hbf")
 value = 20.0
 fill_mode = 3
 script = ExtResource("4_wyjkc")
+
+[node name="Fuel" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -190.0
+offset_top = -400.0
+offset_right = -126.0
+offset_bottom = -260.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("6_00hbf")
+theme_override_styles/background = SubResource("StyleBoxFlat_8wdfd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gaj1u")
+value = 100.0
+fill_mode = 3
+
+[node name="Battery" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -122.0
+offset_top = -400.0
+offset_right = -58.0
+offset_bottom = -260.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("6_00hbf")
+theme_override_styles/background = SubResource("StyleBoxFlat_v7tqu")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qabf2")
+value = 100.0
+fill_mode = 3
 
 [node name="Speedometer" type="Label" parent="CanvasLayer"]
 anchors_preset = 3
@@ -106,19 +177,50 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -209.0
 offset_top = -501.0
-offset_right = -113.0
-offset_bottom = -452.0
+offset_right = -110.0
+offset_bottom = -466.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("6_00hbf")
 text = "Speed:
 "
 
-[node name="Skybox" parent="." instance=ExtResource("6_5taav")]
+[node name="FuelLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -194.0
+offset_top = -420.0
+offset_right = -95.0
+offset_bottom = -385.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("6_00hbf")
+theme_override_font_sizes/font_size = 13
+text = "Fuel/"
 
-[node name="ObstacleInstantiator" parent="." instance=ExtResource("7_pgb1d")]
+[node name="BatteryLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -420.0
+offset_right = -29.0
+offset_bottom = -385.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("6_00hbf")
+theme_override_font_sizes/font_size = 13
+text = "Battery"
 
-[node name="Ground" parent="." instance=ExtResource("9_pgb1d")]
+[node name="ObstacleAlert" parent="." instance=ExtResource("10_qabf2")]
 
-[node name="Rocket" parent="." instance=ExtResource("1_1yu1n")]
-position = Vector2(509, 374)
+[node name="target" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(496, 529)
+scale = Vector2(3.1875, 3.1875)
+texture = ExtResource("10_00hbf")

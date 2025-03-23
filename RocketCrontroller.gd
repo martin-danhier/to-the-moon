@@ -19,6 +19,9 @@ var gun : Node2D
 
 var kaput = false
 
+var fuel_level = 100.0
+var battery_level = 10000000.0
+
 # only used when rocket dies
 var time_elapsed : float
 var spawned_newspaper = false
@@ -29,6 +32,38 @@ var crash_max_speed : float
 
 var camera : Camera2D
 
+var laser_cooldown = 0.3
+
+var target : Node2D
+
+func get_nearest_obstacle() -> Node2D:
+	var children = get_tree().root.get_node("exploration/ObstacleInstantiator/obstacle_container").get_children()
+	
+	if children.size() == 0:
+		return null
+	
+	var min_idx = 0
+	var min_distance = 99999.0
+	
+	var local_pos = gun.global_position
+	
+	var idx = 0
+	for child in children:
+		var this_distance = local_pos.distance_to(child.global_position)
+		
+		if child.global_position.y > 0.0:
+			idx += 1
+			continue
+		
+		if this_distance < min_distance:
+			min_idx = idx
+			min_distance = this_distance
+		idx += 1
+			
+	print(min_distance)
+	
+	return children[min_idx]
+
 func _ready() -> void:
 	thruster_left = self.get_node("thruster_left")
 	thruster_right = self.get_node("thruster_right")
@@ -36,10 +71,12 @@ func _ready() -> void:
 	side_thruster_right = self.get_node("side_thruster_right")
 	body = self.get_node("body_0")
 	
+	target = get_tree().root.get_node("exploration/target")
+	
 	thruster_left_sprite = self.get_node("thruster_left/AnimatedSprite2D")
 	thruster_right_sprite = self.get_node("thruster_right/AnimatedSprite2D")
 	
-	laser_beam = self.get_node("body_0/LaserBeam")
+	laser_beam = self.get_node("LaserBeam")
 	
 	camera = self.get_node("body_0/Camera2D")
 	
@@ -48,53 +85,79 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if kaput == true:
 		return
-		
+
 	crash_max_speed = max(crash_max_speed, int(body.linear_velocity.length() / 200.0))
 	crash_max_altitude = max(crash_max_altitude, (-int(body.position.y)) / 20)
 
-	var impulse = Vector2.UP * 30000.0;
+	var impulse = Vector2.UP * 17000.0;
 
 	var angular_velocity = body.angular_velocity
 
 	if abs(angular_velocity) > 3.14 * 3:
 		explode_rocket()
+		
+	if laser_cooldown > 0.0:
+		laser_cooldown -= delta
 
-	if Input.is_action_pressed("thruster_side_1"):
+	if Input.is_action_pressed("thruster_side_1") and fuel_level > 0.0:
 		var local_impulse = impulse.rotated(side_thruster_left.transform.get_rotation()) / 10.0
 		side_thruster_left.apply_force(local_impulse)
+		fuel_level -= 0.006
 
-	if Input.is_action_pressed("thruster_side_0"):
+	if Input.is_action_pressed("thruster_side_0") and fuel_level > 0.0:
 		var local_impulse = impulse.rotated(side_thruster_right.transform.get_rotation()) / 10.0
 		side_thruster_right.apply_force(local_impulse)
+		fuel_level -= 0.006
 
-	if Input.is_action_pressed("thruster_0"):
+	if Input.is_action_pressed("thruster_0") and fuel_level > 0.0:
 		var local_impulse = impulse.rotated(thruster_left.transform.get_rotation())
 		thruster_left.apply_force(local_impulse)
 		thruster_left_sprite.play("thrusting")
+		fuel_level -= 0.018
 	else:
 		thruster_left_sprite.play("idle")
 
-	if Input.is_action_pressed("thruster_1"):
+	if Input.is_action_pressed("thruster_1") and fuel_level > 0.0:
 		var local_impulse = impulse.rotated(thruster_right.transform.get_rotation())
 		thruster_right.apply_force(local_impulse)
 		thruster_right_sprite.play("thrusting")
+		fuel_level -= 0.018
 	else:
 		thruster_right_sprite.play("idle")
 	
-	if Input.is_action_pressed("fire"):
-		laser_beam.visible = true
+	if Input.is_action_pressed("fire") and battery_level > 0.0 and laser_cooldown <= 0.0:
+		battery_level -= 0.6
+		print("fire in the hole")
 		
-		var space_state = gun.get_world_2d().direct_space_state
-		# use global coordinates, not local to node
-		var to = Vector2(0, -1000).rotated(body.transform.get_rotation())
-		var query = PhysicsRayQueryParameters2D.create(gun.position, to)
-		var result = space_state.intersect_ray(query)
+		laser_cooldown = 0.3
 		
-		if result:
-			if result.collider.name.contains("obstacle_body"):
-				result.collider.get_parent().call_deferred("queue_free")
+		var space_state = get_tree().root.world_2d.direct_space_state
+		var to_node = get_nearest_obstacle()
+		if to_node != null:
+			var to = to_node.global_position
+			var query = PhysicsRayQueryParameters2D.create(gun.global_position, to)
+			var result = space_state.intersect_ray(query)
+			
+			target.global_position = to
+
+			if result:
+				print(result.collider.name)
+				if result.collider.name.contains("obstacle_body"):
+					result.collider.get_parent().call_deferred("queue_free")
+					var explosion = load("res://explosion.tscn")
+					var local_explosion = explosion.instantiate()
+					local_explosion.position = to
+					local_explosion.scale *= 0.5
+					get_tree().root.add_child(local_explosion)
+					# laser_beam.visible = true
+			else:
+				print(" - nothing =(")
+				
 	else:
 		laser_beam.visible = false
+		
+	(get_tree().root.get_node("exploration/CanvasLayer/Fuel") as ProgressBar).value = fuel_level
+	(get_tree().root.get_node("exploration/CanvasLayer/Battery") as ProgressBar).value = battery_level
 
 func _process(delta: float) -> void:
 	if kaput and !spawned_newspaper:
@@ -108,9 +171,21 @@ func _process(delta: float) -> void:
 			newspaper.position = camera.global_position
 			get_tree().root.add_child(newspaper)
 			
-			var head_to_get = randi() % 5
-			var file = FileAccess.open("res://newspaper_headlines/" + str(head_to_get) + ".txt", FileAccess.READ)
-			var headline_text = file.get_as_text()
+			var head_to_get = randi() % 2
+			var headline_text : String
+			
+			if fuel_level <= 0.0:
+				var file = FileAccess.open("res://newspaper_headlines/fuel/" + str(head_to_get) + ".txt", FileAccess.READ)
+				headline_text = file.get_as_text()
+			elif crash_max_altitude < 1000.0:
+				var file = FileAccess.open("res://newspaper_headlines/bad/" + str(head_to_get) + ".txt", FileAccess.READ)
+				headline_text = file.get_as_text()
+			elif crash_max_altitude < 2000.0 and crash_max_altitude > 1000.0:
+				var file = FileAccess.open("res://newspaper_headlines/semi_good/" + str(head_to_get) + ".txt", FileAccess.READ)
+				headline_text = file.get_as_text()
+			else:
+				var file = FileAccess.open("res://newspaper_headlines/good/" + str(head_to_get) + ".txt", FileAccess.READ)
+				headline_text = file.get_as_text()
 			
 			var hl : Label = newspaper.get_node("Offset/WrittenPaperNoBackground/Headline")
 			hl.text = headline_text
@@ -120,7 +195,7 @@ func _process(delta: float) -> void:
 			
 			var screenshot : TextureRect = newspaper.get_node("Offset/WrittenPaperNoBackground/TextureRect")
 			var final =  Image.create(1920 / 2, 1080 / 2, false, Image.FORMAT_RGB8)
-			final.blit_rect(crash_texture, Rect2i(1920/4, 1080/4, 1920/2, 1080/2), Vector2i(0, 0))
+			final.blit_rect(crash_texture, Rect2i(1920 / 4, 1080 / 4 + 200, 1920 / 2, 1080 / 2 + 200), Vector2i(0, 0))
 			screenshot.texture = ImageTexture.create_from_image(final)
 			
 			# prevent the camera from moving again
@@ -160,9 +235,8 @@ func explode_rocket():
 	kaput = true
 	rocket_exploded.emit()
 
-
 func _on_rocket_part_body_entered(target: Node) -> void:
 	if target.name.contains("obstacle_body"):
 		explode_rocket()
-	elif body.linear_velocity.length() > 100.0:
+	elif body.linear_velocity.length() > 200.0:
 		explode_rocket()

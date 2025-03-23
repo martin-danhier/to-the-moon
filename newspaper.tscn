@@ -144,7 +144,7 @@ libraries = {
 }
 
 [node name="Offset" type="Node2D" parent="."]
-position = Vector2(-984, -511)
+position = Vector2(-992, -709)
 rotation = -0.0654692
 scale = Vector2(1.64, 1.64)
 
