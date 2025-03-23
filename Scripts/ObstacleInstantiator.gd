@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 	if obstacle_count == 0.0:
 		spawn_probability = 1.0
 	else:
-		spawn_probability = (-rocket_body.position.y * base_probability)  / (obstacle_count * obstacle_count)
+		spawn_probability = (-rocket_body.global_position.y * base_probability)  / (obstacle_count * obstacle_count)
 
 	var sampled = randf()
 	if sampled < spawn_probability:
@@ -55,7 +55,7 @@ func spawn_obstacle():
 	# Determine a position for the new object
 	var distance = randf_range(min_distance, max_distance)
 	
-	var target: Vector2 = rocket_body.position + distance * direction
+	var target: Vector2 = rocket_body.global_position + distance * direction
 	
 	# Choose a point around the target
 	target.x += randf_range(-spawn_box_size, spawn_box_size)
@@ -68,16 +68,16 @@ func spawn_obstacle():
 		probs.push_back(obstacle_def.prob(height))
 	var total = probs.reduce(sum, 0.0)
 	
-	print(total)
+	#print(total)
 	
 	var sample = randf_range(0.0, total)
 	
 	for i in range(0, probs.size()):
 		if sample < probs[i]:
 			# Spawn this one
-			print("spawn "  + str(target))
+			#print("spawn "  + str(target))
 			var obstacle = obstacle_defs[i].instantiate()
-			obstacle.position = target;
+			obstacle.global_position = target;
 			obstacle_container.add_child(obstacle)
 			break
 		else:
