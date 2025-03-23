@@ -127,7 +127,7 @@ _data = {
 shader = ExtResource("3_hf1f1")
 shader_parameter/weighted = true
 shader_parameter/outerRadius = 1.0
-shader_parameter/MainAlpha = 0.63
+shader_parameter/MainAlpha = 0.537
 
 [sub_resource type="Shortcut" id="Shortcut_tcvqs"]
 

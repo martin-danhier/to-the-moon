@@ -41,7 +41,6 @@ var die_sound_played = false
 var crash_texture : Image
 var crash_max_altitude : float
 var crash_max_speed : float
-var explosion_spawned = false
 
 var camera : Camera2D
 
@@ -58,9 +57,15 @@ var coin_prefab
 var coin_value : Label
 var coin_count : int = 0
 
-var explosion_spawned = false
-
 var laser_fired = false
+
+# some value to change depending on upgrade !!!!
+@export var THRUSTER_IMPULSE = 17_000.0
+@export var SIDE_THRUSTER_COMSUMPTION = 0.006
+@export var MAIN_THRUSTER_COMSUMPTION = 0.018
+@export var LASER_RANGE = 850
+@export var LASER_COOLDOWN = 0.3
+@export var LASER_CONSUMPTION = 2.3
 
 func get_nearest_obstacle() -> Node2D:
 	var children = get_tree().root.get_node("exploration/ObstacleInstantiator/obstacle_container").get_children()
@@ -153,7 +158,7 @@ func _physics_process(delta: float) -> void:
 		if !altitude_sound.playing:
 			altitude_sound.play()
 
-	var impulse = Vector2.UP * 17000.0;
+	var impulse = Vector2.UP * THRUSTER_IMPULSE;
 
 	var angular_velocity = body.angular_velocity
 
@@ -166,7 +171,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("thruster_side_1") and fuel_level > 0.0:
 		var local_impulse = impulse.rotated(side_thruster_left.transform.get_rotation()) / 10.0
 		side_thruster_left.apply_force(local_impulse)
-		fuel_level -= 0.006
+		fuel_level -= SIDE_THRUSTER_COMSUMPTION
 		if not small_thruster_sound_left.playing:
 			small_thruster_sound_left.play()
 	else:
@@ -175,7 +180,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("thruster_side_0") and fuel_level > 0.0:
 		var local_impulse = impulse.rotated(side_thruster_right.transform.get_rotation()) / 10.0
 		side_thruster_right.apply_force(local_impulse)
-		fuel_level -= 0.006
+		fuel_level -= SIDE_THRUSTER_COMSUMPTION
 		if not small_thruster_sound_right.playing:
 			small_thruster_sound_right.play()
 	else:
@@ -187,7 +192,7 @@ func _physics_process(delta: float) -> void:
 		thruster_left_sprite.play("thrusting")
 		if not thruster_sound_left.playing:
 			thruster_sound_left.play()
-		fuel_level -= 0.018
+		fuel_level -= MAIN_THRUSTER_COMSUMPTION
 	else:
 		thruster_left_sprite.play("idle")
 		thruster_sound_left.stop()
@@ -198,20 +203,20 @@ func _physics_process(delta: float) -> void:
 		thruster_right_sprite.play("thrusting")
 		if not thruster_sound_right.playing:
 			thruster_sound_right.play()
-		fuel_level -= 0.018
+		fuel_level -= MAIN_THRUSTER_COMSUMPTION
 	else:
 		thruster_right_sprite.play("idle")
 		thruster_sound_right.stop()
 
 	if Input.is_action_pressed("fire") and battery_level > 0.0 and (is_on_beat or not laser_fired) and laser_cooldown <= 0.0:
 		laser_fired = true
-		battery_level -= 2.3
+		battery_level -= LASER_CONSUMPTION
 
-		laser_cooldown = 0.3
+		laser_cooldown = LASER_COOLDOWN
 
 		var space_state = get_tree().root.world_2d.direct_space_state
 
-		if nearest_obstacle != null and nearest_obstacle.global_position.distance_to(body.global_position) < 850:
+		if nearest_obstacle != null and nearest_obstacle.global_position.distance_to(body.global_position) < LASER_RANGE:
 			var to = nearest_obstacle.global_position
 			var query = PhysicsRayQueryParameters2D.create(gun.global_position, to)
 			var result = space_state.intersect_ray(query)
@@ -219,8 +224,7 @@ func _physics_process(delta: float) -> void:
 			target.global_position = to
 
 			if result:
-				if result.collider.name.contains("obstacle_body") and explosion_spawned == false:
-					explosion_spawned = true
+				if result.collider.name.contains("obstacle_body"):
 					# delete obstacles
 					result.collider.get_parent().call_deferred("queue_free")
 
