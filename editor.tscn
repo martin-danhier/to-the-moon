@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://70nmnhiquv13"]
+[gd_scene load_steps=16 format=3 uid="uid://70nmnhiquv13"]
 
 [ext_resource type="Texture2D" uid="uid://byjg40xrc7x0u" path="res://sprites/garage.jpg" id="1_wlowb"]
 [ext_resource type="Texture2D" uid="uid://c38ycs1yil4u4" path="res://sprites/grey.jpg" id="2_vjobr"]
@@ -8,8 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://dylevauoywhd3" path="res://sprites/fame.png" id="5_gbsbp"]
 [ext_resource type="FontFile" uid="uid://ceixrq4nnx0fy" path="res://assets/PressStart2P-Regular.ttf" id="5_t27w5"]
 [ext_resource type="Texture2D" uid="uid://b6l7konckhsvt" path="res://sprites/potion.png" id="6_t27w5"]
-[ext_resource type="Script" path="res://editor_shop.gd" id="9_k4288"]
+[ext_resource type="Script" uid="uid://bdgyoraf55o8j" path="res://editor_shop.gd" id="9_k4288"]
 [ext_resource type="Script" uid="uid://c50sjhhlwrax8" path="res://LaunchMission.gd" id="10_8yjtx"]
+[ext_resource type="Texture2D" uid="uid://dex2xs8g7j8xb" path="res://assets/keyboard/w.png" id="12_7py46"]
+[ext_resource type="Texture2D" uid="uid://deykko5revl8x" path="res://assets/keyboard/x.png" id="13_kwc7g"]
+[ext_resource type="Texture2D" uid="uid://caoih2kqd45h" path="res://assets/keyboard/left.png" id="14_kxsle"]
+[ext_resource type="Texture2D" uid="uid://chg4pb76y6puo" path="res://assets/keyboard/right.png" id="15_wksbx"]
+[ext_resource type="Texture2D" uid="uid://6rxij5q7ar1x" path="res://assets/keyboard/up.png" id="16_3v1c7"]
 
 [node name="Editor" type="Node2D"]
 
@@ -495,6 +500,38 @@ theme_override_font_sizes/font_size = 8
 text = "Thruster"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Tutorial" type="Node2D" parent="."]
+
+[node name="W" type="Sprite2D" parent="Tutorial"]
+texture_filter = 1
+position = Vector2(790, 890)
+scale = Vector2(7, 7)
+texture = ExtResource("12_7py46")
+
+[node name="X" type="Sprite2D" parent="Tutorial"]
+texture_filter = 1
+position = Vector2(1100, 890)
+scale = Vector2(7, 7)
+texture = ExtResource("13_kwc7g")
+
+[node name="Left" type="Sprite2D" parent="Tutorial"]
+texture_filter = 1
+position = Vector2(752, 330)
+scale = Vector2(7, 7)
+texture = ExtResource("14_kxsle")
+
+[node name="Right" type="Sprite2D" parent="Tutorial"]
+texture_filter = 1
+position = Vector2(1135.26, 330)
+scale = Vector2(7, 7)
+texture = ExtResource("15_wksbx")
+
+[node name="Up" type="Sprite2D" parent="Tutorial"]
+texture_filter = 1
+position = Vector2(1023, 178)
+scale = Vector2(7, 7)
+texture = ExtResource("16_3v1c7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(959, 538)
