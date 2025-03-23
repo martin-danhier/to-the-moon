@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://chm0050y35420"]
+[gd_scene load_steps=4 format=3 uid="uid://bynjiqb4xjueh"]
 
 [ext_resource type="Texture2D" uid="uid://chet3c1aafnil" path="res://sprites/Cloud.png" id="1_uojbh"]
 [ext_resource type="Script" uid="uid://c3agsmxfaou4b" path="res://Scripts/MovementFunction.gd" id="2_34vs7"]

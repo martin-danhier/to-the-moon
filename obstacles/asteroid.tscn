@@ -121,13 +121,14 @@ script = ExtResource("2_ujbcm")
 variable = 0
 movement_function = 1
 amplitude = 17.5
+velocity = 100.0
 
 [node name="func_y" type="Node" parent="."]
 script = ExtResource("2_ujbcm")
-movement_function = 1
+movement_function = 2
 amplitude = 7.135
 period = 2.465
-velocity = 0.955
+velocity = 50.0
 
 [node name="func_angle" type="Node" parent="."]
 script = ExtResource("2_ujbcm")
