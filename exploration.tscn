@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dw6mypb0mlu15"]
+[gd_scene load_steps=18 format=3 uid="uid://dw6mypb0mlu15"]
 
 [ext_resource type="PackedScene" uid="uid://y8ju2utt1nsd" path="res://rocket.tscn" id="1_1yu1n"]
 [ext_resource type="Texture2D" uid="uid://o4ydiqa067vr" path="res://sprites/panel.png" id="2_770sp"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://buog8pexxuncu" path="res://ObstacleInstantiator.tscn" id="7_pgb1d"]
 [ext_resource type="PackedScene" uid="uid://l10ttag0717q" path="res://ground.tscn" id="9_pgb1d"]
 [ext_resource type="Texture2D" uid="uid://j4d3q7xy2f5j" path="res://assets/target.png" id="10_00hbf"]
+[ext_resource type="PackedScene" path="res://ObstacleAlert.tscn" id="10_qabf2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pgb1d"]
 bg_color = Color(0.258746, 0.824952, 0.629899, 1)
@@ -215,6 +216,8 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("6_00hbf")
 theme_override_font_sizes/font_size = 13
 text = "Battery"
+
+[node name="ObstacleAlert" parent="." instance=ExtResource("10_qabf2")]
 
 [node name="target" type="Sprite2D" parent="."]
 texture_filter = 1

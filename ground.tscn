@@ -21,8 +21,8 @@ repeat_size = Vector2(960, 0)
 repeat_times = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="ground/trees"]
-position = Vector2(0, 60)
 texture_filter = 1
+position = Vector2(0, 60)
 texture = ExtResource("2_tv015")
 centered = false
 

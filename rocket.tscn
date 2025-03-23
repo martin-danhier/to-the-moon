@@ -854,7 +854,7 @@ max_contacts_reported = 1
 [node name="Camera2D" type="Camera2D" parent="body_0"]
 position = Vector2(-1, -4)
 offset = Vector2(0, -200)
-zoom = Vector2(0.2, 0.2)
+zoom = Vector2(0.8, 0.8)
 
 [node name="Sprite2D" type="Sprite2D" parent="body_0"]
 texture_filter = 1
