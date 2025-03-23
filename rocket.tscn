@@ -1,85 +1,52 @@
-[gd_scene load_steps=32 format=3 uid="uid://y8ju2utt1nsd"]
+[gd_scene load_steps=44 format=3 uid="uid://y8ju2utt1nsd"]
 
 [ext_resource type="Script" uid="uid://jhp1evdhvaie" path="res://RocketCrontroller.gd" id="1_tpb7v"]
 [ext_resource type="Texture2D" uid="uid://b3bjkv6iqxlr0" path="res://sprites/rocket_body.png" id="2_546ky"]
 [ext_resource type="Texture2D" uid="uid://bwlj0otfrhb2k" path="res://sprites/gun/basic.png" id="3_xk1bh"]
-[ext_resource type="Texture2D" uid="uid://b6s8ewr4piw5t" path="res://sprites/laser_beam.png" id="4_7htxx"]
-[ext_resource type="Texture2D" uid="uid://cy3enmph0xk5j" path="res://sprites/thruster.png" id="4_546ky"]
+[ext_resource type="Texture2D" uid="uid://3kt5n2njy85p" path="res://sprites/thruster/basic.png" id="5_xk1bh"]
+[ext_resource type="Texture2D" uid="uid://dc268wb88yt3r" path="res://sprites/thruster/standard.png" id="6_aw411"]
 [ext_resource type="Texture2D" uid="uid://c3cnxjeox6bqk" path="res://sprites/side_thruster.png" id="6_edwur"]
+[ext_resource type="Texture2D" uid="uid://uc87fmj1re7m" path="res://sprites/thruster/advanced.png" id="7_aw411"]
 [ext_resource type="AudioStream" uid="uid://dxcmk4b7c8hlb" path="res://sounds/thruster2.ogg" id="7_awr8v"]
 [ext_resource type="AudioStream" uid="uid://yca1tex1fi0n" path="res://sounds/little_thruster.ogg" id="8_7htxx"]
 [ext_resource type="AudioStream" uid="uid://b1q48y6uvukic" path="res://sounds/pew.ogg" id="9_mnerj"]
 [ext_resource type="AudioStream" uid="uid://bj4p1nl62tngp" path="res://sounds/small_explosion_delayed.ogg" id="9_xk1bh"]
 [ext_resource type="AudioStream" uid="uid://cxe4wd8thloed" path="res://sounds/large_explosion.ogg" id="10_edwur"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lm57y"]
-atlas = ExtResource("4_7htxx")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xk1bh"]
-atlas = ExtResource("4_7htxx")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_edwur"]
-atlas = ExtResource("4_7htxx")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aw411"]
-atlas = ExtResource("4_7htxx")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mg04i"]
-atlas = ExtResource("4_7htxx")
-region = Rect2(0, 64, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ldhc3"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lm57y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xk1bh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_edwur")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aw411")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mg04i")
-}],
-"loop": true,
-"name": &"firing",
-"speed": 25.0
-}]
+[ext_resource type="AudioStream" uid="uid://wi4qv55mlq1g" path="res://sounds/chaching.ogg" id="13_aw411"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_awr8v"]
 radius = 33.0
 height = 288.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_awr8v"]
-atlas = ExtResource("4_546ky")
-region = Rect2(96, 0, 48, 265)
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hlsg"]
+atlas = ExtResource("5_xk1bh")
+region = Rect2(192, 0, 96, 530)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_546ky"]
-atlas = ExtResource("4_546ky")
-region = Rect2(96, 0, 48, 265)
+[sub_resource type="AtlasTexture" id="AtlasTexture_06nca"]
+atlas = ExtResource("5_xk1bh")
+region = Rect2(192, 0, 96, 530)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7htxx"]
-atlas = ExtResource("4_546ky")
-region = Rect2(48, 0, 48, 265)
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbiq5"]
+atlas = ExtResource("5_xk1bh")
+region = Rect2(96, 0, 96, 530)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mnerj"]
-atlas = ExtResource("4_546ky")
-region = Rect2(0, 0, 48, 265)
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxos3"]
+atlas = ExtResource("5_xk1bh")
+region = Rect2(0, 0, 96, 530)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvpt0"]
+atlas = ExtResource("5_xk1bh")
+region = Rect2(96, 0, 96, 530)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqa34"]
+atlas = ExtResource("5_xk1bh")
+region = Rect2(192, 0, 96, 530)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7htxx"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_awr8v")
+"texture": SubResource("AtlasTexture_7hlsg")
 }],
 "loop": true,
 "name": &"idle",
@@ -87,13 +54,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_546ky")
+"texture": SubResource("AtlasTexture_06nca")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7htxx")
+"texture": SubResource("AtlasTexture_xbiq5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mnerj")
+"texture": SubResource("AtlasTexture_dxos3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvpt0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqa34")
 }],
 "loop": true,
 "name": &"thrusting",
@@ -103,6 +76,116 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cum1y"]
 radius = 21.0
 height = 193.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_faish"]
+atlas = ExtResource("6_aw411")
+region = Rect2(96, 0, 48, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7t48"]
+atlas = ExtResource("6_aw411")
+region = Rect2(96, 0, 48, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tn7l"]
+atlas = ExtResource("6_aw411")
+region = Rect2(48, 0, 48, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2a76"]
+atlas = ExtResource("6_aw411")
+region = Rect2(0, 0, 48, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rqn1"]
+atlas = ExtResource("6_aw411")
+region = Rect2(48, 0, 48, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygjix"]
+atlas = ExtResource("6_aw411")
+region = Rect2(96, 0, 48, 265)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vw1bw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_faish")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7t48")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tn7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2a76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rqn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygjix")
+}],
+"loop": true,
+"name": &"thrusting",
+"speed": 16.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vw1bw"]
+atlas = ExtResource("7_aw411")
+region = Rect2(96, 0, 48, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3ed2"]
+atlas = ExtResource("7_aw411")
+region = Rect2(96, 0, 48, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijn6a"]
+atlas = ExtResource("7_aw411")
+region = Rect2(48, 0, 48, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dccwi"]
+atlas = ExtResource("7_aw411")
+region = Rect2(0, 0, 48, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fyb4i"]
+atlas = ExtResource("7_aw411")
+region = Rect2(48, 0, 48, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3mae"]
+atlas = ExtResource("7_aw411")
+region = Rect2(96, 0, 48, 265)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pj0s7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vw1bw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3ed2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijn6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dccwi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fyb4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3mae")
+}],
+"loop": true,
+"name": &"thrusting",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_546ky"]
 radius = 21.0
@@ -149,741 +232,6 @@ animations = [{
 [node name="Rocket" type="Node2D"]
 script = ExtResource("1_tpb7v")
 
-[node name="LaserBeam" type="Node2D" parent="."]
-position = Vector2(0, -233)
-
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.0879993, -28.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame = 4
-frame_progress = 1.0
-
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.0879993, -72.995)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.0879993, -116.995)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.0879993, -160.995)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.0879993, -204.995)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.0879993, -248.995)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.175999, -292.745)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame = 4
-frame_progress = 1.0
-
-[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.176001, -336.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.176001, -380.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.176001, -424.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D12" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.176001, -468.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D13" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.176001, -512.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D14" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.175999, -556.745)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame = 4
-frame_progress = 1.0
-
-[node name="AnimatedSprite2D15" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.175999, -600.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D16" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.175999, -644.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D17" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.175999, -688.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D18" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.175999, -732.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D19" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.175999, -776.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D20" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.175999, -820.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame = 4
-frame_progress = 1.0
-
-[node name="AnimatedSprite2D21" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.176001, -864.995)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D22" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.176001, -908.995)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D23" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.176001, -952.995)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D24" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.176001, -996.995)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D25" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.176001, -1040.99)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D26" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.264002, -1084.74)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame = 4
-frame_progress = 1.0
-
-[node name="AnimatedSprite2D27" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.264002, -1128.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D28" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.264002, -1172.88)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D29" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.264002, -1216.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D30" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.264002, -1260.88)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D31" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.264002, -1304.88)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D32" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.264, -1348.75)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame = 4
-frame_progress = 1.0
-
-[node name="AnimatedSprite2D33" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.264, -1392.88)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D34" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.264, -1436.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D35" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.264, -1480.88)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D36" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.264, -1524.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D37" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.264, -1568.88)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D38" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.0879993, -1612.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame = 4
-frame_progress = 1.0
-
-[node name="AnimatedSprite2D39" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.0879993, -1656.99)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D40" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.0879993, -1700.99)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D41" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.0879993, -1744.99)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D42" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.0879993, -1788.99)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D43" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.0879993, -1832.99)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D44" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.175999, -1876.74)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame = 4
-frame_progress = 1.0
-
-[node name="AnimatedSprite2D45" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.176001, -1920.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D46" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.176001, -1964.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D47" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.176001, -2008.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D48" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.176001, -2052.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D49" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.176001, -2096.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D50" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.175999, -2140.74)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame = 4
-frame_progress = 1.0
-
-[node name="AnimatedSprite2D51" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.175999, -2184.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D52" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.175999, -2228.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D53" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.175999, -2272.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D54" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.175999, -2316.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D55" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.175999, -2360.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D56" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.175999, -2404.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame = 4
-frame_progress = 1.0
-
-[node name="AnimatedSprite2D57" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.176001, -2448.99)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D58" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.176001, -2492.99)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D59" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.176001, -2536.99)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D60" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.176001, -2580.99)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D61" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.176001, -2624.99)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D62" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.264002, -2668.74)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame = 4
-frame_progress = 1.0
-
-[node name="AnimatedSprite2D63" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.264002, -2712.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D64" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.264002, -2756.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D65" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.264002, -2800.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D66" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.264002, -2844.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D67" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.264002, -2888.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D68" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.264, -2932.74)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame = 4
-frame_progress = 1.0
-
-[node name="AnimatedSprite2D69" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.264, -2976.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D70" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.264, -3020.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D71" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.264, -3064.88)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D72" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.264, -3108.87)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
-[node name="AnimatedSprite2D73" type="AnimatedSprite2D" parent="LaserBeam"]
-texture_filter = 1
-texture_repeat = 3
-position = Vector2(0.264, -3152.88)
-scale = Vector2(1.193, 1.38281)
-sprite_frames = SubResource("SpriteFrames_ldhc3")
-animation = &"firing"
-autoplay = "firing"
-frame_progress = 0.335008
-
 [node name="body_0" type="RigidBody2D" parent="."]
 position = Vector2(0, -24)
 mass = 14.0
@@ -895,7 +243,7 @@ position = Vector2(-1, -4)
 offset = Vector2(0, -200)
 zoom = Vector2(0.8, 0.8)
 position_smoothing_enabled = true
-position_smoothing_speed = 8.03
+position_smoothing_speed = 25.0
 drag_left_margin = 0.8
 drag_top_margin = 0.8
 drag_right_margin = 0.8
@@ -925,15 +273,31 @@ mass = 6.0
 contact_monitor = true
 max_contacts_reported = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="thruster_left"]
+[node name="AnimatedSprite2D_tier1" type="AnimatedSprite2D" parent="thruster_left"]
+visible = false
 texture_filter = 1
 position = Vector2(0, -26.6)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_7htxx")
-animation = &"thrusting"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="thruster_left"]
 position = Vector2(0, -43.6)
 shape = SubResource("CapsuleShape2D_cum1y")
+
+[node name="AnimatedSprite2D_tier2" type="AnimatedSprite2D" parent="thruster_left"]
+visible = false
+texture_filter = 1
+position = Vector2(0, -27)
+sprite_frames = SubResource("SpriteFrames_vw1bw")
+animation = &"thrusting"
+
+[node name="AnimatedSprite2D_tier3" type="AnimatedSprite2D" parent="thruster_left"]
+visible = false
+texture_filter = 1
+position = Vector2(0, -27)
+sprite_frames = SubResource("SpriteFrames_pj0s7")
+animation = &"idle"
 
 [node name="thruster_right" type="RigidBody2D" parent="."]
 position = Vector2(59, 30)
@@ -941,10 +305,26 @@ mass = 6.0
 contact_monitor = true
 max_contacts_reported = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="thruster_right"]
+[node name="AnimatedSprite2D_tier2" type="AnimatedSprite2D" parent="thruster_right"]
+visible = false
+texture_filter = 1
+position = Vector2(0, -27)
+sprite_frames = SubResource("SpriteFrames_vw1bw")
+animation = &"thrusting"
+
+[node name="AnimatedSprite2D_tier1" type="AnimatedSprite2D" parent="thruster_right"]
+visible = false
 texture_filter = 1
 position = Vector2(0, -26.6)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_7htxx")
+animation = &"idle"
+
+[node name="AnimatedSprite2D_tier3" type="AnimatedSprite2D" parent="thruster_right"]
+visible = false
+texture_filter = 1
+position = Vector2(0, -27)
+sprite_frames = SubResource("SpriteFrames_pj0s7")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="thruster_right"]
@@ -1108,6 +488,11 @@ volume_db = -2.0
 pitch_scale = 1.54
 max_polyphony = 11
 parameters/looping = false
+
+[node name="coin_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_aw411")
+volume_db = 2.0
+max_polyphony = 3
 
 [connection signal="body_entered" from="body_0" to="." method="_on_rocket_part_body_entered"]
 [connection signal="body_entered" from="thruster_left" to="." method="_on_rocket_part_body_entered"]

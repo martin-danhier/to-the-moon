@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dw6mypb0mlu15"]
+[gd_scene load_steps=26 format=3 uid="uid://dw6mypb0mlu15"]
 
 [ext_resource type="PackedScene" uid="uid://y8ju2utt1nsd" path="res://rocket.tscn" id="1_1yu1n"]
 [ext_resource type="Texture2D" uid="uid://o4ydiqa067vr" path="res://sprites/panel.png" id="2_770sp"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://buog8pexxuncu" path="res://ObstacleInstantiator.tscn" id="7_pgb1d"]
 [ext_resource type="PackedScene" uid="uid://l10ttag0717q" path="res://ground.tscn" id="9_pgb1d"]
 [ext_resource type="Texture2D" uid="uid://j4d3q7xy2f5j" path="res://assets/target.png" id="10_00hbf"]
-[ext_resource type="PackedScene" path="res://ObstacleAlert.tscn" id="10_qabf2"]
+[ext_resource type="PackedScene" uid="uid://ccd6wtsuardpp" path="res://ObstacleAlert.tscn" id="10_qabf2"]
 [ext_resource type="Texture2D" uid="uid://cw1pibrseh2m8" path="res://sprites/coin.png" id="10_qgrag"]
 [ext_resource type="AudioStream" uid="uid://bfmvlfqv6f567" path="res://sounds/pull_up.ogg" id="12_qabf2"]
 [ext_resource type="AudioStream" uid="uid://dukyi7ptlbg2g" path="res://sounds/too_close.ogg" id="13_8wdfd"]
@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://bc8r076m0pnqn" path="res://sounds/dead.ogg" id="14_gaj1u"]
 [ext_resource type="AudioStream" uid="uid://b23fom84brarr" path="res://sounds/altitude.ogg" id="15_5bsn5"]
 [ext_resource type="PackedScene" uid="uid://cis8w73i4tr15" path="res://coin.tscn" id="18_nyiyb"]
+[ext_resource type="PackedScene" uid="uid://dpkvn53a20ow8" path="res://moon.tscn" id="19_8exjl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pgb1d"]
 bg_color = Color(0.258746, 0.824952, 0.629899, 1)
@@ -287,5 +288,7 @@ volume_db = -2.8
 [node name="Coin" parent="." instance=ExtResource("18_nyiyb")]
 position = Vector2(847, 1610)
 moving = false
+
+[node name="Moon" parent="." instance=ExtResource("19_8exjl")]
 
 [connection signal="coin_grabbed" from="Coin" to="Rocket" method="_on_coin_coin_grabbed"]

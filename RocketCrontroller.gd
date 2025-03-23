@@ -23,8 +23,7 @@ var small_thruster_sound_right : AudioStreamPlayer
 var laser_sound : AudioStreamPlayer
 var small_explosion_sound: AudioStreamPlayer
 var large_explosion_sound: AudioStreamPlayer
-
-var laser_beam : Node2D
+var coin_sound: AudioStreamPlayer
 
 var gun : Sprite2D
 
@@ -71,11 +70,19 @@ var game_state : SomewhatGameState
 
 # some value to change depending on upgrade !!!!
 @export var THRUSTER_IMPULSE = 17_000.0
-@export var SIDE_THRUSTER_COMSUMPTION = 0.006
-@export var MAIN_THRUSTER_COMSUMPTION = 0.018
-@export var LASER_RANGE = 850
-@export var LASER_COOLDOWN = 0.3
-@export var LASER_CONSUMPTION = 2.3
+@export var SIDE_THRUSTER_COMSUMPTION = 0.004
+@export var MAIN_THRUSTER_COMSUMPTION = 0.012
+@export var LASER_RANGE = 620
+@export var LASER_COOLDOWN = 0.22
+@export var LASER_CONSUMPTION = 1.9
+
+var visual_thruster_tier1_left : AnimatedSprite2D
+var visual_thruster_tier2_left : AnimatedSprite2D
+var visual_thruster_tier3_left : AnimatedSprite2D
+
+var visual_thruster_tier1_right : AnimatedSprite2D
+var visual_thruster_tier2_right : AnimatedSprite2D
+var visual_thruster_tier3_right : AnimatedSprite2D
 
 func get_nearest_obstacle() -> Node2D:
 	var children = get_tree().root.get_node("exploration/ObstacleInstantiator/obstacle_container").get_children()
@@ -118,6 +125,7 @@ func _ready() -> void:
 		var dico = JSON.new()
 		dico.parse(file_read.get_as_text())
 		var data = dico.get_data()
+		print("loading:", JSON.stringify(data))
 		game_state = SomewhatGameState.new()
 		game_state.Coins = data["Coins"]
 		game_state.Fame = data["Fame"]
@@ -133,8 +141,6 @@ func _ready() -> void:
 
 	target = get_tree().root.get_node("exploration/target")
 
-	thruster_left_sprite = self.get_node("thruster_left/AnimatedSprite2D")
-	thruster_right_sprite = self.get_node("thruster_right/AnimatedSprite2D")
 	side_thruster_left_sprite = self.get_node("side_thruster_left/AnimatedSprite2D")
 	side_thruster_right_sprite = self.get_node("side_thruster_right/AnimatedSprite2D")
 
@@ -146,8 +152,47 @@ func _ready() -> void:
 	small_explosion_sound = self.get_node("small_explosion_sound")
 	large_explosion_sound = self.get_node("large_explosion_sound")
 	music_sound = get_tree().root.get_node("exploration/MusicSound") as AudioStreamPlayer
-
-	laser_beam = self.get_node("LaserBeam")
+	coin_sound = self.get_node("coin_sound")
+	
+	visual_thruster_tier1_left = get_node("thruster_left/AnimatedSprite2D_tier1")
+	visual_thruster_tier1_left.visible = false
+	visual_thruster_tier2_left = get_node("thruster_left/AnimatedSprite2D_tier2")
+	visual_thruster_tier2_left.visible = false
+	visual_thruster_tier3_left = get_node("thruster_left/AnimatedSprite2D_tier3")
+	visual_thruster_tier3_left.visible = false
+	
+	visual_thruster_tier1_right = get_node("thruster_right/AnimatedSprite2D_tier1")
+	visual_thruster_tier1_right.visible = false
+	visual_thruster_tier2_right = get_node("thruster_right/AnimatedSprite2D_tier2")
+	visual_thruster_tier2_right.visible = false
+	visual_thruster_tier3_right = get_node("thruster_right/AnimatedSprite2D_tier3")
+	visual_thruster_tier3_right.visible = false
+	
+	match game_state.ThrusterTier:
+		1:
+			visual_thruster_tier1_left.visible = true
+			visual_thruster_tier1_right.visible = true
+			thruster_left_sprite = visual_thruster_tier1_left
+			thruster_right_sprite = visual_thruster_tier1_right
+			
+			THRUSTER_IMPULSE *= 0.9
+			MAIN_THRUSTER_COMSUMPTION *= 1.2
+		2:
+			visual_thruster_tier2_left.visible = true
+			visual_thruster_tier2_right.visible = true
+			thruster_left_sprite = visual_thruster_tier2_left
+			thruster_right_sprite = visual_thruster_tier2_right
+			
+			THRUSTER_IMPULSE *= 1.0
+			MAIN_THRUSTER_COMSUMPTION *= 1.0
+		3:
+			visual_thruster_tier3_left.visible = true
+			visual_thruster_tier3_right.visible = true
+			thruster_left_sprite = visual_thruster_tier3_left
+			thruster_right_sprite = visual_thruster_tier3_right
+			
+			THRUSTER_IMPULSE *= 1.2
+			MAIN_THRUSTER_COMSUMPTION *= 0.55
 
 	camera = self.get_node("body_0/Camera2D")
 
@@ -163,12 +208,15 @@ func _ready() -> void:
 		1:
 			path = "res://sprites/gun/basic.png"
 			LASER_COOLDOWN  *= 2.0
+			LASER_CONSUMPTION *= 1.8
 		2:
 			path = "res://sprites/gun/standard.png"
 			LASER_COOLDOWN  *= 1.0
+			LASER_CONSUMPTION *= 0.9
 		3:
 			path = "res://sprites/gun/advanced.png"
 			LASER_COOLDOWN  *= 0.5
+			LASER_CONSUMPTION *= 0.5
 	
 	print("game_state.GunTier:", game_state.GunTier)
 	
@@ -180,6 +228,10 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if kaput == true:
 		return
+		
+	# Update gravity based on height
+	var height = -self.position.y
+	body.gravity_scale = 1.0 - (height / 6000000)
 
 	# Music sync
 	var is_on_beat = false
@@ -307,7 +359,6 @@ func _physics_process(delta: float) -> void:
 						get_tree().root.add_child(coin)
 
 	else:
-		laser_beam.visible = false
 		if not Input.is_action_pressed("fire"):
 			laser_fired = false
 
@@ -412,7 +463,6 @@ func explode_rocket():
 	thruster_left_sprite.play("idle")
 	side_thruster_left_sprite.play("idle")
 	side_thruster_right_sprite.play("idle")
-	laser_beam.visible = false
 
 	thruster_sound_left.stop()
 	thruster_sound_right.stop()
@@ -431,5 +481,5 @@ func _on_rocket_part_body_entered(target: Node) -> void:
 func _on_coin_coin_grabbed() -> void:
 	coin_count += 1
 	game_state.Coins += 1
-
+	coin_sound.play()
 	coin_value.text = str(coin_count)
