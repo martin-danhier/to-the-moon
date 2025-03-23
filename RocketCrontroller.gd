@@ -13,6 +13,12 @@ var thruster_right_sprite : AnimatedSprite2D
 var side_thruster_left_sprite : AnimatedSprite2D
 var side_thruster_right_sprite : AnimatedSprite2D
 
+var thruster_sound_left : AudioStreamPlayer
+var thruster_sound_right : AudioStreamPlayer
+var small_thruster_sound_left : AudioStreamPlayer
+var small_thruster_sound_right : AudioStreamPlayer
+var laser_sound : AudioStreamPlayer
+
 var laser_beam : Node2D
 
 var gun : Node2D
@@ -76,6 +82,12 @@ func _ready() -> void:
 	thruster_left_sprite = self.get_node("thruster_left/AnimatedSprite2D")
 	thruster_right_sprite = self.get_node("thruster_right/AnimatedSprite2D")
 	
+	thruster_sound_left = self.get_node("thruster_sound_left")
+	thruster_sound_right = self.get_node("thruster_sound_right")
+	small_thruster_sound_left = self.get_node("small_thruster_sound_left")
+	small_thruster_sound_right = self.get_node("small_thruster_sound_right")
+	laser_sound = self.get_node("laser_sound")
+	
 	laser_beam = self.get_node("LaserBeam")
 	
 	camera = self.get_node("body_0/Camera2D")
@@ -112,27 +124,41 @@ func _physics_process(delta: float) -> void:
 		var local_impulse = impulse.rotated(side_thruster_left.transform.get_rotation()) / 10.0
 		side_thruster_left.apply_force(local_impulse)
 		fuel_level -= 0.006
+		if not small_thruster_sound_left.playing:
+			small_thruster_sound_left.play()
+	else:
+		small_thruster_sound_left.stop()
 
 	if Input.is_action_pressed("thruster_side_0") and fuel_level > 0.0:
 		var local_impulse = impulse.rotated(side_thruster_right.transform.get_rotation()) / 10.0
 		side_thruster_right.apply_force(local_impulse)
 		fuel_level -= 0.006
+		if not small_thruster_sound_right.playing:
+			small_thruster_sound_right.play()
+	else:
+		small_thruster_sound_right.stop()
 
 	if Input.is_action_pressed("thruster_0") and fuel_level > 0.0:
 		var local_impulse = impulse.rotated(thruster_left.transform.get_rotation())
 		thruster_left.apply_force(local_impulse)
 		thruster_left_sprite.play("thrusting")
+		if not thruster_sound_left.playing:
+			thruster_sound_left.play()
 		fuel_level -= 0.018
 	else:
 		thruster_left_sprite.play("idle")
+		thruster_sound_left.stop()
 
 	if Input.is_action_pressed("thruster_1") and fuel_level > 0.0:
 		var local_impulse = impulse.rotated(thruster_right.transform.get_rotation())
 		thruster_right.apply_force(local_impulse)
 		thruster_right_sprite.play("thrusting")
+		if not thruster_sound_right.playing:
+			thruster_sound_right.play()
 		fuel_level -= 0.018
 	else:
 		thruster_right_sprite.play("idle")
+		thruster_sound_right.stop()
 	
 	if Input.is_action_pressed("fire") and battery_level > 0.0 and laser_cooldown <= 0.0:
 		battery_level -= 0.6
@@ -141,7 +167,8 @@ func _physics_process(delta: float) -> void:
 		laser_cooldown = 0.3
 		
 		var space_state = get_tree().root.world_2d.direct_space_state
-		
+			
+
 		if nearest_obstacle != null:
 			var to = nearest_obstacle.global_position
 			var query = PhysicsRayQueryParameters2D.create(gun.global_position, to)
@@ -158,6 +185,7 @@ func _physics_process(delta: float) -> void:
 					local_explosion.position = to
 					local_explosion.scale *= 0.5
 					get_tree().root.add_child(local_explosion)
+					laser_sound.play()
 					# laser_beam.visible = true
 			else:
 				print(" - nothing =(")
@@ -251,6 +279,11 @@ func explode_rocket():
 	thruster_right_sprite.play("idle")
 	thruster_left_sprite.play("idle")
 	laser_beam.visible = false
+	
+	thruster_sound_left.stop()
+	thruster_sound_right.stop()
+	small_thruster_sound_left.stop()
+	small_thruster_sound_right.stop()
 	
 	kaput = true
 	rocket_exploded.emit()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dw6mypb0mlu15"]
+[gd_scene load_steps=21 format=3 uid="uid://dw6mypb0mlu15"]
 
 [ext_resource type="PackedScene" uid="uid://y8ju2utt1nsd" path="res://rocket.tscn" id="1_1yu1n"]
 [ext_resource type="Texture2D" uid="uid://o4ydiqa067vr" path="res://sprites/panel.png" id="2_770sp"]
@@ -8,11 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://b7qc0gwls2n0v" path="res://sky_box.tscn" id="6_5taav"]
 [ext_resource type="Script" uid="uid://beqlt2q17j7xk" path="res://altimeter.gd" id="6_88ct5"]
 [ext_resource type="PackedScene" uid="uid://buog8pexxuncu" path="res://ObstacleInstantiator.tscn" id="7_pgb1d"]
-[ext_resource type="PackedScene" uid="uid://l10ttag0717q" path="res://ground.tscn" id="9_pgb1d"]
+[ext_resource type="PackedScene" path="res://ground.tscn" id="9_pgb1d"]
 [ext_resource type="Texture2D" uid="uid://j4d3q7xy2f5j" path="res://assets/target.png" id="10_00hbf"]
 [ext_resource type="PackedScene" path="res://ObstacleAlert.tscn" id="10_qabf2"]
 [ext_resource type="AudioStream" uid="uid://bfmvlfqv6f567" path="res://sounds/pull_up.ogg" id="12_qabf2"]
 [ext_resource type="AudioStream" uid="uid://dukyi7ptlbg2g" path="res://sounds/too_close.ogg" id="13_8wdfd"]
+[ext_resource type="AudioStream" uid="uid://dweqr7b48hqgh" path="res://sounds/ost.ogg" id="14_gaj1u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pgb1d"]
 bg_color = Color(0.258746, 0.824952, 0.629899, 1)
@@ -232,3 +233,9 @@ stream = ExtResource("12_qabf2")
 
 [node name="TooCloseSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_8wdfd")
+
+[node name="MusicSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_gaj1u")
+volume_db = -5.0
+autoplay = true
+parameters/looping = false
