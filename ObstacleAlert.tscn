@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccd6wtsuardpp"]
+
+[ext_resource type="Script" uid="uid://c74f5japugou" path="res://Scripts/ObstacleAlert.gd" id="1_xay8v"]
+
+[node name="ObstacleAlert" type="Node2D"]
+script = ExtResource("1_xay8v")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="alert_container" type="Node" parent="."]
