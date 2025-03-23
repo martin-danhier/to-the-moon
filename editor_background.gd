@@ -13,8 +13,7 @@ func _ready() -> void:
 	var gun = rocket.get_node("body_0/Gun")
 	var body = rocket.get_node("body_0/Sprite2D")
 	var camera = rocket.get_node("body_0/Camera2D")
-	laser_beam = rocket.get_node("LaserBeam")
-	
+
 	rocket.set_process(false)
 	rocket.set_physics_process(false)
 

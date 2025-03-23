@@ -1,8 +1,7 @@
-[gd_scene load_steps=44 format=3 uid="uid://y8ju2utt1nsd"]
+[gd_scene load_steps=43 format=3 uid="uid://y8ju2utt1nsd"]
 
 [ext_resource type="Script" uid="uid://jhp1evdhvaie" path="res://RocketCrontroller.gd" id="1_tpb7v"]
 [ext_resource type="Texture2D" uid="uid://b3bjkv6iqxlr0" path="res://sprites/rocket_body.png" id="2_546ky"]
-[ext_resource type="Texture2D" uid="uid://bwlj0otfrhb2k" path="res://sprites/gun/basic.png" id="3_xk1bh"]
 [ext_resource type="Texture2D" uid="uid://3kt5n2njy85p" path="res://sprites/thruster/basic.png" id="5_xk1bh"]
 [ext_resource type="Texture2D" uid="uid://dc268wb88yt3r" path="res://sprites/thruster/standard.png" id="6_aw411"]
 [ext_resource type="Texture2D" uid="uid://c3cnxjeox6bqk" path="res://sprites/side_thruster.png" id="6_edwur"]
@@ -50,7 +49,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 16.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -253,7 +252,6 @@ drag_bottom_margin = 0.8
 texture_filter = 1
 position = Vector2(-1.3113e-06, -200)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_xk1bh")
 
 [node name="Sprite2D" type="Sprite2D" parent="body_0"]
 texture_filter = 1

@@ -61,11 +61,11 @@ var laser_fired = false
 class SomewhatGameState:
 	var Coins: int = 0
 	var Fame: int = 0
-	
+
 	var GunTier: int = 1
 	var ThrusterTier: int = 1
 	var FuelTier: int = 1
-	
+
 var game_state : SomewhatGameState
 
 # some value to change depending on upgrade !!!!
@@ -111,7 +111,7 @@ func get_nearest_obstacle() -> Node2D:
 	return children[min_idx]
 
 func _ready() -> void:
-	# 
+	#
 	var file_read = FileAccess.open("./save_file.data", FileAccess.READ)
 	if file_read == null:
 		print("FIRST TIME PLAYING?")
@@ -132,7 +132,7 @@ func _ready() -> void:
 		game_state.GunTier = data["GunTier"]
 		game_state.ThrusterTier = data["ThrusterTier"]
 		game_state.FuelTier = data["FuelTier"]
-	
+
 	thruster_left = self.get_node("thruster_left")
 	thruster_right = self.get_node("thruster_right")
 	side_thruster_left = self.get_node("side_thruster_left")
@@ -153,28 +153,28 @@ func _ready() -> void:
 	large_explosion_sound = self.get_node("large_explosion_sound")
 	music_sound = get_tree().root.get_node("exploration/MusicSound") as AudioStreamPlayer
 	coin_sound = self.get_node("coin_sound")
-	
+
 	visual_thruster_tier1_left = get_node("thruster_left/AnimatedSprite2D_tier1")
 	visual_thruster_tier1_left.visible = false
 	visual_thruster_tier2_left = get_node("thruster_left/AnimatedSprite2D_tier2")
 	visual_thruster_tier2_left.visible = false
 	visual_thruster_tier3_left = get_node("thruster_left/AnimatedSprite2D_tier3")
 	visual_thruster_tier3_left.visible = false
-	
+
 	visual_thruster_tier1_right = get_node("thruster_right/AnimatedSprite2D_tier1")
 	visual_thruster_tier1_right.visible = false
 	visual_thruster_tier2_right = get_node("thruster_right/AnimatedSprite2D_tier2")
 	visual_thruster_tier2_right.visible = false
 	visual_thruster_tier3_right = get_node("thruster_right/AnimatedSprite2D_tier3")
 	visual_thruster_tier3_right.visible = false
-	
+
 	match game_state.ThrusterTier:
 		1:
 			visual_thruster_tier1_left.visible = true
 			visual_thruster_tier1_right.visible = true
 			thruster_left_sprite = visual_thruster_tier1_left
 			thruster_right_sprite = visual_thruster_tier1_right
-			
+
 			THRUSTER_IMPULSE *= 0.9
 			MAIN_THRUSTER_COMSUMPTION *= 1.2
 		2:
@@ -182,7 +182,7 @@ func _ready() -> void:
 			visual_thruster_tier2_right.visible = true
 			thruster_left_sprite = visual_thruster_tier2_left
 			thruster_right_sprite = visual_thruster_tier2_right
-			
+
 			THRUSTER_IMPULSE *= 1.0
 			MAIN_THRUSTER_COMSUMPTION *= 1.0
 		3:
@@ -190,7 +190,7 @@ func _ready() -> void:
 			visual_thruster_tier3_right.visible = true
 			thruster_left_sprite = visual_thruster_tier3_left
 			thruster_right_sprite = visual_thruster_tier3_right
-			
+
 			THRUSTER_IMPULSE *= 1.2
 			MAIN_THRUSTER_COMSUMPTION *= 0.55
 
@@ -199,7 +199,7 @@ func _ready() -> void:
 	gun = self.get_node("body_0/Gun")
 
 	coin_value = get_tree().root.get_node("exploration/CanvasLayer/CoinValue")
-	
+
 	#################
 	# SETUPING GUUUUN
 	#################
@@ -217,18 +217,17 @@ func _ready() -> void:
 			path = "res://sprites/gun/advanced.png"
 			LASER_COOLDOWN  *= 0.5
 			LASER_CONSUMPTION *= 0.5
-	
+
 	print("game_state.GunTier:", game_state.GunTier)
-	
-	var img = Image.new()
-	img.load(path)
+
+	var img = load(path)
 	var tex = ImageTexture.create_from_image(img)
 	gun.texture = tex
 
 func _physics_process(delta: float) -> void:
 	if kaput == true:
 		return
-		
+
 	# Update gravity based on height
 	var height = -self.position.y
 	body.gravity_scale = 1.0 - (height / 6000000)
@@ -388,7 +387,7 @@ func _process(delta: float) -> void:
 			photo_taken = true
 		elif time_elapsed >= 3.6:
 			spawned_newspaper = true
-			
+
 			# save result to file
 			var file_write = FileAccess.open("./save_file.data", FileAccess.WRITE)
 			var dico = inst_to_dict(game_state)

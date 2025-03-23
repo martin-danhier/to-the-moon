@@ -19,7 +19,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	position.x = rocket.global_position.x
 	position.y = -moon_y # + (1-moon_y_scroll) * (rocket.global_position.y - moon_y)
-	
+
 	if rocket.global_position.y - position.y < 50:
 		rocket.freeze = true
 		if newspaper_loaded < 2.0:
@@ -29,7 +29,16 @@ func _process(delta: float) -> void:
 			var newspaper = load("res://newspaper.tscn").instantiate()
 			newspaper.position = camera.global_position
 			get_tree().root.get_node("exploration").add_child(newspaper)
-	
+
+			var hl : Label = get_tree().root.get_node("exploration/newspaper/Offset/WrittenPaperNoBackground/Headline")
+			hl.text = "L'impossible a été fait ! Les incrédules disaient \"impossible !\", mais ils ont prouvés le contraire, ils ont marché sur la lune !"
+
+			var infos : Label = get_tree().root.get_node("exploration/newspaper/Offset/WrittenPaperNoBackground/Infos")
+			infos.text = ""
+
+			# hide UI because it's useless now
+			get_tree().root.get_node("exploration/CanvasLayer").visible = false
+
 	elif rocket.global_position.y - position.y < 700:
 		rocket.freeze = true
 		if abs(rocket.rotation) < 3.1:
@@ -41,17 +50,17 @@ func _process(delta: float) -> void:
 		thrusterR.linear_velocity = Vector2(0,0)
 		rocket.global_position.y -= 1
 		#slow_down()
-	
-	
+
+
 
 func slow_down():
 	rocket.apply_central_force(-rocket.linear_velocity * 100)
-	
-	
-	
+
+
+
 	#if abs(rocket.linear_velocity.y) > 20:
 		#rocket.linear_velocity *= 0.9
-		
+
 	#if rocket.linear_damp < 1:
 		#print('slow')
 		#rocket.linear_damp += 0.1

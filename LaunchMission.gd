@@ -122,8 +122,7 @@ func _ready() -> void:
 
 	print("game_state.GunTier:", game_state.GunTier)
 	var gun : Sprite2D = get_tree().root.get_node("Editor/Rocket/body_0/Gun")
-	var img = Image.new()
-	img.load(path)
+	var img = load(path)
 	var tex = ImageTexture.create_from_image(img)
 	gun.texture = tex
 
@@ -155,8 +154,7 @@ func _on_battery_1_pressed() -> void:
 	game_state.GunTier = 1
 
 	var gun : Sprite2D = get_tree().root.get_node("Editor/Rocket/body_0/Gun")
-	var img = Image.new()
-	img.load("res://sprites/gun/basic.png")
+	var img = load("res://sprites/gun/basic.png")
 	var tex = ImageTexture.create_from_image(img)
 	gun.texture = tex
 
@@ -165,8 +163,7 @@ func _on_battery_2_pressed() -> void:
 	game_state.GunTier = 2
 
 	var gun : Sprite2D = get_tree().root.get_node("Editor/Rocket/body_0/Gun")
-	var img = Image.new()
-	img.load("res://sprites/gun/standard.png")
+	var img = load("res://sprites/gun/standard.png")
 	var tex = ImageTexture.create_from_image(img)
 	gun.texture = tex
 
@@ -175,8 +172,7 @@ func _on_battery_3_pressed() -> void:
 	game_state.GunTier = 3
 
 	var gun : Sprite2D = get_tree().root.get_node("Editor/Rocket/body_0/Gun")
-	var img = Image.new()
-	img.load("res://sprites/gun/advanced.png")
+	var img = load("res://sprites/gun/advanced.png")
 	var tex = ImageTexture.create_from_image(img)
 	gun.texture = tex
 
@@ -208,7 +204,7 @@ func _on_thruster_2_pressed() -> void:
 
 func _on_thruster_3_pressed() -> void:
 	game_state.ThrusterTier = 3
-	
+
 	visual_thruster_tier3_left.visible = true
 	visual_thruster_tier3_right.visible = true
 
