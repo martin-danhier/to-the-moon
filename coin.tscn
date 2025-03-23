@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cis8w73i4tr15"]
+
+[ext_resource type="Script" uid="uid://bj86pxl3lmhfo" path="res://CoinFollowRocket.gd" id="1_0t63x"]
+[ext_resource type="Texture2D" uid="uid://cw1pibrseh2m8" path="res://sprites/coin.png" id="1_d5gmh"]
+
+[node name="Coin" type="Node2D"]
+script = ExtResource("1_0t63x")
+
+[node name="Coin" type="Sprite2D" parent="."]
+position = Vector2(-1, -1)
+texture = ExtResource("1_d5gmh")

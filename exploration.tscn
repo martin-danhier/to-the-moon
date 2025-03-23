@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dw6mypb0mlu15"]
+[gd_scene load_steps=25 format=3 uid="uid://dw6mypb0mlu15"]
 
 [ext_resource type="PackedScene" uid="uid://y8ju2utt1nsd" path="res://rocket.tscn" id="1_1yu1n"]
 [ext_resource type="Texture2D" uid="uid://o4ydiqa067vr" path="res://sprites/panel.png" id="2_770sp"]
@@ -11,11 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://l10ttag0717q" path="res://ground.tscn" id="9_pgb1d"]
 [ext_resource type="Texture2D" uid="uid://j4d3q7xy2f5j" path="res://assets/target.png" id="10_00hbf"]
 [ext_resource type="PackedScene" path="res://ObstacleAlert.tscn" id="10_qabf2"]
+[ext_resource type="Texture2D" uid="uid://cw1pibrseh2m8" path="res://sprites/coin.png" id="10_qgrag"]
 [ext_resource type="AudioStream" uid="uid://bfmvlfqv6f567" path="res://sounds/pull_up.ogg" id="12_qabf2"]
 [ext_resource type="AudioStream" uid="uid://dukyi7ptlbg2g" path="res://sounds/too_close.ogg" id="13_8wdfd"]
-[ext_resource type="AudioStream" uid="uid://dweqr7b48hqgh" path="res://sounds/ost.ogg" id="14_gaj1u"]
+[ext_resource type="AudioStream" uid="uid://5hqhuwoer08y" path="res://sounds/ost.ogg" id="14_es453"]
 [ext_resource type="AudioStream" uid="uid://bc8r076m0pnqn" path="res://sounds/dead.ogg" id="14_gaj1u"]
 [ext_resource type="AudioStream" uid="uid://b23fom84brarr" path="res://sounds/altitude.ogg" id="15_5bsn5"]
+[ext_resource type="PackedScene" uid="uid://cis8w73i4tr15" path="res://coin.tscn" id="18_nyiyb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pgb1d"]
 bg_color = Color(0.258746, 0.824952, 0.629899, 1)
@@ -129,9 +131,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -201.0
-offset_top = -482.0
+offset_top = -451.0
 offset_right = -41.0
-offset_bottom = -462.0
+offset_bottom = -431.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("6_00hbf")
@@ -146,10 +148,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -128.0
-offset_top = -527.0
+offset_left = -156.0
+offset_top = -496.0
 offset_right = -44.0
-offset_bottom = -504.0
+offset_bottom = -473.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("6_00hbf")
@@ -165,14 +167,29 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -208.0
-offset_top = -548.0
+offset_top = -517.0
 offset_right = -64.0
-offset_bottom = -499.0
+offset_bottom = -468.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("6_00hbf")
 text = "Altitude:
 "
+
+[node name="CoinValue" type="Label" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -570.0
+offset_right = -42.0
+offset_bottom = -540.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("6_00hbf")
+text = "0"
 
 [node name="SpeedLabel" type="Label" parent="CanvasLayer"]
 anchors_preset = 3
@@ -181,9 +198,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -209.0
-offset_top = -501.0
+offset_top = -470.0
 offset_right = -110.0
-offset_bottom = -466.0
+offset_bottom = -435.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("6_00hbf")
@@ -222,6 +239,21 @@ theme_override_fonts/font = ExtResource("6_00hbf")
 theme_override_font_sizes/font_size = 13
 text = "Battery"
 
+[node name="CoinIcon" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -202.0
+offset_top = -585.0
+offset_right = -157.0
+offset_bottom = -537.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("10_qgrag")
+
 [node name="ObstacleAlert" parent="." instance=ExtResource("10_qabf2")]
 
 [node name="target" type="Sprite2D" parent="."]
@@ -232,18 +264,28 @@ texture = ExtResource("10_00hbf")
 
 [node name="PullUpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_qabf2")
+volume_db = -1.5
 
 [node name="TooCloseSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_8wdfd")
+volume_db = -1.8
 
 [node name="MusicSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_gaj1u")
+stream = ExtResource("14_es453")
 volume_db = -5.0
 autoplay = true
-parameters/looping = false
+parameters/looping = true
 
 [node name="DieSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_gaj1u")
+volume_db = -1.5
 
 [node name="AltitudeSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_5bsn5")
+volume_db = -2.8
+
+[node name="Coin" parent="." instance=ExtResource("18_nyiyb")]
+position = Vector2(847, 1610)
+moving = false
+
+[connection signal="coin_grabbed" from="Coin" to="Rocket" method="_on_coin_coin_grabbed"]

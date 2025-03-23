@@ -43,6 +43,11 @@ var laser_cooldown = 0.3
 
 var target : Node2D
 
+var coin_prefab
+
+var coin_value : Label
+var coin_count : int = 0
+
 func get_nearest_obstacle() -> Node2D:
 	var children = get_tree().root.get_node("exploration/ObstacleInstantiator/obstacle_container").get_children()
 
@@ -92,6 +97,8 @@ func _ready() -> void:
 	camera = self.get_node("body_0/Camera2D")
 
 	gun = self.get_node("body_0/Gun")
+	
+	coin_value = get_tree().root.get_node("exploration/CanvasLayer/CoinValue")
 
 func _physics_process(delta: float) -> void:
 	if kaput == true:
@@ -194,7 +201,14 @@ func _physics_process(delta: float) -> void:
 					# laser_beam.visible = true
 
 					# spawn coins
-
+					var number = randi_range(1, 4)
+					var coin_prefab = get_tree().root.get_node("exploration/Coin")
+					for i in range(number):
+						var coin = coin_prefab.duplicate()
+						coin.moving = true
+						coin.position = result.collider.global_position
+						coin.position += Vector2(randf_range(-60.0, 60.0), randf_range(-60.0, 60.0))
+						get_tree().root.add_child(coin)
 
 	else:
 		laser_beam.visible = false
@@ -220,9 +234,12 @@ func _process(delta: float) -> void:
 		time_elapsed += delta
 
 		if time_elapsed < 3.6 and time_elapsed > 0.2 and !photo_taken:
+			await RenderingServer.frame_post_draw
 			crash_texture = get_viewport().get_texture().get_image()
 			photo_taken = true
 		elif time_elapsed >= 3.6:
+			spawned_newspaper = true
+			
 			var newspaper = load("res://newspaper.tscn").instantiate()
 			newspaper.position = camera.global_position
 			get_tree().root.add_child(newspaper)
@@ -266,8 +283,6 @@ func _process(delta: float) -> void:
 			# end "die sound"
 			die_sound.stop()
 
-			spawned_newspaper = true
-
 func explode_rocket():
 	# Detach all joints
 	var explosion = load("res://explosion.tscn")
@@ -304,3 +319,9 @@ func _on_rocket_part_body_entered(target: Node) -> void:
 		explode_rocket()
 	elif body.linear_velocity.length() > 120.0:
 		explode_rocket()
+
+
+func _on_coin_coin_grabbed() -> void:
+	coin_count += 1
+	
+	coin_value.text = str(coin_count)
