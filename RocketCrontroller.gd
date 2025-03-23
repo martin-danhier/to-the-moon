@@ -24,8 +24,6 @@ var laser_sound : AudioStreamPlayer
 var small_explosion_sound: AudioStreamPlayer
 var large_explosion_sound: AudioStreamPlayer
 
-var laser_beam : Node2D
-
 var gun : Sprite2D
 
 var kaput = false
@@ -193,9 +191,6 @@ func _ready() -> void:
 			
 			THRUSTER_IMPULSE *= 1.2
 			MAIN_THRUSTER_COMSUMPTION *= 0.55
-			
-
-	laser_beam = self.get_node("LaserBeam")
 
 	camera = self.get_node("body_0/Camera2D")
 
@@ -355,7 +350,6 @@ func _physics_process(delta: float) -> void:
 						get_tree().root.add_child(coin)
 
 	else:
-		laser_beam.visible = false
 		if not Input.is_action_pressed("fire"):
 			laser_fired = false
 
@@ -460,7 +454,6 @@ func explode_rocket():
 	thruster_left_sprite.play("idle")
 	side_thruster_left_sprite.play("idle")
 	side_thruster_right_sprite.play("idle")
-	laser_beam.visible = false
 
 	thruster_sound_left.stop()
 	thruster_sound_right.stop()

@@ -83,18 +83,18 @@ func _ready() -> void:
 		game_state.ThrusterTier = data["ThrusterTier"]
 		game_state.FuelTier = data["FuelTier"]
 
-	visual_thruster_tier1_left = get_tree().root.get_node("Editor/Background/Rocket/thruster_left/AnimatedSprite2D_tier1")
+	visual_thruster_tier1_left = get_tree().root.get_node("Editor/Rocket/thruster_left/AnimatedSprite2D_tier1")
 	visual_thruster_tier1_left.visible = false
-	visual_thruster_tier2_left = get_tree().root.get_node("Editor/Background/Rocket/thruster_left/AnimatedSprite2D_tier2")
+	visual_thruster_tier2_left = get_tree().root.get_node("Editor/Rocket/thruster_left/AnimatedSprite2D_tier2")
 	visual_thruster_tier2_left.visible = false
-	visual_thruster_tier3_left = get_tree().root.get_node("Editor/Background/Rocket/thruster_left/AnimatedSprite2D_tier3")
+	visual_thruster_tier3_left = get_tree().root.get_node("Editor/Rocket/thruster_left/AnimatedSprite2D_tier3")
 	visual_thruster_tier3_left.visible = false
 
-	visual_thruster_tier1_right = get_tree().root.get_node("Editor/Background/Rocket/thruster_right/AnimatedSprite2D_tier1")
+	visual_thruster_tier1_right = get_tree().root.get_node("Editor/Rocket/thruster_right/AnimatedSprite2D_tier1")
 	visual_thruster_tier1_right.visible = false
-	visual_thruster_tier2_right = get_tree().root.get_node("Editor/Background/Rocket/thruster_right/AnimatedSprite2D_tier2")
+	visual_thruster_tier2_right = get_tree().root.get_node("Editor/Rocket/thruster_right/AnimatedSprite2D_tier2")
 	visual_thruster_tier2_right.visible = false
-	visual_thruster_tier3_right = get_tree().root.get_node("Editor/Background/Rocket/thruster_right/AnimatedSprite2D_tier3")
+	visual_thruster_tier3_right = get_tree().root.get_node("Editor/Rocket/thruster_right/AnimatedSprite2D_tier3")
 	visual_thruster_tier3_right.visible = false
 
 	var coin_value : Label = get_tree().root.get_node("Editor/Missions/CoinValue")

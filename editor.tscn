@@ -327,6 +327,7 @@ autowrap_mode = 3
 [node name="Price" type="Label" parent="Shop/Advanced"]
 visible = false
 texture_filter = 1
+layout_mode = 0
 offset_left = 23.1803
 offset_top = 29.9167
 offset_right = 41.1803
@@ -340,6 +341,7 @@ vertical_alignment = 1
 
 [node name="Coin" type="TextureRect" parent="Shop/Advanced"]
 visible = false
+layout_mode = 0
 offset_left = 43.6066
 offset_top = 26.457
 offset_right = 58.6066
@@ -368,6 +370,7 @@ autowrap_mode = 3
 [node name="Price" type="Label" parent="Shop/Standard"]
 visible = false
 texture_filter = 1
+layout_mode = 0
 offset_left = 28.2295
 offset_top = 31.1378
 offset_right = 42.2294
@@ -381,6 +384,7 @@ vertical_alignment = 1
 
 [node name="Coin" type="TextureRect" parent="Shop/Standard"]
 visible = false
+layout_mode = 0
 offset_left = 43.6066
 offset_top = 26.457
 offset_right = 58.6066
@@ -409,6 +413,7 @@ autowrap_mode = 3
 [node name="Price" type="Label" parent="Shop/Basic"]
 visible = false
 texture_filter = 1
+layout_mode = 0
 offset_left = 28.0
 offset_top = 29.9167
 offset_right = 41.9999
@@ -422,6 +427,7 @@ vertical_alignment = 1
 
 [node name="Coin" type="TextureRect" parent="Shop/Basic"]
 visible = false
+layout_mode = 0
 offset_left = 43.6066
 offset_top = 26.457
 offset_right = 58.6066
@@ -433,6 +439,7 @@ expand_mode = 1
 position = Vector2(959, 538)
 
 [node name="Rocket" parent="." instance=ExtResource("11_3btpq")]
+process_mode = 4
 position = Vector2(929.87, 823)
 scale = Vector2(2.905, 2.905)
 
