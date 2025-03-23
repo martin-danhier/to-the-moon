@@ -8,7 +8,7 @@
 friction = 0.6
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7tip"]
-size = Vector2(5296, 288)
+size = Vector2(5296, 2424)
 
 [node name="ground" type="Node2D"]
 position = Vector2(0, -1000)
@@ -17,28 +17,48 @@ position = Vector2(0, -1000)
 
 [node name="trees" type="Parallax2D" parent="ground"]
 scale = Vector2(2, 2)
-scroll_offset = Vector2(0, 120)
 repeat_size = Vector2(960, 0)
 repeat_times = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="ground/trees"]
+position = Vector2(0, 60)
 texture_filter = 1
 texture = ExtResource("2_tv015")
 centered = false
 
 [node name="port" type="Parallax2D" parent="ground"]
 scale = Vector2(2, 2)
-scroll_offset = Vector2(0, 120)
 
 [node name="Sprite2D" type="Sprite2D" parent="ground/port"]
 texture_filter = 1
+position = Vector2(0, 60)
 texture = ExtResource("1_t7tip")
+centered = false
+
+[node name="trees2" type="Parallax2D" parent="ground"]
+scale = Vector2(2, 2)
+repeat_size = Vector2(960, 0)
+repeat_times = 10
+
+[node name="Sprite2D2" type="Sprite2D" parent="ground/trees2"]
+position = Vector2(400, 220)
+texture = ExtResource("2_tv015")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="ground/trees2"]
+position = Vector2(200, 380)
+texture = ExtResource("2_tv015")
+centered = false
+
+[node name="Sprite2D4" type="Sprite2D" parent="ground/trees2"]
+position = Vector2(100, 540)
+texture = ExtResource("2_tv015")
 centered = false
 
 [node name="ground_box" type="StaticBody2D" parent="ground"]
 physics_material_override = SubResource("PhysicsMaterial_tv015")
 
 [node name="ground_collision_box" type="CollisionShape2D" parent="ground/ground_box"]
-position = Vector2(1008, 936)
+position = Vector2(1008, 2004)
 shape = SubResource("RectangleShape2D_t7tip")
 script = ExtResource("3_tv015")
