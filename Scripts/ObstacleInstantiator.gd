@@ -74,7 +74,7 @@ func maybe_spawn_obstacle():
 
 	var target: Vector2 = rocket_body.global_position + distance * direction
 
-	if target.y > -600.0:
+	if target.y > -600.0 or target.y < -96000:
 		return
 
 	# Choose a point around the target
