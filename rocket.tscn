@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://b1q48y6uvukic" path="res://sounds/pew.ogg" id="9_mnerj"]
 [ext_resource type="AudioStream" uid="uid://bj4p1nl62tngp" path="res://sounds/small_explosion_delayed.ogg" id="9_xk1bh"]
 [ext_resource type="AudioStream" uid="uid://cxe4wd8thloed" path="res://sounds/large_explosion.ogg" id="10_edwur"]
-[ext_resource type="AudioStream" uid="uid://b1g2rqtahnp78" path="res://sounds/chaching.ogg" id="13_aw411"]
+[ext_resource type="AudioStream" uid="uid://wi4qv55mlq1g" path="res://sounds/chaching.ogg" id="13_aw411"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_awr8v"]
 radius = 33.0
@@ -243,7 +243,7 @@ position = Vector2(-1, -4)
 offset = Vector2(0, -200)
 zoom = Vector2(0.8, 0.8)
 position_smoothing_enabled = true
-position_smoothing_speed = 8.03
+position_smoothing_speed = 25.0
 drag_left_margin = 0.8
 drag_top_margin = 0.8
 drag_right_margin = 0.8

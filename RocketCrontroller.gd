@@ -70,11 +70,11 @@ var game_state : SomewhatGameState
 
 # some value to change depending on upgrade !!!!
 @export var THRUSTER_IMPULSE = 17_000.0
-@export var SIDE_THRUSTER_COMSUMPTION = 0.006
-@export var MAIN_THRUSTER_COMSUMPTION = 0.018
-@export var LASER_RANGE = 850
-@export var LASER_COOLDOWN = 0.3
-@export var LASER_CONSUMPTION = 2.3
+@export var SIDE_THRUSTER_COMSUMPTION = 0.004
+@export var MAIN_THRUSTER_COMSUMPTION = 0.012
+@export var LASER_RANGE = 620
+@export var LASER_COOLDOWN = 0.22
+@export var LASER_CONSUMPTION = 1.9
 
 var visual_thruster_tier1_left : AnimatedSprite2D
 var visual_thruster_tier2_left : AnimatedSprite2D
@@ -208,12 +208,15 @@ func _ready() -> void:
 		1:
 			path = "res://sprites/gun/basic.png"
 			LASER_COOLDOWN  *= 2.0
+			LASER_CONSUMPTION *= 1.8
 		2:
 			path = "res://sprites/gun/standard.png"
 			LASER_COOLDOWN  *= 1.0
+			LASER_CONSUMPTION *= 0.9
 		3:
 			path = "res://sprites/gun/advanced.png"
 			LASER_COOLDOWN  *= 0.5
+			LASER_CONSUMPTION *= 0.5
 	
 	print("game_state.GunTier:", game_state.GunTier)
 	

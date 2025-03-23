@@ -290,6 +290,5 @@ position = Vector2(847, 1610)
 moving = false
 
 [node name="Moon" parent="." instance=ExtResource("19_8exjl")]
-moon_y = 50000
 
 [connection signal="coin_grabbed" from="Coin" to="Rocket" method="_on_coin_coin_grabbed"]
