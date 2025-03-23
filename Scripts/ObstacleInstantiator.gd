@@ -37,12 +37,12 @@ func _ready():
 	# Define object types here
 
 	#obstacle_defs.push_back(ObstacleDefinition.new(1500.0, 500.0, preload("res://obstacles/obstacle.tscn")))
-	obstacle_defs.push_back(ObstacleDefinition.new(3000.0, 1500.0, preload("res://obstacles/duck.tscn")))
-	obstacle_defs.push_back(ObstacleDefinition.new(7500.0, 1000.0, preload("res://obstacles/obstacle.tscn")))
-	obstacle_defs.push_back(ObstacleDefinition.new(15000, 3000, preload("res://obstacles/satellite.tscn")))
-	obstacle_defs.push_back(ObstacleDefinition.new(20000, 3000, preload("res://obstacles/car.tscn")))
-	obstacle_defs.push_back(ObstacleDefinition.new(60000, 5000, preload("res://obstacles/asteroid.tscn")))
-	obstacle_defs.push_back(ObstacleDefinition.new(100000, 5000, preload("res://obstacles/ufo.tscn")))
+	obstacle_defs.push_back(ObstacleDefinition.new(4000.0, 3000.0, preload("res://obstacles/duck.tscn")))
+	obstacle_defs.push_back(ObstacleDefinition.new(5600.0, 1800.0, preload("res://obstacles/obstacle.tscn")))
+	obstacle_defs.push_back(ObstacleDefinition.new(27000, 4500, preload("res://obstacles/satellite.tscn")))
+	obstacle_defs.push_back(ObstacleDefinition.new(35000, 5000, preload("res://obstacles/car.tscn")))
+	obstacle_defs.push_back(ObstacleDefinition.new(58000, 7000, preload("res://obstacles/asteroid.tscn")))
+	obstacle_defs.push_back(ObstacleDefinition.new(85000, 6000, preload("res://obstacles/ufo.tscn")))
 
 	# Compute max total
 	for obstacle_def in obstacle_defs:
