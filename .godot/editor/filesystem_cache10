@@ -1,32 +1,91 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1742670253
-editor.tscn::PackedScene/PackedScene::2298463884704212292::1742648451::0::1::::<><><>0<>0<><>::
-exploration.tscn::PackedScene/PackedScene::4665660152658967923::1742657298::0::1::::<><><>0<>0<><>::uid://jhp1evdhvaie::::res://RocketCrontroller.gd<>uid://chpld2yyt3kgh::::res://assets/thruster.png<>uid://db4swb5w3qhwr::::res://assets/body.png<>uid://bn7uvcm0llg0a::::res://assets/side_thruster.png
-icon.svg::CompressedTexture2D/CompressedTexture2D::4776151693302089717::1742648451::1742648838::1::::<><><>0<>0<>866e27131139a85dbd722e6d2d47e52a<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-newspaper.gd::GDScript::3616764251997203468::1742670164::0::1::::<>Node2D<><>0<>0<><>::
-newspaper.tscn::PackedScene::1799195346033299269::1742670253::0::1::::<><><>0<>0<><>::uid://brr8txdyxkdlk::::res://newspaper.gd<>uid://cfq7wopg34q2f::::res://sprites/Empty_news.png<>uid://bjp6ea3e3k1wi::::res://Times-New-Roman/Times New Roman/times new roman.ttf
-README.md::TextFile/TextFile::-1::1742648451::0::1::::<><><>0<>0<><>::
-RocketCrontroller.gd::GDScript/GDScript::647107665234513740::1742657247::0::1::::<>Node2D<><>0<>0<><>::
-::res://assets/::1742657253
-body.png::CompressedTexture2D/CompressedTexture2D::7290450142825890201::1742651032::1742651068::1::::<><><>0<>0<>4201e957cefe986d4e49a586fd2e13ca<>res://.godot/imported/body.png-b8c73c77b587abd445085cbdae951373.ctex::
-side_thruster.png::CompressedTexture2D/CompressedTexture2D::3366187705380145682::1742657247::1742657253::1::::<><><>0<>0<>1203bcfb5b66880d028591b2d7f33921<>res://.godot/imported/side_thruster.png-7c31701cb59b1518bad1368d7f2c6535.ctex::
-thruster.png::CompressedTexture2D/CompressedTexture2D::5295803639788183947::1742651032::1742651068::1::::<><><>0<>0<>b528c794e6cd50459a0a288329a81216<>res://.godot/imported/thruster.png-5c193e49495ad723b3cc21bafdc91ab9.ctex::
-::res://newspaper_headlines/::1742669254
-0.txt::TextFile/TextFile::-1::1742668935::0::1::::<><><>0<>0<><>::
-1.txt::TextFile::-1::1742669157::0::1::::<><><>0<>0<><>::
-2.txt::TextFile::-1::1742669254::0::1::::<><><>0<>0<><>::
-3.txt::TextFile::-1::1742669222::0::1::::<><><>0<>0<><>::
-4.txt::TextFile::-1::1742669242::0::1::::<><><>0<>0<><>::
-::res://sprites/::1742663864
-Cloud.png::CompressedTexture2D/CompressedTexture2D::5273624554172394743::1742650286::1742650319::1::::<><><>0<>0<>fe36ef7af7bbfbf92a4da6de63aee19e<>res://.godot/imported/Cloud.png-8a9551c8af7980d336bf7147b631c7b8.ctex::
-duck_female.png::CompressedTexture2D/CompressedTexture2D::3687013326521428488::1742660400::1742660775::1::::<><><>0<>0<>66dab9f8528419d5b79c1e4c328a7ccf<>res://.godot/imported/duck_female.png-13f559014ef135e98fdfbfbc4750ef19.ctex::
-duck_male.png::CompressedTexture2D/CompressedTexture2D::3984230815602204739::1742660344::1742660775::1::::<><><>0<>0<>77a3830d7bf2880b93e0edfa525f1026<>res://.godot/imported/duck_male.png-e0855a8ac7a4de6bb5a718ee331099d6.ctex::
-Empty_news.png::CompressedTexture2D/CompressedTexture2D::5158798619685912451::1742663809::1742663864::1::::<><><>0<>0<>a1ae127269b13dd8ed43887c07909a21<>res://.godot/imported/Empty_news.png-198a0f6c5e7a8fccc084ff1b28f368ea.ctex::
-thruster.png::CompressedTexture2D/CompressedTexture2D::6515442928909123477::1742661725::1742661939::1::::<><><>0<>0<>d062c51898e0e911da891f9941163c90<>res://.godot/imported/thruster.png-16e260ff184a3bd34f4b3f25c8eb25f3.ctex::
-written_paper_no_background.png::CompressedTexture2D/CompressedTexture2D::4337349030344778087::1742658191::1742658409::1::::<><><>0<>0<>223b05e231630637204987bf5124d1aa<>res://.godot/imported/written_paper_no_background.png-b9036c1fe824f50e53818b2ec94cda29.ctex::
-::res://Times-New-Roman/::1742665924
-::res://Times-New-Roman/Times New Roman/::1742670249
-times new roman bold italic.ttf::FontFile/FontFile::7289737456259288525::1462990348::1742665948::1::::<><><>0<>0<>6a193ad5e4b4e0f880f7ccc9611144d5<>res://.godot/imported/times new roman bold italic.ttf-6fdecc4a95a7c875c47418af2906d3e4.fontdata::
-times new roman bold.ttf::FontFile/FontFile::7007262723732020871::1462990548::1742665948::1::::<><><>0<>0<>b0a0430a2af1f5409925d72e534beef1<>res://.godot/imported/times new roman bold.ttf-a0dcf02d9b3f261276b438787f8a3f80.fontdata::
-times new roman italic.ttf::FontFile/FontFile::8386829437176717608::1462990464::1742665948::1::::<><><>0<>0<>b37f94762d1cbc4166f21f15fb617e3a<>res://.godot/imported/times new roman italic.ttf-025461c3e572a8ba52e218ce18f04987.fontdata::
-times new roman.ttf::FontFile/FontFile::3050975356171775724::1462989862::1742670330::1::::<><><>0<>0<>694a2a09fe15993b1454065dc36127c6<>res://.godot/imported/times new roman.ttf-9a34092ab7559d60b11c1e5e7a410386.fontdata::
+::res://::1742698892
+alert.tscn::PackedScene/PackedScene::7431899787737170615::1742698493::0::1::::<><><>0<>0<><>::uid://cfurm4d57idlx::::res://assets/alert.png
+altimeter.gd::GDScript/GDScript::2700909363386610976::1742698493::0::1::::<>Label<><>0<>0<><>::
+DestroyWhenEnded.gd::GDScript/GDScript::5524560673401637843::1742698493::0::1::::<>AnimatedSprite2D<><>0<>0<><>::
+editor.tscn::PackedScene::2298463884704212292::1742696409::0::1::::<><><>0<>0<><>::uid://byjg40xrc7x0u::::res://sprites/garage.jpg<>uid://c38ycs1yil4u4::::res://sprites/grey.jpg<>uid://bhbknmajjk2ap::::res://editor_background.gd<>uid://cw1pibrseh2m8::::res://sprites/coin.png<>uid://ys0g8cog5q0k::::res://editor_missions.gd<>uid://dylevauoywhd3::::res://sprites/fame.png<>uid://ceixrq4nnx0fy::::res://assets/PressStart2P-Regular.ttf<>uid://b6l7konckhsvt::::res://sprites/potion.png<>uid://bdgyoraf55o8j::::res://editor_shop.gd
+editor_background.gd::GDScript::2880437982863387643::1742696409::0::1::::<>Sprite2D<><>0<>0<><>::
+editor_missions.gd::GDScript::1723221423473920172::1742695395::0::1::::<>Sprite2D<><>0<>0<><>::
+editor_shop.gd::GDScript::2610856583238036627::1742695728::0::1::::<>Sprite2D<><>0<>0<><>::
+exploration.tscn::PackedScene/PackedScene::8768184575006218330::1742698493::0::1::::<><><>0<>0<><>::uid://y8ju2utt1nsd::::res://rocket.tscn<>uid://o4ydiqa067vr::::res://sprites/panel.png<>uid://5ye8esp8kr1::::res://progress_bar.gd<>uid://cf6dt8toe3la7::::res://speedometer.gd<>uid://ceixrq4nnx0fy::::res://assets/PressStart2P-Regular.ttf<>uid://b7qc0gwls2n0v::::res://sky_box.tscn<>uid://beqlt2q17j7xk::::res://altimeter.gd<>uid://buog8pexxuncu::::res://ObstacleInstantiator.tscn<>uid://l10ttag0717q::::res://ground.tscn<>uid://j4d3q7xy2f5j::::res://assets/target.png<>res://ObstacleAlert.tscn
+explosion.tscn::PackedScene/PackedScene::1349931718437855472::1742698493::0::1::::<><><>0<>0<><>::uid://cm8scagduqj17::::res://assets/boom3.png<>uid://ckyeybpr8y3qt::::res://DestroyWhenEnded.gd
+ground.tscn::PackedScene/PackedScene::827303954778227592::1742698493::0::1::::<><><>0<>0<><>::uid://d1eq2tj5rro76::::res://assets/spaceport.png<>uid://c5neiyina7fdv::::res://assets/trees.png<>uid://bc3oussi1atfb::::res://Scripts/ground.gd
+icon.svg::CompressedTexture2D/CompressedTexture2D::4776151693302089717::1742698493::1742698493::1::::<><><>0<>0<>866e27131139a85dbd722e6d2d47e52a<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+newspaper.tscn::PackedScene::1799195346033299269::1742698588::0::1::::<><><>0<>0<><>::uid://cfq7wopg34q2f::::res://sprites/Empty_news.png<>uid://dbr4jltj7hf41::::res://sepia.gdshader<>uid://bjp6ea3e3k1wi::::res://Times-New-Roman/Times New Roman/times new roman.ttf<>uid://d2jcqyi3h0dav::::res://sounds/tadaladala.ogg
+ObstacleAlert.tscn::PackedScene/PackedScene::4921334728825627169::1742698493::0::1::::<><><>0<>0<><>::uid://c74f5japugou::::res://Scripts/ObstacleAlert.gd
+ObstacleInstantiator.tscn::PackedScene/PackedScene::3819522873272067452::1742698493::0::1::::<><><>0<>0<><>::uid://ddykdau65pn4h::::res://Scripts/ObstacleInstantiator.gd
+progress_bar.gd::GDScript/GDScript::63397423912772284::1742698493::0::1::::<>ProgressBar<><>0<>0<><>::
+README.md::TextFile/TextFile::-1::1742698493::0::1::::<><><>0<>0<><>::
+rocket.tscn::PackedScene/PackedScene::1753240331925989115::1742698493::0::1::::<><><>0<>0<><>::uid://jhp1evdhvaie::::res://RocketCrontroller.gd<>uid://b3bjkv6iqxlr0::::res://sprites/rocket_body.png<>uid://b6s8ewr4piw5t::::res://sprites/laser_beam.png<>uid://cy3enmph0xk5j::::res://sprites/thruster.png<>uid://bn7uvcm0llg0a::::res://assets/side_thruster.png<>uid://8j2xphuhed2t::::res://assets/gun.png
+RocketCrontroller.gd::GDScript/GDScript::647107665234513740::1742698493::0::1::::<>Node2D<><>0<>0<><>::
+sepia.gdshader::Shader/Shader::7266322789031822240::1742698493::0::1::::<><><>0<>0<><>::
+sky_box.tscn::PackedScene/PackedScene::4665660152658967923::1742698493::0::1::::<><><>0<>0<><>::uid://c2k47rl76iiqb::::res://assets/background.png<>uid://rpi346wi5kes::::res://assets/stars1.png<>uid://c08lk2aprvpnf::::res://assets/stars2.png<>uid://lamyfoa1wl4v::::res://assets/stars3.png<>uid://b4nkqpsg6f788::::res://assets/sky3.png<>uid://bpk23c1661yqn::::res://assets/stars5.png
+speedometer.gd::GDScript/GDScript::5187999140279102700::1742698493::0::1::::<>Label<><>0<>0<><>::
+stockfoot_003.jpg::CompressedTexture2D/CompressedTexture2D::292314597724430949::1742698493::1742698548::1::::<><><>0<>0<>445dbc6b5012d4d2b205139a9842c363<>res://.godot/imported/stockfoot_003.jpg-2b213fd89e784d20ee6e99b2799102fb.ctex::
+::res://assets/::1742698548
+alert.png::CompressedTexture2D/CompressedTexture2D::5166128288279159385::1742698493::1742698548::1::::<><><>0<>0<>52ea8f58bc5229d561712102fa560675<>res://.godot/imported/alert.png-80ba7f10797724f12dd77fabb3e00409.ctex::
+background.png::CompressedTexture2D/CompressedTexture2D::6690402772734343601::1742698493::1742698548::1::::<><><>0<>0<>7faa46a06818a3c3ef27ed511b5352a9<>res://.godot/imported/background.png-1fdba8b6a966ce2c2ffc607f7c096e95.ctex::
+body.png::CompressedTexture2D/CompressedTexture2D::7290450142825890201::1742698493::1742698548::1::::<><><>0<>0<>4201e957cefe986d4e49a586fd2e13ca<>res://.godot/imported/body.png-b8c73c77b587abd445085cbdae951373.ctex::
+boom3.png::CompressedTexture2D/CompressedTexture2D::5684328443816669144::1742698493::1742698548::1::::<><><>0<>0<>75530b2c947c1fb4b43c2e68636378f9<>res://.godot/imported/boom3.png-152c3da5f89ce1e3d73f48b0208e919e.ctex::
+gun.png::CompressedTexture2D/CompressedTexture2D::2336492471488221317::1742698493::1742698548::1::::<><><>0<>0<>38ae8f4e70965ba3942fd1abc4c1f7b2<>res://.godot/imported/gun.png-312878ca3ec850766373eb6a5040d08e.ctex::
+PressStart2P-Regular.ttf::FontFile/FontFile::5071539499082718094::1742698493::1742698548::1::::<><><>0<>0<>cb2efdebe6f5074fa6078db2340dde38<>res://.godot/imported/PressStart2P-Regular.ttf-1178f0090c47b0e3b996e0e776453c0a.fontdata::
+side_thruster.png::CompressedTexture2D/CompressedTexture2D::3366187705380145682::1742698493::1742698548::1::::<><><>0<>0<>1203bcfb5b66880d028591b2d7f33921<>res://.godot/imported/side_thruster.png-7c31701cb59b1518bad1368d7f2c6535.ctex::
+sky3.png::CompressedTexture2D/CompressedTexture2D::4449370618599965531::1742698493::1742698548::1::::<><><>0<>0<>c2365b86fccd51ff2882cbf11f374fd6<>res://.godot/imported/sky3.png-7c21c3a11eedcaa63d69a89ed78f5c13.ctex::
+spaceport.png::CompressedTexture2D/CompressedTexture2D::8993450198237438255::1742698493::1742698548::1::::<><><>0<>0<>5cc3a8136c9a46be32e12f0125169327<>res://.godot/imported/spaceport.png-5766eed730f71ee81b975cc736a192aa.ctex::
+stars1.png::CompressedTexture2D/CompressedTexture2D::1224713318406467890::1742698493::1742698548::1::::<><><>0<>0<>70da74c158da7e7e40075634e96f7642<>res://.godot/imported/stars1.png-1f4c72a1c897339a3b5b5bf5d27228cc.ctex::
+stars2.png::CompressedTexture2D/CompressedTexture2D::6596374087916010515::1742698493::1742698548::1::::<><><>0<>0<>294a4d7999e4a0ddc29fb66beae3c4b2<>res://.godot/imported/stars2.png-5e89838a4696222d5381a91e0486e6ae.ctex::
+stars3.png::CompressedTexture2D/CompressedTexture2D::772849027264906987::1742698493::1742698548::1::::<><><>0<>0<>728663c65ee36e8e9f1d73f4de618ede<>res://.godot/imported/stars3.png-b9d61b0b1ef161744ee4d338ebe81849.ctex::
+stars4.png::CompressedTexture2D/CompressedTexture2D::2869759285226255888::1742698493::1742698548::1::::<><><>0<>0<>e9d610da7db379761d50f20447115f1a<>res://.godot/imported/stars4.png-73958847cb47e4796035e8cabd4cec04.ctex::
+stars5.png::CompressedTexture2D/CompressedTexture2D::3461586623500806061::1742698493::1742698548::1::::<><><>0<>0<>d75d29f8c5f64dd26f0afcdb08ee49e4<>res://.godot/imported/stars5.png-e8a0e3907bd7cbacfbdf6e72aa4ce0b5.ctex::
+stars.png::CompressedTexture2D/CompressedTexture2D::700140235245288459::1742698493::1742698548::1::::<><><>0<>0<>961a2662c6b0b2104a266815db117008<>res://.godot/imported/stars.png-0cec3e64e602a6d2ff05e29e04abb435.ctex::
+target.png::CompressedTexture2D/CompressedTexture2D::691799591703159889::1742698493::1742698548::1::::<><><>0<>0<>bcc7b990dfc6dd08635b5fe75ad471b7<>res://.godot/imported/target.png-52c019dda84da6fc854650719104c4ec.ctex::
+thruster.png::CompressedTexture2D/CompressedTexture2D::5295803639788183947::1742698493::1742698548::1::::<><><>0<>0<>b528c794e6cd50459a0a288329a81216<>res://.godot/imported/thruster.png-5c193e49495ad723b3cc21bafdc91ab9.ctex::
+trees.png::CompressedTexture2D/CompressedTexture2D::6905602015163018671::1742698493::1742698548::1::::<><><>0<>0<>d065f6702a6c6737ddca19f0fdc1cb8b<>res://.godot/imported/trees.png-239925b3d061bf30fe051d4c6f066bb6.ctex::
+::res://Missions/::1742690574
+1.txt::TextFile::-1::1742690434::0::1::::<><><>0<>0<><>::
+2.txt::TextFile::-1::1742690503::0::1::::<><><>0<>0<><>::
+3.txt::TextFile::-1::1742690574::0::1::::<><><>0<>0<><>::
+::res://newspaper_headlines/::1742698493
+::res://newspaper_headlines/bad/::1742698493
+0.txt::TextFile/TextFile::-1::1742698493::0::1::::<><><>0<>0<><>::
+1.txt::TextFile/TextFile::-1::1742698493::0::1::::<><><>0<>0<><>::
+::res://newspaper_headlines/fuel/::1742698493
+0.txt::TextFile/TextFile::-1::1742698493::0::1::::<><><>0<>0<><>::
+1.txt::TextFile/TextFile::-1::1742698493::0::1::::<><><>0<>0<><>::
+::res://newspaper_headlines/good/::1742698493
+0.txt::TextFile/TextFile::-1::1742698493::0::1::::<><><>0<>0<><>::
+1.txt::TextFile/TextFile::-1::1742698493::0::1::::<><><>0<>0<><>::
+::res://newspaper_headlines/semi_good/::1742698493
+0.txt::TextFile/TextFile::-1::1742698493::0::1::::<><><>0<>0<><>::
+1.txt::TextFile/TextFile::-1::1742698493::0::1::::<><><>0<>0<><>::
+::res://obstacles/::1742698493
+obstacle.tscn::PackedScene/PackedScene::5290499991017626003::1742698493::0::1::::<><><>0<>0<><>::uid://chet3c1aafnil::::res://sprites/Cloud.png<>uid://c3agsmxfaou4b::::res://Scripts/MovementFunction.gd
+::res://Scripts/::1742698493
+ground.gd::GDScript/GDScript::2585487675484700311::1742698493::0::1::::<>CollisionShape2D<><>0<>0<><>::
+MovementFunction.gd::GDScript/GDScript::6738526101536450555::1742698493::0::1::::<>Node<><>0<>0<><>::
+ObstacleAlert.gd::GDScript/GDScript::208209086790312152::1742698493::0::1::::<>Node<><>0<>0<><>::
+ObstacleInstantiator.gd::GDScript/GDScript::7419986207745496397::1742698493::0::1::::<>Node<><>0<>0<><>::
+::res://sounds/::1742698548
+tadaladala.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::9073091509982097881::1742698493::1742698548::1::::<><><>0<>0<>4caca8618d6885127ce471e186ff1024<>res://.godot/imported/tadaladala.ogg-f40c9e9c6140e01c4af552ab811ffca8.oggvorbisstr::
+::res://sprites/::1742698736
+Cloud.png::CompressedTexture2D/CompressedTexture2D::5273624554172394743::1742698493::1742698493::1::::<><><>0<>0<>fe36ef7af7bbfbf92a4da6de63aee19e<>res://.godot/imported/Cloud.png-8a9551c8af7980d336bf7147b631c7b8.ctex::
+coin.png::CompressedTexture2D::6371594869879719837::1742680864::1742698893::1::::<><><>0<>0<>a400c7f0c2187a3cb6a65b1f620bd9fc<>res://.godot/imported/coin.png-54d5e156d7891d9603a51f76f85b4fd9.ctex::
+CONCHARS.png::FontFile/FontFile::8355195318969172498::1742698493::1742698548::1::::<><><>0<>0<>cdc0de868583eb98bffbc4c0cb1bc1a9<>res://.godot/imported/CONCHARS.png-7d514186393455c65cbd621b802410ed.fontdata::
+duck_female.png::CompressedTexture2D/CompressedTexture2D::3687013326521428488::1742698493::1742698548::1::::<><><>0<>0<>66dab9f8528419d5b79c1e4c328a7ccf<>res://.godot/imported/duck_female.png-13f559014ef135e98fdfbfbc4750ef19.ctex::
+duck_male.png::CompressedTexture2D/CompressedTexture2D::3984230815602204739::1742698493::1742698548::1::::<><><>0<>0<>77a3830d7bf2880b93e0edfa525f1026<>res://.godot/imported/duck_male.png-e0855a8ac7a4de6bb5a718ee331099d6.ctex::
+Empty_news.png::CompressedTexture2D/CompressedTexture2D::5158798619685912451::1742698493::1742698548::1::::<><><>0<>0<>a1ae127269b13dd8ed43887c07909a21<>res://.godot/imported/Empty_news.png-198a0f6c5e7a8fccc084ff1b28f368ea.ctex::
+fame.png::CompressedTexture2D::8866782854894935822::1742680864::1742698893::1::::<><><>0<>0<>fd67f637555f1ba3c00d673307a7293b<>res://.godot/imported/fame.png-541d1c74db483ce0743cb8b7b875aa36.ctex::
+garage.jpg::CompressedTexture2D::4089949770162872258::1742682809::1742698893::1::::<><><>0<>0<>d2d43e59a00b108416ccf21c9b801e0a<>res://.godot/imported/garage.jpg-78a7977375d0e0263c1d93f38aee9ff6.ctex::
+grey.jpg::CompressedTexture2D::6807715221236111249::1742683405::1742698893::1::::<><><>0<>0<>2b2ce55d6a8a13287610561c92144836<>res://.godot/imported/grey.jpg-0e79e863a4743aacd0eb7dce6d245327.ctex::
+laser_beam.png::CompressedTexture2D/CompressedTexture2D::4601445623095485303::1742698493::1742698548::1::::<><><>0<>0<>4c801f002b52c45fef6f77c2495e7386<>res://.godot/imported/laser_beam.png-5c493b5c03d7458fac5e757f65afc8bf.ctex::
+panel.png::CompressedTexture2D/CompressedTexture2D::1043973775946633059::1742698493::1742698548::1::::<><><>0<>0<>024d60454fb04f7dfeb441b4836de77d<>res://.godot/imported/panel.png-806f4bab8e799332a9707526423c1dfb.ctex::
+potion.png::CompressedTexture2D::4586944548988228605::1742680864::1742698893::1::::<><><>0<>0<>e8b622dbe29d513d77279809600959b3<>res://.godot/imported/potion.png-e55922c173fa2b1221120a963b47c884.ctex::
+rocket_body.png::CompressedTexture2D/CompressedTexture2D::4354338145451086719::1742698493::1742698548::1::::<><><>0<>0<>b0cd837c9d41170da621650b5fdb0026<>res://.godot/imported/rocket_body.png-5cc361511f90fd08f1b1a5dd9bdbc02a.ctex::
+thruster.png::CompressedTexture2D/CompressedTexture2D::6515442928909123477::1742698493::1742698548::1::::<><><>0<>0<>d062c51898e0e911da891f9941163c90<>res://.godot/imported/thruster.png-16e260ff184a3bd34f4b3f25c8eb25f3.ctex::
+written_paper_no_background.png::CompressedTexture2D/CompressedTexture2D::4337349030344778087::1742698493::1742698548::1::::<><><>0<>0<>223b05e231630637204987bf5124d1aa<>res://.godot/imported/written_paper_no_background.png-b9036c1fe824f50e53818b2ec94cda29.ctex::
+::res://Times-New-Roman/::1742698493
+::res://Times-New-Roman/Times New Roman/::1742698548
+times new roman bold italic.ttf::FontFile/FontFile::7289737456259288525::1742698493::1742698548::1::::<><><>0<>0<>6a193ad5e4b4e0f880f7ccc9611144d5<>res://.godot/imported/times new roman bold italic.ttf-6fdecc4a95a7c875c47418af2906d3e4.fontdata::
+times new roman bold.ttf::FontFile/FontFile::7007262723732020871::1742698493::1742698548::1::::<><><>0<>0<>b0a0430a2af1f5409925d72e534beef1<>res://.godot/imported/times new roman bold.ttf-a0dcf02d9b3f261276b438787f8a3f80.fontdata::
+times new roman italic.ttf::FontFile/FontFile::8386829437176717608::1742698493::1742698548::1::::<><><>0<>0<>b37f94762d1cbc4166f21f15fb617e3a<>res://.godot/imported/times new roman italic.ttf-025461c3e572a8ba52e218ce18f04987.fontdata::
+times new roman.ttf::FontFile/FontFile::3050975356171775724::1742698493::1742698548::1::::<><><>0<>0<>694a2a09fe15993b1454065dc36127c6<>res://.godot/imported/times new roman.ttf-9a34092ab7559d60b11c1e5e7a410386.fontdata::
