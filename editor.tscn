@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://70nmnhiquv13"]
+[gd_scene load_steps=16 format=3 uid="uid://70nmnhiquv13"]
 
 [ext_resource type="Texture2D" uid="uid://byjg40xrc7x0u" path="res://sprites/garage.jpg" id="1_wlowb"]
 [ext_resource type="Texture2D" uid="uid://c38ycs1yil4u4" path="res://sprites/grey.jpg" id="2_vjobr"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://bdgyoraf55o8j" path="res://editor_shop.gd" id="9_k4288"]
 [ext_resource type="Script" uid="uid://c50sjhhlwrax8" path="res://LaunchMission.gd" id="10_8yjtx"]
 [ext_resource type="PackedScene" uid="uid://y8ju2utt1nsd" path="res://rocket.tscn" id="11_3btpq"]
+[ext_resource type="AudioStream" uid="uid://dt6r7r80lk0dh" path="res://sounds/shop.ogg" id="12_7py46"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7py46"]
 bg_color = Color(0.269135, 0.491785, 0.586096, 1)
@@ -454,5 +455,11 @@ position = Vector2(959, 538)
 process_mode = 4
 position = Vector2(929.87, 823)
 scale = Vector2(2.905, 2.905)
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_7py46")
+volume_db = 1.0
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="Shop/LaunchMission" to="Shop/LaunchMission" method="_on_pressed"]

@@ -223,6 +223,10 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if kaput == true:
 		return
+		
+	# Update gravity based on height
+	var height = -self.position.y
+	body.gravity_scale = 1.0 - (height / 6000000)
 
 	# Music sync
 	var is_on_beat = false
