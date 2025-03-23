@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://y8ju2utt1nsd"]
+[gd_scene load_steps=26 format=3 uid="uid://y8ju2utt1nsd"]
 
 [ext_resource type="Script" uid="uid://jhp1evdhvaie" path="res://RocketCrontroller.gd" id="1_tpb7v"]
 [ext_resource type="Texture2D" uid="uid://b3bjkv6iqxlr0" path="res://sprites/rocket_body.png" id="2_546ky"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://cy3enmph0xk5j" path="res://sprites/thruster.png" id="4_546ky"]
 [ext_resource type="Texture2D" uid="uid://bn7uvcm0llg0a" path="res://assets/side_thruster.png" id="4_awr8v"]
 [ext_resource type="Texture2D" uid="uid://8j2xphuhed2t" path="res://assets/gun.png" id="5_cum1y"]
+[ext_resource type="AudioStream" uid="uid://dox5h7lcnao03" path="res://sounds/thruster2.ogg" id="7_awr8v"]
+[ext_resource type="AudioStream" uid="uid://cuthylv3xkou1" path="res://sounds/little_thruster.ogg" id="8_7htxx"]
+[ext_resource type="AudioStream" uid="uid://dyoqjjtx2m08v" path="res://sounds/pew.ogg" id="9_mnerj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lm57y"]
 atlas = ExtResource("4_7htxx")
@@ -1016,6 +1019,33 @@ node_a = NodePath("../body_0")
 node_b = NodePath("../side_thruster_right")
 length = 1.0
 initial_offset = 1.0
+
+[node name="thruster_sound_left" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_awr8v")
+parameters/looping = false
+
+[node name="thruster_sound_right" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_awr8v")
+pitch_scale = 1.18
+parameters/looping = false
+
+[node name="small_thruster_sound_left" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_7htxx")
+volume_db = -2.0
+parameters/looping = false
+
+[node name="small_thruster_sound_right" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_7htxx")
+volume_db = -2.0
+pitch_scale = 1.54
+parameters/looping = false
+
+[node name="laser_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_mnerj")
+volume_db = -2.0
+pitch_scale = 1.54
+max_polyphony = 11
+parameters/looping = false
 
 [connection signal="body_entered" from="body_0" to="." method="_on_rocket_part_body_entered"]
 [connection signal="body_entered" from="thruster_left" to="." method="_on_rocket_part_body_entered"]
