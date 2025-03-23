@@ -6,6 +6,7 @@ var screen = DisplayServer.screen_get_size()
 @onready var obstacle_container = get_node("/root/exploration/ObstacleInstantiator/obstacle_container")
 @onready var alert_container = get_node("alert_container")
 @onready var alert_scene = preload("res://alert.tscn")
+@onready var camera = get_viewport().get_camera_2d()
 
 var active_alerts = {}
 
@@ -30,7 +31,7 @@ func check_alerts():
 				alert = active_alerts[obstacle]
 			
 			var x = obstacle_pos.x
-			var y = rocket_pos.y - 850 # set alert position
+			var y = camera.get_screen_center_position().y - 550 # set alert position
 			
 			alert.position = Vector2(x, y)
 		elif obstacle in active_alerts:
