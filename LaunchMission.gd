@@ -31,6 +31,14 @@ class SomewhatGameState:
 	
 var game_state : SomewhatGameState
 
+var visual_thruster_tier1_left : AnimatedSprite2D
+var visual_thruster_tier2_left : AnimatedSprite2D
+var visual_thruster_tier3_left : AnimatedSprite2D
+
+var visual_thruster_tier1_right : AnimatedSprite2D
+var visual_thruster_tier2_right : AnimatedSprite2D
+var visual_thruster_tier3_right : AnimatedSprite2D
+
 func _ready() -> void:
 	gun.pressed.connect(gun_shop)
 	body.pressed.connect(body_shop)
@@ -75,8 +83,33 @@ func _ready() -> void:
 		game_state.ThrusterTier = data["ThrusterTier"]
 		game_state.FuelTier = data["FuelTier"]
 	
+	visual_thruster_tier1_left = get_tree().root.get_node("Editor/Background/Rocket/thruster_left/AnimatedSprite2D_tier1")
+	visual_thruster_tier1_left.visible = false
+	visual_thruster_tier2_left = get_tree().root.get_node("Editor/Background/Rocket/thruster_left/AnimatedSprite2D_tier2")
+	visual_thruster_tier2_left.visible = false
+	visual_thruster_tier3_left = get_tree().root.get_node("Editor/Background/Rocket/thruster_left/AnimatedSprite2D_tier3")
+	visual_thruster_tier3_left.visible = false
+	
+	visual_thruster_tier1_right = get_tree().root.get_node("Editor/Background/Rocket/thruster_right/AnimatedSprite2D_tier1")
+	visual_thruster_tier1_right.visible = false
+	visual_thruster_tier2_right = get_tree().root.get_node("Editor/Background/Rocket/thruster_right/AnimatedSprite2D_tier2")
+	visual_thruster_tier2_right.visible = false
+	visual_thruster_tier3_right = get_tree().root.get_node("Editor/Background/Rocket/thruster_right/AnimatedSprite2D_tier3")
+	visual_thruster_tier3_right.visible = false
+	
 	var coin_value : Label = get_tree().root.get_node("Editor/Missions/CoinValue")
 	coin_value.text = str(game_state.Coins)
+	
+	match game_state.ThrusterTier:
+		1:
+			visual_thruster_tier1_left.visible = true
+			visual_thruster_tier1_right.visible = true
+		2:
+			visual_thruster_tier2_left.visible = true
+			visual_thruster_tier2_right.visible = true
+		3:
+			visual_thruster_tier3_left.visible = true
+			visual_thruster_tier3_right.visible = true
 	
 	var path = ""
 	match game_state.GunTier:
@@ -150,11 +183,27 @@ func _on_battery_3_pressed() -> void:
 
 func _on_thruster_1_pressed() -> void:
 	game_state.ThrusterTier = 1
-
-
+	visual_thruster_tier1_left.visible = true
+	visual_thruster_tier1_right.visible = true
+	
+	visual_thruster_tier2_left.visible = false
+	visual_thruster_tier2_right.visible = false
+	visual_thruster_tier3_left.visible = false
+	visual_thruster_tier3_right.visible = false
+	
+	print("au revoir")
 
 func _on_thruster_2_pressed() -> void:
 	game_state.ThrusterTier = 2
+	visual_thruster_tier2_left.visible = true
+	visual_thruster_tier2_right.visible = true
+	
+	visual_thruster_tier3_left.visible = false
+	visual_thruster_tier3_right.visible = false
+	visual_thruster_tier1_left.visible = false
+	visual_thruster_tier1_right.visible = false
+	
+	print("hello")
 
 
 func _on_thruster_3_pressed() -> void:
