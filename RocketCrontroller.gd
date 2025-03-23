@@ -86,6 +86,15 @@ func _physics_process(delta: float) -> void:
 	if kaput == true:
 		return
 
+	var nearest_obstacle = get_nearest_obstacle()
+	if nearest_obstacle != null:
+		var too_close = get_tree().root.get_node("exploration/TooCloseSound") as AudioStreamPlayer
+		if nearest_obstacle.global_position.distance_to(body.global_position) < 350:
+			if !too_close.playing:
+				too_close.play()
+		else:
+			too_close.stop()
+
 	crash_max_speed = max(crash_max_speed, int(body.linear_velocity.length() / 200.0))
 	crash_max_altitude = max(crash_max_altitude, (-int(body.position.y)) / 20)
 
@@ -132,9 +141,9 @@ func _physics_process(delta: float) -> void:
 		laser_cooldown = 0.3
 		
 		var space_state = get_tree().root.world_2d.direct_space_state
-		var to_node = get_nearest_obstacle()
-		if to_node != null:
-			var to = to_node.global_position
+		
+		if nearest_obstacle != null:
+			var to = nearest_obstacle.global_position
 			var query = PhysicsRayQueryParameters2D.create(gun.global_position, to)
 			var result = space_state.intersect_ray(query)
 			
@@ -160,8 +169,19 @@ func _physics_process(delta: float) -> void:
 	(get_tree().root.get_node("exploration/CanvasLayer/Battery") as ProgressBar).value = battery_level
 
 func _process(delta: float) -> void:
-	if kaput and !spawned_newspaper:
+	if !kaput:
+		print(rad_to_deg(body.global_rotation))
+		var rot = rad_to_deg(body.global_rotation)
+		if rot > 30.0 or rot < -30.0:
+			var pull_up = get_tree().root.get_node("exploration/PullUpSound") as AudioStreamPlayer
+			if !pull_up.playing:
+				pull_up.play()
+		else:
+			var pull_up = get_tree().root.get_node("exploration/PullUpSound") as AudioStreamPlayer
+			pull_up.stop()
+	elif kaput and !spawned_newspaper:
 		time_elapsed += delta
+		
 		
 		if time_elapsed < 3.0 and time_elapsed > 0.2 and !photo_taken:
 			crash_texture = get_viewport().get_texture().get_image()

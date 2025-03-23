@@ -200,6 +200,7 @@ flat = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_hf1f1")
+volume_db = 7.1
 autoplay = true
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
