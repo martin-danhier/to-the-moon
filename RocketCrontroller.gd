@@ -2,6 +2,9 @@ extends Node2D
 
 signal rocket_exploded
 
+@export var bpm = 140.0
+@export var music_offset_seconds = 0.35
+
 var thruster_left : RigidBody2D
 var thruster_right : RigidBody2D
 var side_thruster_left : RigidBody2D
@@ -18,6 +21,8 @@ var thruster_sound_right : AudioStreamPlayer
 var small_thruster_sound_left : AudioStreamPlayer
 var small_thruster_sound_right : AudioStreamPlayer
 var laser_sound : AudioStreamPlayer
+var small_explosion_sound: AudioStreamPlayer
+var large_explosion_sound: AudioStreamPlayer
 
 var laser_beam : Node2D
 
@@ -42,6 +47,10 @@ var camera : Camera2D
 var laser_cooldown = 0.3
 
 var target : Node2D
+
+var music_sound: AudioStreamPlayer
+
+var processed_beat = false
 
 var coin_prefab
 
@@ -91,18 +100,33 @@ func _ready() -> void:
 	small_thruster_sound_left = self.get_node("small_thruster_sound_left")
 	small_thruster_sound_right = self.get_node("small_thruster_sound_right")
 	laser_sound = self.get_node("laser_sound")
+	small_explosion_sound = self.get_node("small_explosion_sound")
+	large_explosion_sound = self.get_node("large_explosion_sound")
+	music_sound = get_tree().root.get_node("exploration/MusicSound") as AudioStreamPlayer
 
 	laser_beam = self.get_node("LaserBeam")
 
 	camera = self.get_node("body_0/Camera2D")
 
 	gun = self.get_node("body_0/Gun")
-	
+
 	coin_value = get_tree().root.get_node("exploration/CanvasLayer/CoinValue")
 
 func _physics_process(delta: float) -> void:
 	if kaput == true:
 		return
+
+	# Music sync
+	var is_on_beat = false
+	var elapsed_beats = (music_sound.get_playback_position() + AudioServer.get_time_since_last_mix() + music_offset_seconds) * (bpm / 60.0)
+	var fraction_of_current_beat = elapsed_beats - int(elapsed_beats)
+	if fraction_of_current_beat < 0.5:
+		if not processed_beat:
+			is_on_beat = true
+			print("BAM")
+			processed_beat = true
+	elif processed_beat:
+		processed_beat = false
 
 	var nearest_obstacle = get_nearest_obstacle()
 	if nearest_obstacle != null:
@@ -172,7 +196,7 @@ func _physics_process(delta: float) -> void:
 		thruster_right_sprite.play("idle")
 		thruster_sound_right.stop()
 
-	if Input.is_action_pressed("fire") and battery_level > 0.0 and laser_cooldown <= 0.0:
+	if Input.is_action_pressed("fire") and battery_level > 0.0 and is_on_beat and laser_cooldown <= 0.0:
 		battery_level -= 2.3
 
 		laser_cooldown = 0.3
@@ -198,6 +222,7 @@ func _physics_process(delta: float) -> void:
 					local_explosion.scale *= 0.5
 					get_tree().root.add_child(local_explosion)
 					laser_sound.play()
+					small_explosion_sound.play()
 					# laser_beam.visible = true
 
 					# spawn coins
@@ -239,7 +264,7 @@ func _process(delta: float) -> void:
 			photo_taken = true
 		elif time_elapsed >= 3.6:
 			spawned_newspaper = true
-			
+
 			var newspaper = load("res://newspaper.tscn").instantiate()
 			newspaper.position = camera.global_position
 			get_tree().root.add_child(newspaper)
@@ -294,6 +319,7 @@ func explode_rocket():
 
 	var local_explosion = explosion.instantiate()
 	local_explosion.position = body.global_position
+	large_explosion_sound.play()
 	get_tree().root.add_child(local_explosion)
 
 	# make it looks like everything went wrong
@@ -323,5 +349,5 @@ func _on_rocket_part_body_entered(target: Node) -> void:
 
 func _on_coin_coin_grabbed() -> void:
 	coin_count += 1
-	
+
 	coin_value.text = str(coin_count)
