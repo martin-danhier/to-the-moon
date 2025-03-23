@@ -60,8 +60,6 @@ func get_nearest_obstacle() -> Node2D:
 			min_idx = idx
 			min_distance = this_distance
 		idx += 1
-			
-	print(min_distance)
 	
 	return children[min_idx]
 
@@ -97,7 +95,13 @@ func _physics_process(delta: float) -> void:
 			too_close.stop()
 
 	crash_max_speed = max(crash_max_speed, int(body.linear_velocity.length() / 200.0))
-	crash_max_altitude = max(crash_max_altitude, (-int(body.position.y)) / 20)
+	var curr_altitude = (-int(body.position.y)) / 20
+	crash_max_altitude = max(crash_max_altitude, curr_altitude)
+	
+	var altitude_sound = get_tree().root.get_node("exploration/AltitudeSound") as AudioStreamPlayer
+	if crash_max_altitude > curr_altitude + 45:
+		if !altitude_sound.playing:
+			altitude_sound.play()
 
 	var impulse = Vector2.UP * 17000.0;
 
@@ -136,22 +140,20 @@ func _physics_process(delta: float) -> void:
 		thruster_right_sprite.play("idle")
 	
 	if Input.is_action_pressed("fire") and battery_level > 0.0 and laser_cooldown <= 0.0:
-		battery_level -= 0.6
-		print("fire in the hole")
+		battery_level -= 2.3
 		
 		laser_cooldown = 0.3
 		
 		var space_state = get_tree().root.world_2d.direct_space_state
 		
-		if nearest_obstacle != null:
+		if nearest_obstacle != null and nearest_obstacle.global_position.distance_to(body.global_position) < 850:
 			var to = nearest_obstacle.global_position
 			var query = PhysicsRayQueryParameters2D.create(gun.global_position, to)
 			var result = space_state.intersect_ray(query)
-			
+
 			target.global_position = to
 
 			if result:
-				print(result.collider.name)
 				if result.collider.name.contains("obstacle_body"):
 					result.collider.get_parent().call_deferred("queue_free")
 					var explosion = load("res://explosion.tscn")
@@ -160,8 +162,6 @@ func _physics_process(delta: float) -> void:
 					local_explosion.scale *= 0.5
 					get_tree().root.add_child(local_explosion)
 					# laser_beam.visible = true
-			else:
-				print(" - nothing =(")
 				
 	else:
 		laser_beam.visible = false
@@ -171,7 +171,6 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	if !kaput:
-		print(rad_to_deg(body.global_rotation))
 		var rot = rad_to_deg(body.global_rotation)
 		if rot > 30.0 or rot < -30.0:
 			var pull_up = get_tree().root.get_node("exploration/PullUpSound") as AudioStreamPlayer
@@ -265,5 +264,5 @@ func explode_rocket():
 func _on_rocket_part_body_entered(target: Node) -> void:
 	if target.name.contains("obstacle_body"):
 		explode_rocket()
-	elif body.linear_velocity.length() > 200.0:
+	elif body.linear_velocity.length() > 120.0:
 		explode_rocket()
