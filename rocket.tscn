@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://y8ju2utt1nsd"]
+[gd_scene load_steps=32 format=3 uid="uid://y8ju2utt1nsd"]
 
 [ext_resource type="Script" uid="uid://jhp1evdhvaie" path="res://RocketCrontroller.gd" id="1_tpb7v"]
 [ext_resource type="Texture2D" uid="uid://b3bjkv6iqxlr0" path="res://sprites/rocket_body.png" id="2_546ky"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://b6s8ewr4piw5t" path="res://sprites/laser_beam.png" id="4_7htxx"]
 [ext_resource type="Texture2D" uid="uid://cy3enmph0xk5j" path="res://sprites/thruster.png" id="4_546ky"]
 [ext_resource type="Texture2D" uid="uid://bn7uvcm0llg0a" path="res://assets/side_thruster.png" id="4_awr8v"]
+[ext_resource type="Texture2D" uid="uid://8j2xphuhed2t" path="res://assets/gun.png" id="5_cum1y"]
+[ext_resource type="Texture2D" uid="uid://qvnsfuqrbias" path="res://sprites/side_thruster.png" id="6_edwur"]
 [ext_resource type="AudioStream" uid="uid://dxcmk4b7c8hlb" path="res://sounds/thruster2.ogg" id="7_awr8v"]
 [ext_resource type="AudioStream" uid="uid://yca1tex1fi0n" path="res://sounds/little_thruster.ogg" id="8_7htxx"]
 [ext_resource type="AudioStream" uid="uid://b1q48y6uvukic" path="res://sounds/pew.ogg" id="9_mnerj"]
@@ -109,6 +111,40 @@ radius = 21.0
 height = 193.2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4mc6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldhc3"]
+atlas = ExtResource("6_edwur")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1f0fh"]
+atlas = ExtResource("6_edwur")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pneik"]
+atlas = ExtResource("6_edwur")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7hlsg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldhc3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1f0fh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pneik")
+}],
+"loop": true,
+"name": &"thrusting",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_88ct5"]
 
@@ -916,23 +952,29 @@ position = Vector2(-45.45, -163.34)
 contact_monitor = true
 max_contacts_reported = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="side_thruster_left"]
-scale = Vector2(0.175, 0.225)
-texture = ExtResource("4_awr8v")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="side_thruster_left"]
 shape = SubResource("RectangleShape2D_c4mc6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="side_thruster_left"]
+texture_filter = 1
+position = Vector2(-9.55, 0.339996)
+sprite_frames = SubResource("SpriteFrames_7hlsg")
+animation = &"idle"
+flip_h = true
 
 [node name="side_thruster_right" type="RigidBody2D" parent="."]
 position = Vector2(45.45, -163.34)
 contact_monitor = true
 max_contacts_reported = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="side_thruster_right"]
-scale = Vector2(-0.175, 0.225)
-texture = ExtResource("4_awr8v")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="side_thruster_right"]
+texture_filter = 1
+position = Vector2(9.55, 0.339996)
+sprite_frames = SubResource("SpriteFrames_7hlsg")
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="side_thruster_right"]
+position = Vector2(-2.45, 0.339996)
 shape = SubResource("RectangleShape2D_88ct5")
 
 [node name="left_to_body" type="GrooveJoint2D" parent="."]

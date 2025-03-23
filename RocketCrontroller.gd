@@ -104,6 +104,8 @@ func _ready() -> void:
 
 	thruster_left_sprite = self.get_node("thruster_left/AnimatedSprite2D")
 	thruster_right_sprite = self.get_node("thruster_right/AnimatedSprite2D")
+	side_thruster_left_sprite = self.get_node("side_thruster_left/AnimatedSprite2D")
+	side_thruster_right_sprite = self.get_node("side_thruster_right/AnimatedSprite2D")
 
 	thruster_sound_left = self.get_node("thruster_sound_left")
 	thruster_sound_right = self.get_node("thruster_sound_right")
@@ -171,19 +173,23 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("thruster_side_1") and fuel_level > 0.0:
 		var local_impulse = impulse.rotated(side_thruster_left.transform.get_rotation()) / 10.0
 		side_thruster_left.apply_force(local_impulse)
+		side_thruster_left_sprite.play("thrusting")
 		fuel_level -= SIDE_THRUSTER_COMSUMPTION
 		if not small_thruster_sound_left.playing:
 			small_thruster_sound_left.play()
 	else:
+		side_thruster_left_sprite.play("idle")
 		small_thruster_sound_left.stop()
 
 	if Input.is_action_pressed("thruster_side_0") and fuel_level > 0.0:
 		var local_impulse = impulse.rotated(side_thruster_right.transform.get_rotation()) / 10.0
 		side_thruster_right.apply_force(local_impulse)
+		side_thruster_right_sprite.play("thrusting")
 		fuel_level -= SIDE_THRUSTER_COMSUMPTION
 		if not small_thruster_sound_right.playing:
 			small_thruster_sound_right.play()
 	else:
+		side_thruster_right_sprite.play("idle")
 		small_thruster_sound_right.stop()
 
 	if Input.is_action_pressed("thruster_0") and fuel_level > 0.0:
@@ -345,6 +351,8 @@ func explode_rocket():
 
 	thruster_right_sprite.play("idle")
 	thruster_left_sprite.play("idle")
+	side_thruster_left_sprite.play("idle")
+	side_thruster_right_sprite.play("idle")
 	laser_beam.visible = false
 
 	thruster_sound_left.stop()
