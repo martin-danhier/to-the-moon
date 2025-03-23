@@ -1,3 +1,259 @@
-[gd_scene format=3 uid="uid://70nmnhiquv13"]
+[gd_scene load_steps=10 format=3 uid="uid://70nmnhiquv13"]
+
+[ext_resource type="Texture2D" uid="uid://byjg40xrc7x0u" path="res://sprites/garage.jpg" id="1_wlowb"]
+[ext_resource type="Texture2D" uid="uid://c38ycs1yil4u4" path="res://sprites/grey.jpg" id="2_vjobr"]
+[ext_resource type="Script" uid="uid://bhbknmajjk2ap" path="res://editor_background.gd" id="2_wrb8p"]
+[ext_resource type="Texture2D" uid="uid://cw1pibrseh2m8" path="res://sprites/coin.png" id="4_1ys5w"]
+[ext_resource type="Script" uid="uid://ys0g8cog5q0k" path="res://editor_missions.gd" id="4_t27w5"]
+[ext_resource type="Texture2D" uid="uid://dylevauoywhd3" path="res://sprites/fame.png" id="5_gbsbp"]
+[ext_resource type="FontFile" uid="uid://ceixrq4nnx0fy" path="res://assets/PressStart2P-Regular.ttf" id="5_t27w5"]
+[ext_resource type="Texture2D" uid="uid://b6l7konckhsvt" path="res://sprites/potion.png" id="6_t27w5"]
+[ext_resource type="Script" uid="uid://bdgyoraf55o8j" path="res://editor_shop.gd" id="9_k4288"]
 
 [node name="Editor" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(944, 538)
+scale = Vector2(1.76499, 1.72524)
+texture = ExtResource("1_wlowb")
+script = ExtResource("2_wrb8p")
+
+[node name="Missions" type="Sprite2D" parent="."]
+position = Vector2(195.5, 536)
+scale = Vector2(4.0102, 4.92727)
+texture = ExtResource("2_vjobr")
+script = ExtResource("4_t27w5")
+
+[node name="Coin" type="TextureRect" parent="Missions"]
+offset_left = -18.0
+offset_top = -107.0
+offset_right = -3.0
+offset_bottom = -94.0
+texture = ExtResource("4_1ys5w")
+expand_mode = 1
+
+[node name="coin_counter" type="Label" parent="Missions"]
+texture_filter = 1
+offset_left = -49.0
+offset_top = -106.391
+offset_right = -18.0
+offset_bottom = -93.3911
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 6
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Fame" type="TextureRect" parent="Missions"]
+texture_filter = 1
+offset_left = 288.0
+offset_top = -104.827
+offset_right = 311.0
+offset_bottom = -83.8266
+texture = ExtResource("5_gbsbp")
+expand_mode = 1
+
+[node name="fame_bar" type="ProgressBar" parent="Missions"]
+modulate = Color(0.806302, 0.383843, 0.152949, 1)
+self_modulate = Color(0.79383, 0.476982, 0.207634, 1)
+texture_filter = 1
+offset_left = 58.0
+offset_top = -103.0
+offset_right = 311.0
+offset_bottom = -83.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.74902, 0.352941, 0.121569, 1)
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 10
+value = 25.0
+
+[node name="Research" type="TextureRect" parent="Missions"]
+texture_filter = 1
+offset_left = 29.0509
+offset_top = -107.768
+offset_right = 43.0509
+offset_bottom = -91.7675
+texture = ExtResource("6_t27w5")
+expand_mode = 1
+
+[node name="research_counter" type="Label" parent="Missions"]
+texture_filter = 1
+offset_left = 0.124682
+offset_top = -106.347
+offset_right = 31.1247
+offset_bottom = -93.3469
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 6
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Missions" type="Label" parent="Missions"]
+texture_filter = 1
+offset_left = -43.7634
+offset_top = -83.0074
+offset_right = 44.2366
+offset_bottom = -60.0074
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 9
+text = "Mission"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Missions/Missions"]
+texture_filter = 1
+layout_mode = 0
+offset_top = 24.7601
+offset_right = 87.0
+offset_bottom = 51.7601
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 6
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Coin" type="TextureRect" parent="Missions/Missions"]
+layout_mode = 0
+offset_left = 43.888
+offset_top = 53.7823
+offset_right = 58.888
+offset_bottom = 66.7823
+texture = ExtResource("4_1ys5w")
+expand_mode = 1
+
+[node name="recompense" type="Label" parent="Missions/Missions"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 27.9288
+offset_top = 57.8413
+offset_right = 41.9287
+offset_bottom = 64.8413
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 6
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Research_projects" type="Label" parent="Missions"]
+texture_filter = 1
+offset_left = -43.7634
+offset_top = -10.1476
+offset_right = 46.2366
+offset_bottom = 12.8524
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 9
+text = "Projets de
+Recherche"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Purchase_1" type="Button" parent="Missions/Research_projects"]
+texture_filter = 1
+layout_mode = 0
+offset_top = 26.3616
+offset_right = 87.0
+offset_bottom = 71.3616
+
+[node name="Project 1" type="Label" parent="Missions/Research_projects/Purchase_1"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 87.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 6
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Price1" type="Label" parent="Missions/Research_projects/Purchase_1/Project 1"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 13.4657
+offset_top = 31.2768
+offset_right = 39.4657
+offset_bottom = 41.2768
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 6
+text = "10"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Research" type="TextureRect" parent="Missions/Research_projects/Purchase_1/Project 1"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 29.0
+offset_right = 56.0
+offset_bottom = 42.0
+texture = ExtResource("6_t27w5")
+expand_mode = 1
+
+[node name="Purchase_2" type="Button" parent="Missions/Research_projects"]
+texture_filter = 1
+layout_mode = 0
+offset_top = 73.9557
+offset_right = 87.0
+offset_bottom = 117.956
+
+[node name="Project 2" type="Label" parent="Missions/Research_projects/Purchase_2"]
+texture_filter = 1
+layout_mode = 0
+offset_top = 0.730667
+offset_right = 87.0
+offset_bottom = 27.7307
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 6
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Price2" type="Label" parent="Missions/Research_projects/Purchase_2/Project 2"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 13.4657
+offset_top = 29.4502
+offset_right = 39.4657
+offset_bottom = 39.4502
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 6
+text = "10"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Research" type="TextureRect" parent="Missions/Research_projects/Purchase_2/Project 2"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 27.0
+offset_right = 56.0
+offset_bottom = 40.0
+texture = ExtResource("6_t27w5")
+expand_mode = 1
+
+[node name="Shop" type="Sprite2D" parent="."]
+position = Vector2(1704.5, 537.5)
+scale = Vector2(4.35714, 4.91364)
+texture = ExtResource("2_vjobr")
+script = ExtResource("9_k4288")
+
+[node name="Shop" type="Label" parent="Shop"]
+texture_filter = 1
+offset_left = -42.5738
+offset_top = -100.231
+offset_right = 45.4262
+offset_bottom = -77.2313
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 9
+text = "Boutique"
+horizontal_alignment = 1
+vertical_alignment = 1
