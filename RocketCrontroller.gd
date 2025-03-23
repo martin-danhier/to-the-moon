@@ -155,13 +155,19 @@ func _physics_process(delta: float) -> void:
 
 			if result:
 				if result.collider.name.contains("obstacle_body"):
+					# delete obstacles
 					result.collider.get_parent().call_deferred("queue_free")
+					
+					# spawn explosion
 					var explosion = load("res://explosion.tscn")
 					var local_explosion = explosion.instantiate()
 					local_explosion.position = to
 					local_explosion.scale *= 0.5
 					get_tree().root.add_child(local_explosion)
 					# laser_beam.visible = true
+					
+					# spawn coins
+					
 				
 	else:
 		laser_beam.visible = false
@@ -220,19 +226,19 @@ func _process(delta: float) -> void:
 			var final =  Image.create(1920 / 2, 1080 / 2, false, Image.FORMAT_RGB8)
 			final.blit_rect(crash_texture, Rect2i(1920 / 4, 1080 / 4 + 200, 1920 / 2, 1080 / 2 + 200), Vector2i(0, 0))
 			screenshot.texture = ImageTexture.create_from_image(final)
-			
+
 			# prevent the camera from moving again
 			camera.reparent(get_tree().root)
-			
+
 			# hide UI because it's useless now
 			get_tree().root.get_node("exploration/CanvasLayer").visible = false
-			
+
 			# clicking to "Suite" relaunch this scene
 			# TODO: should launch editor
-			
+
 			# end "die sound"
 			die_sound.stop()
-			
+
 			spawned_newspaper = true
 
 func explode_rocket():
