@@ -19,6 +19,9 @@ func check_alerts():
 	for obstacle in obstacle_container.get_children():
 		var obstacle_pos = obstacle.position
 		
+		if obstacle.is_in_group("ignored"):
+			continue
+		
 		var dx = abs(obstacle_pos.x - rocket_pos.x)
 		var dy = -(obstacle_pos.y - rocket_pos.y)
 		if dx < 1500 and dy < 2500 and dy > 800: # set obstacle detection range

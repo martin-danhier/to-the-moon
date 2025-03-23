@@ -9,9 +9,11 @@ size = Vector2(180.532, 796.831)
 [node name="satellite" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.075, 0.075)
 texture = ExtResource("1_80tr8")
 
 [node name="obstacle_body" type="StaticBody2D" parent="."]
+scale = Vector2(0.075, 0.075)
 collision_layer = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle_body"]

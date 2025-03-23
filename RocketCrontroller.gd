@@ -82,7 +82,7 @@ func get_nearest_obstacle() -> Node2D:
 	for child in children:
 		var this_distance = local_pos.distance_to(child.global_position)
 
-		if child.global_position.y > 0.0:
+		if child.global_position.y > 0.0 or child.is_in_group("ignored"):
 			idx += 1
 			continue
 
