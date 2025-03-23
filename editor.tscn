@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://70nmnhiquv13"]
+[gd_scene load_steps=12 format=3 uid="uid://70nmnhiquv13"]
 
 [ext_resource type="Texture2D" uid="uid://byjg40xrc7x0u" path="res://sprites/garage.jpg" id="1_wlowb"]
 [ext_resource type="Texture2D" uid="uid://c38ycs1yil4u4" path="res://sprites/grey.jpg" id="2_vjobr"]
@@ -8,8 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://dylevauoywhd3" path="res://sprites/fame.png" id="5_gbsbp"]
 [ext_resource type="FontFile" uid="uid://ceixrq4nnx0fy" path="res://assets/PressStart2P-Regular.ttf" id="5_t27w5"]
 [ext_resource type="Texture2D" uid="uid://b6l7konckhsvt" path="res://sprites/potion.png" id="6_t27w5"]
-[ext_resource type="Script" path="res://editor_shop.gd" id="9_k4288"]
+[ext_resource type="Script" uid="uid://bdgyoraf55o8j" path="res://editor_shop.gd" id="9_k4288"]
 [ext_resource type="Script" uid="uid://c50sjhhlwrax8" path="res://LaunchMission.gd" id="10_8yjtx"]
+[ext_resource type="AudioStream" uid="uid://opb5or0uqh46" path="res://sounds/shop.ogg" id="11_3btpq"]
 
 [node name="Editor" type="Node2D"]
 
@@ -498,6 +499,12 @@ vertical_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(959, 538)
+
+[node name="MusicSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_3btpq")
+volume_db = -5.0
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="Shop/LaunchMission" to="Shop/LaunchMission" method="_on_pressed"]
 [connection signal="pressed" from="Shop/Fuel1" to="Shop/LaunchMission" method="_on_fuel_1_pressed"]
