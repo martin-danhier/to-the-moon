@@ -11,10 +11,6 @@ func _ready() -> void:
 	
 	var gun = rocket.get_node("body_0/Gun")
 	var body = rocket.get_node("body_0/Sprite2D")
-	var thruster_l = rocket.get_node("thruster_left/AnimatedSprite2D")
-	var thruster_r = rocket.get_node("thruster_right/AnimatedSprite2D")
-	var side_thruster_l = rocket.get_node("side_thruster_left/Sprite2D")
-	var side_thruster_r = rocket.get_node("side_thruster_right/Sprite2D")
 	var camera = rocket.get_node("body_0/Camera2D")
 	laser_beam = rocket.get_node("LaserBeam")
 	

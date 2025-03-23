@@ -8,9 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://dylevauoywhd3" path="res://sprites/fame.png" id="5_gbsbp"]
 [ext_resource type="FontFile" uid="uid://ceixrq4nnx0fy" path="res://assets/PressStart2P-Regular.ttf" id="5_t27w5"]
 [ext_resource type="Texture2D" uid="uid://b6l7konckhsvt" path="res://sprites/potion.png" id="6_t27w5"]
-[ext_resource type="Script" uid="uid://bdgyoraf55o8j" path="res://editor_shop.gd" id="9_k4288"]
+[ext_resource type="Script" path="res://editor_shop.gd" id="9_k4288"]
 [ext_resource type="Script" uid="uid://c50sjhhlwrax8" path="res://LaunchMission.gd" id="10_8yjtx"]
-[ext_resource type="AudioStream" uid="uid://opb5or0uqh46" path="res://sounds/shop.ogg" id="11_3btpq"]
+[ext_resource type="AudioStream" uid="uid://dt6r7r80lk0dh" path="res://sounds/shop.ogg" id="11_3btpq"]
 
 [node name="Editor" type="Node2D"]
 
@@ -269,66 +269,6 @@ text = "Lancer
 la mission"
 horizontal_alignment = 1
 
-[node name="Fuel1" type="Button" parent="Shop"]
-offset_left = -44.1803
-offset_top = -62.5809
-offset_right = -22.1803
-offset_bottom = -44.5809
-theme_override_fonts/font = ExtResource("5_t27w5")
-theme_override_font_sizes/font_size = 7
-
-[node name="Label" type="Label" parent="Shop/Fuel1"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 5.0
-offset_right = 22.0
-offset_bottom = 24.0
-theme_override_fonts/font = ExtResource("5_t27w5")
-theme_override_font_sizes/font_size = 8
-text = "1
-"
-horizontal_alignment = 1
-
-[node name="Fuel2" type="Button" parent="Shop"]
-offset_left = -19.1639
-offset_top = -62.7844
-offset_right = 2.83606
-offset_bottom = -44.7844
-theme_override_fonts/font = ExtResource("5_t27w5")
-theme_override_font_sizes/font_size = 7
-
-[node name="Label" type="Label" parent="Shop/Fuel2"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 5.0
-offset_right = 22.0
-offset_bottom = 24.0
-theme_override_fonts/font = ExtResource("5_t27w5")
-theme_override_font_sizes/font_size = 8
-text = "2
-"
-horizontal_alignment = 1
-
-[node name="Fuel3" type="Button" parent="Shop"]
-offset_left = 5.85247
-offset_top = -62.7844
-offset_right = 27.8525
-offset_bottom = -44.7844
-theme_override_fonts/font = ExtResource("5_t27w5")
-theme_override_font_sizes/font_size = 7
-
-[node name="Label" type="Label" parent="Shop/Fuel3"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 5.0
-offset_right = 22.0
-offset_bottom = 24.0
-theme_override_fonts/font = ExtResource("5_t27w5")
-theme_override_font_sizes/font_size = 8
-text = "3
-"
-horizontal_alignment = 1
-
 [node name="Shop" type="Label" parent="Shop"]
 texture_filter = 1
 offset_left = -42.5738
@@ -341,23 +281,11 @@ text = "Boutique"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FuelLabel" type="Label" parent="Shop"]
-texture_filter = 1
-offset_left = -51.0
-offset_top = -80.0
-offset_right = -1.0
-offset_bottom = -57.0
-theme_override_fonts/font = ExtResource("5_t27w5")
-theme_override_font_sizes/font_size = 8
-text = "Fuel"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Battery1" type="Button" parent="Shop"]
 offset_left = -43.7869
-offset_top = -29.2876
+offset_top = -49.8426
 offset_right = -21.7869
-offset_bottom = -11.2876
+offset_bottom = -31.8426
 theme_override_fonts/font = ExtResource("5_t27w5")
 theme_override_font_sizes/font_size = 7
 
@@ -375,9 +303,9 @@ horizontal_alignment = 1
 
 [node name="Battery2" type="Button" parent="Shop"]
 offset_left = -18.7705
-offset_top = -29.4911
+offset_top = -50.0461
 offset_right = 3.22946
-offset_bottom = -11.4911
+offset_bottom = -32.0461
 theme_override_fonts/font = ExtResource("5_t27w5")
 theme_override_font_sizes/font_size = 7
 
@@ -395,9 +323,9 @@ horizontal_alignment = 1
 
 [node name="Battery3" type="Button" parent="Shop"]
 offset_left = 6.24587
-offset_top = -29.4911
+offset_top = -50.0461
 offset_right = 28.2459
-offset_bottom = -11.4911
+offset_bottom = -32.0461
 theme_override_fonts/font = ExtResource("5_t27w5")
 theme_override_font_sizes/font_size = 7
 
@@ -416,20 +344,20 @@ horizontal_alignment = 1
 [node name="BatteryLabel" type="Label" parent="Shop"]
 texture_filter = 1
 offset_left = -51.0
-offset_top = -46.9824
-offset_right = 22.0
-offset_bottom = -23.9824
+offset_top = -67.555
+offset_right = -7.0
+offset_bottom = -44.555
 theme_override_fonts/font = ExtResource("5_t27w5")
 theme_override_font_sizes/font_size = 8
-text = "Battery"
+text = "Gun"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Thruster1" type="Button" parent="Shop"]
 offset_left = -43.3935
-offset_top = 3.347
+offset_top = -17.208
 offset_right = -21.3935
-offset_bottom = 21.347
+offset_bottom = 0.791973
 theme_override_fonts/font = ExtResource("5_t27w5")
 theme_override_font_sizes/font_size = 7
 
@@ -447,9 +375,9 @@ horizontal_alignment = 1
 
 [node name="Thruster2" type="Button" parent="Shop"]
 offset_left = -18.3771
-offset_top = 3.75402
+offset_top = -16.801
 offset_right = 3.62286
-offset_bottom = 21.754
+offset_bottom = 1.19897
 theme_override_fonts/font = ExtResource("5_t27w5")
 theme_override_font_sizes/font_size = 7
 
@@ -467,9 +395,9 @@ horizontal_alignment = 1
 
 [node name="Thruster3" type="Button" parent="Shop"]
 offset_left = 6.63928
-offset_top = 3.75402
+offset_top = -16.801
 offset_right = 28.6393
-offset_bottom = 21.754
+offset_bottom = 1.19897
 theme_override_fonts/font = ExtResource("5_t27w5")
 theme_override_font_sizes/font_size = 7
 
@@ -488,9 +416,9 @@ horizontal_alignment = 1
 [node name="ThrusterLabel" type="Label" parent="Shop"]
 texture_filter = 1
 offset_left = -51.0
-offset_top = -14.3895
+offset_top = -34.9445
 offset_right = 27.0
-offset_bottom = 8.61054
+offset_bottom = -11.9445
 theme_override_fonts/font = ExtResource("5_t27w5")
 theme_override_font_sizes/font_size = 8
 text = "Thruster"
@@ -507,9 +435,6 @@ autoplay = true
 parameters/looping = true
 
 [connection signal="pressed" from="Shop/LaunchMission" to="Shop/LaunchMission" method="_on_pressed"]
-[connection signal="pressed" from="Shop/Fuel1" to="Shop/LaunchMission" method="_on_fuel_1_pressed"]
-[connection signal="pressed" from="Shop/Fuel2" to="Shop/LaunchMission" method="_on_fuel_2_pressed"]
-[connection signal="pressed" from="Shop/Fuel3" to="Shop/LaunchMission" method="_on_fuel_3_pressed"]
 [connection signal="pressed" from="Shop/Battery1" to="Shop/LaunchMission" method="_on_battery_1_pressed"]
 [connection signal="pressed" from="Shop/Battery2" to="Shop/LaunchMission" method="_on_battery_2_pressed"]
 [connection signal="pressed" from="Shop/Battery3" to="Shop/LaunchMission" method="_on_battery_3_pressed"]

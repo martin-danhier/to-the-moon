@@ -77,6 +77,14 @@ var game_state : SomewhatGameState
 @export var LASER_COOLDOWN = 0.3
 @export var LASER_CONSUMPTION = 2.3
 
+var visual_thruster_tier1_left : AnimatedSprite2D
+var visual_thruster_tier2_left : AnimatedSprite2D
+var visual_thruster_tier3_left : AnimatedSprite2D
+
+var visual_thruster_tier1_right : AnimatedSprite2D
+var visual_thruster_tier2_right : AnimatedSprite2D
+var visual_thruster_tier3_right : AnimatedSprite2D
+
 func get_nearest_obstacle() -> Node2D:
 	var children = get_tree().root.get_node("exploration/ObstacleInstantiator/obstacle_container").get_children()
 
@@ -118,6 +126,7 @@ func _ready() -> void:
 		var dico = JSON.new()
 		dico.parse(file_read.get_as_text())
 		var data = dico.get_data()
+		print("loading:", JSON.stringify(data))
 		game_state = SomewhatGameState.new()
 		game_state.Coins = data["Coins"]
 		game_state.Fame = data["Fame"]
@@ -133,8 +142,6 @@ func _ready() -> void:
 
 	target = get_tree().root.get_node("exploration/target")
 
-	thruster_left_sprite = self.get_node("thruster_left/AnimatedSprite2D")
-	thruster_right_sprite = self.get_node("thruster_right/AnimatedSprite2D")
 	side_thruster_left_sprite = self.get_node("side_thruster_left/AnimatedSprite2D")
 	side_thruster_right_sprite = self.get_node("side_thruster_right/AnimatedSprite2D")
 
@@ -146,6 +153,47 @@ func _ready() -> void:
 	small_explosion_sound = self.get_node("small_explosion_sound")
 	large_explosion_sound = self.get_node("large_explosion_sound")
 	music_sound = get_tree().root.get_node("exploration/MusicSound") as AudioStreamPlayer
+	
+	visual_thruster_tier1_left = get_node("thruster_left/AnimatedSprite2D_tier1")
+	visual_thruster_tier1_left.visible = false
+	visual_thruster_tier2_left = get_node("thruster_left/AnimatedSprite2D_tier2")
+	visual_thruster_tier2_left.visible = false
+	visual_thruster_tier3_left = get_node("thruster_left/AnimatedSprite2D_tier3")
+	visual_thruster_tier3_left.visible = false
+	
+	visual_thruster_tier1_right = get_node("thruster_right/AnimatedSprite2D_tier1")
+	visual_thruster_tier1_right.visible = false
+	visual_thruster_tier2_right = get_node("thruster_right/AnimatedSprite2D_tier2")
+	visual_thruster_tier2_right.visible = false
+	visual_thruster_tier3_right = get_node("thruster_right/AnimatedSprite2D_tier3")
+	visual_thruster_tier3_right.visible = false
+	
+	match game_state.ThrusterTier:
+		1:
+			visual_thruster_tier1_left.visible = true
+			visual_thruster_tier1_right.visible = true
+			thruster_left_sprite = visual_thruster_tier1_left
+			thruster_right_sprite = visual_thruster_tier1_right
+			
+			THRUSTER_IMPULSE *= 0.9
+			MAIN_THRUSTER_COMSUMPTION *= 1.2
+		2:
+			visual_thruster_tier2_left.visible = true
+			visual_thruster_tier2_right.visible = true
+			thruster_left_sprite = visual_thruster_tier2_left
+			thruster_right_sprite = visual_thruster_tier2_right
+			
+			THRUSTER_IMPULSE *= 1.0
+			MAIN_THRUSTER_COMSUMPTION *= 1.0
+		3:
+			visual_thruster_tier3_left.visible = true
+			visual_thruster_tier3_right.visible = true
+			thruster_left_sprite = visual_thruster_tier3_left
+			thruster_right_sprite = visual_thruster_tier3_right
+			
+			THRUSTER_IMPULSE *= 1.2
+			MAIN_THRUSTER_COMSUMPTION *= 0.55
+			
 
 	laser_beam = self.get_node("LaserBeam")
 
