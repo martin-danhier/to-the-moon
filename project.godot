@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="to-the-moon"
-run/main_scene="uid://dw6mypb0mlu15"
+run/main_scene="uid://70nmnhiquv13"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

@@ -5,9 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bwlj0otfrhb2k" path="res://sprites/gun/basic.png" id="3_xk1bh"]
 [ext_resource type="Texture2D" uid="uid://b6s8ewr4piw5t" path="res://sprites/laser_beam.png" id="4_7htxx"]
 [ext_resource type="Texture2D" uid="uid://cy3enmph0xk5j" path="res://sprites/thruster.png" id="4_546ky"]
-[ext_resource type="Texture2D" uid="uid://bn7uvcm0llg0a" path="res://assets/side_thruster.png" id="4_awr8v"]
-[ext_resource type="Texture2D" uid="uid://8j2xphuhed2t" path="res://assets/gun.png" id="5_cum1y"]
-[ext_resource type="Texture2D" uid="uid://qvnsfuqrbias" path="res://sprites/side_thruster.png" id="6_edwur"]
+[ext_resource type="Texture2D" uid="uid://c3cnxjeox6bqk" path="res://sprites/side_thruster.png" id="6_edwur"]
 [ext_resource type="AudioStream" uid="uid://dxcmk4b7c8hlb" path="res://sounds/thruster2.ogg" id="7_awr8v"]
 [ext_resource type="AudioStream" uid="uid://yca1tex1fi0n" path="res://sounds/little_thruster.ogg" id="8_7htxx"]
 [ext_resource type="AudioStream" uid="uid://b1q48y6uvukic" path="res://sounds/pew.ogg" id="9_mnerj"]
@@ -132,7 +130,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,

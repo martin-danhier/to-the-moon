@@ -26,7 +26,7 @@ var large_explosion_sound: AudioStreamPlayer
 
 var laser_beam : Node2D
 
-var gun : Node2D
+var gun : Sprite2D
 
 var kaput = false
 
@@ -58,6 +58,16 @@ var coin_value : Label
 var coin_count : int = 0
 
 var laser_fired = false
+
+class SomewhatGameState:
+	var Coins: int = 0
+	var Fame: int = 0
+	
+	var GunTier: int = 1
+	var ThrusterTier: int = 1
+	var FuelTier: int = 1
+	
+var game_state : SomewhatGameState
 
 # some value to change depending on upgrade !!!!
 @export var THRUSTER_IMPULSE = 17_000.0
@@ -94,6 +104,27 @@ func get_nearest_obstacle() -> Node2D:
 	return children[min_idx]
 
 func _ready() -> void:
+	# 
+	var file_read = FileAccess.open("./save_file.data", FileAccess.READ)
+	if file_read == null:
+		print("FIRST TIME PLAYING?")
+		var file_write = FileAccess.open("./save_file.data", FileAccess.WRITE)
+		game_state = SomewhatGameState.new()
+		var dico = inst_to_dict(game_state)
+		file_write.store_string(JSON.stringify(dico))
+		file_write.close()
+	else:
+		print("LOADIIINNNGGGG")
+		var dico = JSON.new()
+		dico.parse(file_read.get_as_text())
+		var data = dico.get_data()
+		game_state = SomewhatGameState.new()
+		game_state.Coins = data["Coins"]
+		game_state.Fame = data["Fame"]
+		game_state.GunTier = data["GunTier"]
+		game_state.ThrusterTier = data["ThrusterTier"]
+		game_state.FuelTier = data["FuelTier"]
+	
 	thruster_left = self.get_node("thruster_left")
 	thruster_right = self.get_node("thruster_right")
 	side_thruster_left = self.get_node("side_thruster_left")
@@ -123,6 +154,28 @@ func _ready() -> void:
 	gun = self.get_node("body_0/Gun")
 
 	coin_value = get_tree().root.get_node("exploration/CanvasLayer/CoinValue")
+	
+	#################
+	# SETUPING GUUUUN
+	#################
+	var path = ""
+	match game_state.GunTier:
+		1:
+			path = "res://sprites/gun/basic.png"
+			LASER_COOLDOWN  *= 2.0
+		2:
+			path = "res://sprites/gun/standard.png"
+			LASER_COOLDOWN  *= 1.0
+		3:
+			path = "res://sprites/gun/advanced.png"
+			LASER_COOLDOWN  *= 0.5
+	
+	print("game_state.GunTier:", game_state.GunTier)
+	
+	var img = Image.new()
+	img.load(path)
+	var tex = ImageTexture.create_from_image(img)
+	gun.texture = tex
 
 func _physics_process(delta: float) -> void:
 	if kaput == true:
@@ -137,7 +190,6 @@ func _physics_process(delta: float) -> void:
 	if fraction_of_current_beat < 0.5:
 		if not processed_beat:
 			is_on_beat = true
-			print("BAM")
 			processed_beat = true
 	elif processed_beat:
 		processed_beat = false
@@ -285,10 +337,17 @@ func _process(delta: float) -> void:
 			photo_taken = true
 		elif time_elapsed >= 3.6:
 			spawned_newspaper = true
+			
+			# save result to file
+			var file_write = FileAccess.open("./save_file.data", FileAccess.WRITE)
+			var dico = inst_to_dict(game_state)
+			file_write.store_string(JSON.stringify(dico))
+			file_write.close()
+			print("saving: ", JSON.stringify(dico))
 
 			var newspaper = load("res://newspaper.tscn").instantiate()
 			newspaper.position = camera.global_position
-			get_tree().root.add_child(newspaper)
+			get_tree().root.get_node("exploration").add_child(newspaper)
 
 			var head_to_get = randi() % 2
 			var headline_text : String
@@ -318,7 +377,7 @@ func _process(delta: float) -> void:
 			screenshot.texture = ImageTexture.create_from_image(final)
 
 			# prevent the camera from moving again
-			camera.reparent(get_tree().root)
+			camera.reparent(get_tree().root.get_node("exploration"))
 
 			# hide UI because it's useless now
 			get_tree().root.get_node("exploration/CanvasLayer").visible = false
@@ -369,8 +428,8 @@ func _on_rocket_part_body_entered(target: Node) -> void:
 	elif body.linear_velocity.length() > 120.0:
 		explode_rocket()
 
-
 func _on_coin_coin_grabbed() -> void:
 	coin_count += 1
+	game_state.Coins += 1
 
 	coin_value.text = str(coin_count)

@@ -12,12 +12,6 @@ extends Sprite2D
 @onready var purchase_2: Button = $Research_projects/Purchase_2
 
 func _ready() -> void:
-	var coins = 50
-	var research = 150
-	var fame = 50
-	coin_counter.text = str(coins)
-	research_counter.text = str(research)
-	fame_bar.value = fame
 	purchase_1.pressed.connect(pay_research1)
 	purchase_2.pressed.connect(pay_research2)
 	

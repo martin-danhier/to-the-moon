@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://70nmnhiquv13"]
+[gd_scene load_steps=11 format=3 uid="uid://70nmnhiquv13"]
 
 [ext_resource type="Texture2D" uid="uid://byjg40xrc7x0u" path="res://sprites/garage.jpg" id="1_wlowb"]
 [ext_resource type="Texture2D" uid="uid://c38ycs1yil4u4" path="res://sprites/grey.jpg" id="2_vjobr"]
@@ -8,7 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://dylevauoywhd3" path="res://sprites/fame.png" id="5_gbsbp"]
 [ext_resource type="FontFile" uid="uid://ceixrq4nnx0fy" path="res://assets/PressStart2P-Regular.ttf" id="5_t27w5"]
 [ext_resource type="Texture2D" uid="uid://b6l7konckhsvt" path="res://sprites/potion.png" id="6_t27w5"]
-[ext_resource type="Script" uid="uid://bdgyoraf55o8j" path="res://editor_shop.gd" id="9_k4288"]
+[ext_resource type="Script" path="res://editor_shop.gd" id="9_k4288"]
+[ext_resource type="Script" uid="uid://c50sjhhlwrax8" path="res://LaunchMission.gd" id="10_8yjtx"]
 
 [node name="Editor" type="Node2D"]
 
@@ -33,7 +34,7 @@ offset_bottom = -94.0
 texture = ExtResource("4_1ys5w")
 expand_mode = 1
 
-[node name="coin_counter" type="Label" parent="Missions"]
+[node name="CoinValue" type="Label" parent="Missions"]
 texture_filter = 1
 offset_left = -49.0
 offset_top = -106.391
@@ -78,7 +79,7 @@ offset_bottom = -91.7675
 texture = ExtResource("6_t27w5")
 expand_mode = 1
 
-[node name="research_counter" type="Label" parent="Missions"]
+[node name="ScienceValue" type="Label" parent="Missions"]
 texture_filter = 1
 offset_left = 0.124682
 offset_top = -106.347
@@ -126,7 +127,7 @@ offset_bottom = 66.7823
 texture = ExtResource("4_1ys5w")
 expand_mode = 1
 
-[node name="recompense" type="Label" parent="Missions/Missions"]
+[node name="Reward" type="Label" parent="Missions/Missions"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 27.9288
@@ -246,6 +247,87 @@ scale = Vector2(4.35714, 4.91364)
 texture = ExtResource("2_vjobr")
 script = ExtResource("9_k4288")
 
+[node name="LaunchMission" type="Button" parent="Shop"]
+offset_left = -40.0
+offset_top = 74.0
+offset_right = 45.0
+offset_bottom = 107.0
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 7
+script = ExtResource("10_8yjtx")
+
+[node name="Label" type="Label" parent="Shop/LaunchMission"]
+layout_mode = 0
+offset_left = 1.14752
+offset_top = 5.0
+offset_right = 84.1475
+offset_bottom = 49.0
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 8
+text = "Lancer
+la mission"
+horizontal_alignment = 1
+
+[node name="Fuel1" type="Button" parent="Shop"]
+offset_left = -44.1803
+offset_top = -62.5809
+offset_right = -22.1803
+offset_bottom = -44.5809
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 7
+
+[node name="Label" type="Label" parent="Shop/Fuel1"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 5.0
+offset_right = 22.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 8
+text = "1
+"
+horizontal_alignment = 1
+
+[node name="Fuel2" type="Button" parent="Shop"]
+offset_left = -19.1639
+offset_top = -62.7844
+offset_right = 2.83606
+offset_bottom = -44.7844
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 7
+
+[node name="Label" type="Label" parent="Shop/Fuel2"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 5.0
+offset_right = 22.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 8
+text = "2
+"
+horizontal_alignment = 1
+
+[node name="Fuel3" type="Button" parent="Shop"]
+offset_left = 5.85247
+offset_top = -62.7844
+offset_right = 27.8525
+offset_bottom = -44.7844
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 7
+
+[node name="Label" type="Label" parent="Shop/Fuel3"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 5.0
+offset_right = 22.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 8
+text = "3
+"
+horizontal_alignment = 1
+
 [node name="Shop" type="Label" parent="Shop"]
 texture_filter = 1
 offset_left = -42.5738
@@ -257,3 +339,173 @@ theme_override_font_sizes/font_size = 9
 text = "Boutique"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="FuelLabel" type="Label" parent="Shop"]
+texture_filter = 1
+offset_left = -51.0
+offset_top = -80.0
+offset_right = -1.0
+offset_bottom = -57.0
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 8
+text = "Fuel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Battery1" type="Button" parent="Shop"]
+offset_left = -43.7869
+offset_top = -29.2876
+offset_right = -21.7869
+offset_bottom = -11.2876
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 7
+
+[node name="Label" type="Label" parent="Shop/Battery1"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 5.0
+offset_right = 22.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 8
+text = "1
+"
+horizontal_alignment = 1
+
+[node name="Battery2" type="Button" parent="Shop"]
+offset_left = -18.7705
+offset_top = -29.4911
+offset_right = 3.22946
+offset_bottom = -11.4911
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 7
+
+[node name="Label" type="Label" parent="Shop/Battery2"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 5.0
+offset_right = 22.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 8
+text = "2
+"
+horizontal_alignment = 1
+
+[node name="Battery3" type="Button" parent="Shop"]
+offset_left = 6.24587
+offset_top = -29.4911
+offset_right = 28.2459
+offset_bottom = -11.4911
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 7
+
+[node name="Label" type="Label" parent="Shop/Battery3"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 5.0
+offset_right = 22.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 8
+text = "3
+"
+horizontal_alignment = 1
+
+[node name="BatteryLabel" type="Label" parent="Shop"]
+texture_filter = 1
+offset_left = -51.0
+offset_top = -46.9824
+offset_right = 22.0
+offset_bottom = -23.9824
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 8
+text = "Battery"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Thruster1" type="Button" parent="Shop"]
+offset_left = -43.3935
+offset_top = 3.347
+offset_right = -21.3935
+offset_bottom = 21.347
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 7
+
+[node name="Label" type="Label" parent="Shop/Thruster1"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 5.61054
+offset_right = 22.0
+offset_bottom = 24.6105
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 8
+text = "1
+"
+horizontal_alignment = 1
+
+[node name="Thruster2" type="Button" parent="Shop"]
+offset_left = -18.3771
+offset_top = 3.75402
+offset_right = 3.62286
+offset_bottom = 21.754
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 7
+
+[node name="Label" type="Label" parent="Shop/Thruster2"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 5.0
+offset_right = 22.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 8
+text = "2
+"
+horizontal_alignment = 1
+
+[node name="Thruster3" type="Button" parent="Shop"]
+offset_left = 6.63928
+offset_top = 3.75402
+offset_right = 28.6393
+offset_bottom = 21.754
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 7
+
+[node name="Label" type="Label" parent="Shop/Thruster3"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 5.0
+offset_right = 22.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 8
+text = "3
+"
+horizontal_alignment = 1
+
+[node name="ThrusterLabel" type="Label" parent="Shop"]
+texture_filter = 1
+offset_left = -51.0
+offset_top = -14.3895
+offset_right = 27.0
+offset_bottom = 8.61054
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 8
+text = "Thruster"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(959, 538)
+
+[connection signal="pressed" from="Shop/LaunchMission" to="Shop/LaunchMission" method="_on_pressed"]
+[connection signal="pressed" from="Shop/Fuel1" to="Shop/LaunchMission" method="_on_fuel_1_pressed"]
+[connection signal="pressed" from="Shop/Fuel2" to="Shop/LaunchMission" method="_on_fuel_2_pressed"]
+[connection signal="pressed" from="Shop/Fuel3" to="Shop/LaunchMission" method="_on_fuel_3_pressed"]
+[connection signal="pressed" from="Shop/Battery1" to="Shop/LaunchMission" method="_on_battery_1_pressed"]
+[connection signal="pressed" from="Shop/Battery2" to="Shop/LaunchMission" method="_on_battery_2_pressed"]
+[connection signal="pressed" from="Shop/Battery3" to="Shop/LaunchMission" method="_on_battery_3_pressed"]
+[connection signal="pressed" from="Shop/Thruster1" to="Shop/LaunchMission" method="_on_thruster_1_pressed"]
+[connection signal="pressed" from="Shop/Thruster2" to="Shop/LaunchMission" method="_on_thruster_2_pressed"]
+[connection signal="pressed" from="Shop/Thruster3" to="Shop/LaunchMission" method="_on_thruster_3_pressed"]

@@ -1,42 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://0vsqqcewppqr"]
 
+[ext_resource type="Script" uid="uid://5pdhlpl6fgpb" path="res://NewsPaper.gd" id="1_um2tt"]
 [ext_resource type="Texture2D" uid="uid://cfq7wopg34q2f" path="res://sprites/Empty_news.png" id="2_8sy2j"]
 [ext_resource type="Shader" uid="uid://dbr4jltj7hf41" path="res://sepia.gdshader" id="3_hf1f1"]
 [ext_resource type="FontFile" uid="uid://bjp6ea3e3k1wi" path="res://Times-New-Roman/Times New Roman/times new roman.ttf" id="3_tcvqs"]
 [ext_resource type="AudioStream" uid="uid://d2jcqyi3h0dav" path="res://sounds/tadaladala.ogg" id="4_hf1f1"]
-
-[sub_resource type="GDScript" id="GDScript_tcvqs"]
-script/source = "extends Node2D
-
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var headline: Label = $Offset/WrittenPaperNoBackground/Headline
-@onready var texture_rect: TextureRect = $Offset/WrittenPaperNoBackground/TextureRect
-@onready var infos: Label = $Offset/WrittenPaperNoBackground/Infos
-@onready var button: Button = $Offset/WrittenPaperNoBackground/Button
-
-var headline_text : String;
-
-func _ready():
-	var altitude = 1000
-	var time = 720
-	
-	button.pressed.connect(_button_pressed)
-	
-	animation_player.play(\"new_animation\")
-	
-func _set_altitude(altitude_text, time_text):
-	infos.text = \"Altitude atteinte: \" + altitude_text + \"m in \" + time_text + \" s\"
-	
-func _set_headline_text(new_headline_text):
-	headline_text = new_headline_text
-	headline.text = headline_text
-
-func _button_pressed():
-	pass
-
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	pass
-"
 
 [sub_resource type="Animation" id="Animation_hf1f1"]
 length = 0.001
@@ -132,7 +100,7 @@ shader_parameter/MainAlpha = 0.537
 [sub_resource type="Shortcut" id="Shortcut_tcvqs"]
 
 [node name="newspaper" type="Node2D"]
-script = SubResource("GDScript_tcvqs")
+script = ExtResource("1_um2tt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Offset/WrittenPaperNoBackground")
