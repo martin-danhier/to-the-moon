@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://buog8pexxuncu"]
 
-[ext_resource type="Script" path="res://Scripts/ObstacleInstantiator.gd" id="1_4ffmd"]
+[ext_resource type="Script" uid="uid://ddykdau65pn4h" path="res://Scripts/ObstacleInstantiator.gd" id="1_4ffmd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ffmd"]
 size = Vector2(10000, 10000)
