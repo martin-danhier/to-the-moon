@@ -114,6 +114,8 @@ height = 193.2
 
 [node name="Rocket" type="Node2D"]
 script = ExtResource("1_tpb7v")
+bpm = null
+music_offset_seconds = null
 
 [node name="LaserBeam" type="Node2D" parent="."]
 position = Vector2(0, -233)
