@@ -8,9 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://dylevauoywhd3" path="res://sprites/fame.png" id="5_gbsbp"]
 [ext_resource type="FontFile" uid="uid://ceixrq4nnx0fy" path="res://assets/PressStart2P-Regular.ttf" id="5_t27w5"]
 [ext_resource type="Texture2D" uid="uid://b6l7konckhsvt" path="res://sprites/potion.png" id="6_t27w5"]
-[ext_resource type="Script" uid="uid://bdgyoraf55o8j" path="res://editor_shop.gd" id="9_k4288"]
 [ext_resource type="Script" uid="uid://c50sjhhlwrax8" path="res://LaunchMission.gd" id="10_8yjtx"]
 [ext_resource type="PackedScene" uid="uid://y8ju2utt1nsd" path="res://rocket.tscn" id="11_3btpq"]
+
+[sub_resource type="GDScript" id="GDScript_8yjtx"]
+script/source = "extends Sprite2D
+"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7py46"]
 bg_color = Color(0.269135, 0.491785, 0.586096, 1)
@@ -255,7 +258,7 @@ expand_mode = 1
 position = Vector2(1704.5, 537.5)
 scale = Vector2(4.35714, 4.91364)
 texture = ExtResource("2_vjobr")
-script = ExtResource("9_k4288")
+script = SubResource("GDScript_8yjtx")
 
 [node name="Shop" type="Label" parent="Shop"]
 texture_filter = 1

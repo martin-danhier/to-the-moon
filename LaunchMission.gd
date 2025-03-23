@@ -154,7 +154,7 @@ func _on_fuel_3_pressed() -> void:
 func _on_battery_1_pressed() -> void:
 	game_state.GunTier = 1
 
-	var gun : Sprite2D = get_tree().root.get_node("Editor/Background/Rocket/body_0/Gun")
+	var gun : Sprite2D = get_tree().root.get_node("Editor/Rocket/body_0/Gun")
 	var img = Image.new()
 	img.load("res://sprites/gun/basic.png")
 	var tex = ImageTexture.create_from_image(img)
@@ -164,7 +164,7 @@ func _on_battery_1_pressed() -> void:
 func _on_battery_2_pressed() -> void:
 	game_state.GunTier = 2
 
-	var gun : Sprite2D = get_tree().root.get_node("Editor/Background/Rocket/body_0/Gun")
+	var gun : Sprite2D = get_tree().root.get_node("Editor/Rocket/body_0/Gun")
 	var img = Image.new()
 	img.load("res://sprites/gun/standard.png")
 	var tex = ImageTexture.create_from_image(img)
@@ -174,7 +174,7 @@ func _on_battery_2_pressed() -> void:
 func _on_battery_3_pressed() -> void:
 	game_state.GunTier = 3
 
-	var gun : Sprite2D = get_tree().root.get_node("Editor/Background/Rocket/body_0/Gun")
+	var gun : Sprite2D = get_tree().root.get_node("Editor/Rocket/body_0/Gun")
 	var img = Image.new()
 	img.load("res://sprites/gun/advanced.png")
 	var tex = ImageTexture.create_from_image(img)
@@ -208,6 +208,16 @@ func _on_thruster_2_pressed() -> void:
 
 func _on_thruster_3_pressed() -> void:
 	game_state.ThrusterTier = 3
+	
+	visual_thruster_tier2_left.visible = true
+	visual_thruster_tier2_right.visible = true
+
+	visual_thruster_tier2_left.visible = false
+	visual_thruster_tier2_right.visible = false
+	visual_thruster_tier1_left.visible = false
+	visual_thruster_tier1_right.visible = false
+
+	print("bonjour")
 
 func gun_shop():
 	var p = parts[4]
@@ -285,15 +295,6 @@ func standard_purchase():
 			s_price.add_theme_color_override("font_color", Color(0.1, 0.75, 0.1))
 		else:
 			s_price.add_theme_color_override("font_color", Color(0.75, 0.1, 0.1))
-	visual_thruster_tier3_left.visible = true
-	visual_thruster_tier3_right.visible = true
-
-	visual_thruster_tier2_left.visible = false
-	visual_thruster_tier2_right.visible = false
-	visual_thruster_tier1_left.visible = false
-	visual_thruster_tier1_right.visible = false
-
-	print("bonjour")
 
 func advanced_purchase():
 	if current_name != "" :
