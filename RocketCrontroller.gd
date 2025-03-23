@@ -208,6 +208,7 @@ func _process(delta: float) -> void:
 			# TODO: should launch editor
 			
 			spawned_newspaper = true
+			get_tree().change_scene_to_file("res://newspaper.tscn")
 
 func explode_rocket():
 	# Detach all joints

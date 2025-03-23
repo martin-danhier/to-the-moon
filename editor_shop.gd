@@ -1,5 +1,6 @@
 extends Sprite2D
 
+@onready var rocket: Node2D = $"../Rocket"
 @onready var gun: TextureButton = $Gun
 @onready var head: TextureButton = $Head
 @onready var mini_thruster: TextureButton = $Mini_thruster
@@ -20,6 +21,8 @@ extends Sprite2D
 
 var parts = ["Coiffe", "Propulseurs", "Propulseurs secondaires", "Corps", "Canon laser"]
 var upgrade = [" basique", " standard", " avancé"]
+var current
+var current_name = ""
 
 func _ready() -> void:
 	gun.pressed.connect(gun_shop)
@@ -59,6 +62,8 @@ func gun_shop():
 	s_price.visible = true
 	a_coin.visible = true
 	a_price.visible = true
+	current = [rocket.get_node("body_0/Gun")]
+	current_name = "gun.png"
 	
 func head_shop():
 	var p = parts[0]
@@ -71,6 +76,8 @@ func head_shop():
 	s_price.visible = true
 	a_coin.visible = true
 	a_price.visible = true
+	current = [rocket.get_node("body_0/Head")]
+	current_name = "head.png"
 	
 func minit_shop():
 	var p = parts[2]
@@ -83,6 +90,8 @@ func minit_shop():
 	s_price.visible = true
 	a_coin.visible = true
 	a_price.visible = true
+	current = [rocket.get_node("side_thruster_left/Sprite2D"), rocket.get_node("side_thruster_right/Sprite2D")]
+	current_name = "side_thruster.png"
 	
 func body_shop():
 	var p = parts[3]
@@ -95,6 +104,8 @@ func body_shop():
 	s_price.visible = true
 	a_coin.visible = true
 	a_price.visible = true
+	current = [rocket.get_node("body_0/Sprite2D")]
+	current_name = "body.png"
 	
 func thruster_shop():
 	var p = parts[1]
@@ -107,16 +118,19 @@ func thruster_shop():
 	s_price.visible = true
 	a_coin.visible = true
 	a_price.visible = true
+	current = [rocket.get_node("thruster_left/AnimatedSprite2D"), rocket.get_node("thruster_left/AnimatedSprite2D")]
+	current_name = "thruster.png"
 	
 func basic_purchase():
-	var p = int(b_price.text)
-	var c = int(coin_counter.text)
-	if c >= p :
-		coin_counter.text = str(c - p)
-	if int(coin_counter.text) >= p:
-		b_price.add_theme_color_override("font_color", Color(0.1, 0.75, 0.1))
-	else:
-		b_price.add_theme_color_override("font_color", Color(0.75, 0.1, 0.1))
+	if current_name != "" :
+		var p = int(b_price.text)
+		var c = int(coin_counter.text)
+		if c >= p :
+			coin_counter.text = str(c - p)
+		if int(coin_counter.text) >= p:
+			b_price.add_theme_color_override("font_color", Color(0.1, 0.75, 0.1))
+		else:
+			b_price.add_theme_color_override("font_color", Color(0.75, 0.1, 0.1))
 		
 func standard_purchase():
 	var p = int(s_price.text)

@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://buog8pexxuncu" path="res://ObstacleInstantiator.tscn" id="7_pgb1d"]
 [ext_resource type="PackedScene" uid="uid://l10ttag0717q" path="res://ground.tscn" id="9_pgb1d"]
 [ext_resource type="Texture2D" uid="uid://j4d3q7xy2f5j" path="res://assets/target.png" id="10_00hbf"]
-[ext_resource type="PackedScene" path="res://ObstacleAlert.tscn" id="10_qabf2"]
+[ext_resource type="PackedScene" uid="uid://ccd6wtsuardpp" path="res://ObstacleAlert.tscn" id="10_qabf2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pgb1d"]
 bg_color = Color(0.258746, 0.824952, 0.629899, 1)

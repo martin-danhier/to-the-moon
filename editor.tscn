@@ -20,6 +20,19 @@ scale = Vector2(1.76499, 1.72524)
 texture = ExtResource("1_wlowb")
 script = ExtResource("2_wrb8p")
 
+[node name="Button" type="Button" parent="Background"]
+offset_left = 115.015
+offset_top = -213.883
+offset_right = 280.015
+offset_bottom = -141.883
+theme_override_colors/font_hover_color = Color(0.780392, 0, 0, 1)
+theme_override_colors/font_color = Color(0.784314, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0.788235, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.784314, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 16
+text = "Décollage"
+
 [node name="Missions" type="Sprite2D" parent="."]
 position = Vector2(195.5, 536)
 scale = Vector2(4.0102, 4.92727)

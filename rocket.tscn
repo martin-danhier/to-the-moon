@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://y8ju2utt1nsd"]
+[gd_scene load_steps=28 format=3 uid="uid://y8ju2utt1nsd"]
 
 [ext_resource type="Script" uid="uid://jhp1evdhvaie" path="res://RocketCrontroller.gd" id="1_tpb7v"]
 [ext_resource type="Texture2D" uid="uid://b3bjkv6iqxlr0" path="res://sprites/rocket_body.png" id="2_546ky"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cy3enmph0xk5j" path="res://sprites/thruster.png" id="4_546ky"]
 [ext_resource type="Texture2D" uid="uid://bn7uvcm0llg0a" path="res://assets/side_thruster.png" id="4_awr8v"]
 [ext_resource type="Texture2D" uid="uid://8j2xphuhed2t" path="res://assets/gun.png" id="5_cum1y"]
+[ext_resource type="Texture2D" uid="uid://c253fx0w0kyvt" path="res://sprites/basic_thruster.png" id="6_awr8v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lm57y"]
 atlas = ExtResource("4_7htxx")
@@ -54,6 +55,22 @@ animations = [{
 radius = 33.0
 height = 288.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldhc3"]
+atlas = ExtResource("6_awr8v")
+region = Rect2(96, 0, 48, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1f0fh"]
+atlas = ExtResource("6_awr8v")
+region = Rect2(96, 0, 48, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pneik"]
+atlas = ExtResource("6_awr8v")
+region = Rect2(48, 0, 48, 265)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hlsg"]
+atlas = ExtResource("6_awr8v")
+region = Rect2(0, 0, 48, 265)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_awr8v"]
 atlas = ExtResource("4_546ky")
 region = Rect2(96, 0, 48, 265)
@@ -72,6 +89,28 @@ region = Rect2(0, 0, 48, 265)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7htxx"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldhc3")
+}],
+"loop": true,
+"name": &"basic_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1f0fh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pneik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hlsg")
+}],
+"loop": true,
+"name": &"basic_thrusting",
+"speed": 16.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_awr8v")

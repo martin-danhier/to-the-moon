@@ -17,9 +17,6 @@ script/source = "extends Node2D
 var headline_text : String;
 
 func _ready():
-	var altitude = 1000
-	var time = 720
-	
 	button.pressed.connect(_button_pressed)
 	
 	animation_player.play(\"new_animation\")
@@ -32,10 +29,9 @@ func _set_altitude(altitude_text, time_text):
 func _set_headline_text(new_headline_text):
 	headline_text = new_headline_text
 	headline.text = headline_text
-	
 
 func _button_pressed():
-	pass
+	get_tree().change_scene_to_file(\"res://editor.tscn\")
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	pass
