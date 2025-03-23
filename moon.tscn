@@ -1,23 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpkvn53a20ow8"]
+[gd_scene load_steps=3 format=3 uid="uid://dpkvn53a20ow8"]
 
 [ext_resource type="Texture2D" uid="uid://b8bbi5sjx88c2" path="res://assets/moon.png" id="1_3tcni"]
 [ext_resource type="Script" uid="uid://bu6p73rosjkhf" path="res://Scripts/moon.gd" id="1_rjvio"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_7gw7d"]
-radius = 266.002
 
 [node name="Moon" type="Node2D"]
 script = ExtResource("1_rjvio")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -152)
-scale = Vector2(2, 2)
+position = Vector2(-17, -647)
+scale = Vector2(8, 8)
 texture = ExtResource("1_3tcni")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(20, -266)
-scale = Vector2(2.7, 1)
-shape = SubResource("CircleShape2D_7gw7d")
