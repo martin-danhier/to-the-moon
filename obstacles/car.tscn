@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://cywvsx7dggxe2"]
+
+[ext_resource type="Texture2D" uid="uid://cvdb677t6xaay" path="res://assets/car.png" id="2_x2mut"]
+[ext_resource type="Script" uid="uid://c3agsmxfaou4b" path="res://Scripts/MovementFunction.gd" id="3_270ln"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h2lkf"]
+radius = 1.72249
+height = 9.95215
+
+[node name="car" type="Node2D"]
+scale = Vector2(3, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_x2mut")
+
+[node name="obstacle_body" type="StaticBody2D" parent="."]
+collision_layer = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle_body"]
+position = Vector2(-1, 3)
+rotation = 1.5708
+scale = Vector2(5.225, 5.225)
+shape = SubResource("CapsuleShape2D_h2lkf")
+
+[node name="func_x" type="Node" parent="."]
+script = ExtResource("3_270ln")
+variable = 0
+movement_function = 2
+amplitude = 17.5
+velocity = 120.0
+
+[node name="func_y" type="Node" parent="."]
+script = ExtResource("3_270ln")
+amplitude = 7.135
+period = 2.465
+velocity = 0.955
+
+[node name="func_angle" type="Node" parent="."]
+script = ExtResource("3_270ln")
+variable = 2
+movement_function = 2

@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://k85yquygjjgy"]
+
+[ext_resource type="Script" uid="uid://b7n5irno2kbu1" path="res://obstacles/ufo.gd" id="1_37oj4"]
+[ext_resource type="Texture2D" uid="uid://c2wtm1jnlvrcd" path="res://assets/ufo.png" id="1_lydfm"]
+[ext_resource type="Script" uid="uid://c3agsmxfaou4b" path="res://Scripts/MovementFunction.gd" id="3_cjhtf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37oj4"]
+atlas = ExtResource("1_lydfm")
+region = Rect2(0, 0, 53, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkmqc"]
+atlas = ExtResource("1_lydfm")
+region = Rect2(0, 28, 53, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjhtf"]
+atlas = ExtResource("1_lydfm")
+region = Rect2(0, 56, 53, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wrtw3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37oj4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkmqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjhtf")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 7.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1ksmo"]
+radius = 2.67942
+height = 9.95215
+
+[node name="ufo" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_37oj4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_wrtw3")
+animation = &"spin"
+frame_progress = 0.506818
+
+[node name="obstacle_body" type="StaticBody2D" parent="."]
+collision_layer = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle_body"]
+rotation = 1.5708
+scale = Vector2(5.225, 5.225)
+shape = SubResource("CapsuleShape2D_1ksmo")
+
+[node name="func_x" type="Node" parent="."]
+script = ExtResource("3_cjhtf")
+variable = 0
+movement_function = 2
+amplitude = 17.5
+velocity = 200.0
+
+[node name="func_y" type="Node" parent="."]
+script = ExtResource("3_cjhtf")
+movement_function = 1
+amplitude = 7.135
+period = 2.465
+velocity = 0.955
+
+[node name="func_angle" type="Node" parent="."]
+script = ExtResource("3_cjhtf")
+variable = 2

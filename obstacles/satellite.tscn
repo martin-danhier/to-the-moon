@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://5v88kxe5pbws"]
+
+[ext_resource type="Texture2D" uid="uid://cwjdsuvrgkuvp" path="res://assets/satellite.png" id="1_80tr8"]
+[ext_resource type="Script" uid="uid://c3agsmxfaou4b" path="res://Scripts/MovementFunction.gd" id="3_bnkgs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqd7i"]
+size = Vector2(180.532, 796.831)
+
+[node name="satellite" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("1_80tr8")
+
+[node name="obstacle_body" type="StaticBody2D" parent="."]
+scale = Vector2(0.075, 0.075)
+collision_layer = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="obstacle_body"]
+position = Vector2(10.5, 4.50004)
+rotation = 0.785398
+scale = Vector2(5.225, 5.225)
+shape = SubResource("RectangleShape2D_yqd7i")
+
+[node name="func_x" type="Node" parent="."]
+script = ExtResource("3_bnkgs")
+variable = 0
+movement_function = 2
+amplitude = 17.5
+velocity = 180.0
+
+[node name="func_y" type="Node" parent="."]
+script = ExtResource("3_bnkgs")
+movement_function = 1
+amplitude = 7.135
+period = 2.465
+velocity = 0.955
+
+[node name="func_angle" type="Node" parent="."]
+script = ExtResource("3_bnkgs")
+variable = 2
+movement_function = 2
