@@ -1,14 +1,18 @@
 extends Node2D
 
-@export var moon_y = 40000
+@export var moon_y = 100000
 
 @onready var rocket: RigidBody2D = get_node("/root/exploration/Rocket/body_0")
 @onready var thrusterL: RigidBody2D = get_node("/root/exploration/Rocket/thruster_left")
 @onready var thrusterR: RigidBody2D = get_node("/root/exploration/Rocket/thruster_right")
 
+@onready var camera: Camera2D = get_node("/root/exploration/Rocket/body_0/Camera2D")
+
+var newspaper_loaded = 0.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	position.y = -moon_y
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,15 +20,20 @@ func _process(delta: float) -> void:
 	position.x = rocket.global_position.x
 	position.y = -moon_y # + (1-moon_y_scroll) * (rocket.global_position.y - moon_y)
 	
-	print(rocket.global_position.y - position.y)
-	if rocket.global_position.y - position.y < 120:
-		#rocket.freeze = true
-		pass # transition to newspaper scene
+	if rocket.global_position.y - position.y < 50:
+		rocket.freeze = true
+		if newspaper_loaded < 2.0:
+			newspaper_loaded += delta
+		elif newspaper_loaded < 100.0:
+			newspaper_loaded = 10000.0
+			var newspaper = load("res://newspaper.tscn").instantiate()
+			newspaper.position = camera.global_position
+			get_tree().root.get_node("exploration").add_child(newspaper)
 	
 	elif rocket.global_position.y - position.y < 700:
-		#rocket.freeze = true
+		rocket.freeze = true
 		if abs(rocket.rotation) < 3.1:
-			rocket.rotation += sign(rocket.rotation) * 0.008
+			rocket.rotation += (int(rocket.rotation>0)*2-1) * 0.008
 		rocket.global_position.y -= 1
 	elif rocket.global_position.y - position.y < 1000:
 		rocket.freeze = true
@@ -36,7 +45,6 @@ func _process(delta: float) -> void:
 	
 
 func slow_down():
-	print(rocket.linear_velocity)
 	rocket.apply_central_force(-rocket.linear_velocity * 100)
 	
 	
