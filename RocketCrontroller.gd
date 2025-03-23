@@ -18,6 +18,8 @@ var thruster_sound_right : AudioStreamPlayer
 var small_thruster_sound_left : AudioStreamPlayer
 var small_thruster_sound_right : AudioStreamPlayer
 var laser_sound : AudioStreamPlayer
+var small_explosion_sound: AudioStreamPlayer
+var large_explosion_sound: AudioStreamPlayer
 
 var laser_beam : Node2D
 
@@ -86,6 +88,8 @@ func _ready() -> void:
 	small_thruster_sound_left = self.get_node("small_thruster_sound_left")
 	small_thruster_sound_right = self.get_node("small_thruster_sound_right")
 	laser_sound = self.get_node("laser_sound")
+	small_explosion_sound = self.get_node("small_explosion_sound")
+	large_explosion_sound = self.get_node("large_explosion_sound")
 
 	laser_beam = self.get_node("LaserBeam")
 
@@ -191,6 +195,7 @@ func _physics_process(delta: float) -> void:
 					local_explosion.scale *= 0.5
 					get_tree().root.add_child(local_explosion)
 					laser_sound.play()
+					small_explosion_sound.play()
 					# laser_beam.visible = true
 
 					# spawn coins
@@ -279,6 +284,7 @@ func explode_rocket():
 
 	var local_explosion = explosion.instantiate()
 	local_explosion.position = body.global_position
+	large_explosion_sound.play()
 	get_tree().root.add_child(local_explosion)
 
 	# make it looks like everything went wrong

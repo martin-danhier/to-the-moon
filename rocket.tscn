@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://y8ju2utt1nsd"]
+[gd_scene load_steps=28 format=3 uid="uid://y8ju2utt1nsd"]
 
 [ext_resource type="Script" uid="uid://jhp1evdhvaie" path="res://RocketCrontroller.gd" id="1_tpb7v"]
 [ext_resource type="Texture2D" uid="uid://b3bjkv6iqxlr0" path="res://sprites/rocket_body.png" id="2_546ky"]
@@ -9,6 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://dox5h7lcnao03" path="res://sounds/thruster2.ogg" id="7_awr8v"]
 [ext_resource type="AudioStream" uid="uid://cuthylv3xkou1" path="res://sounds/little_thruster.ogg" id="8_7htxx"]
 [ext_resource type="AudioStream" uid="uid://dyoqjjtx2m08v" path="res://sounds/pew.ogg" id="9_mnerj"]
+[ext_resource type="AudioStream" uid="uid://d4b7wfd8n1pva" path="res://sounds/small_explosion_delayed.ogg" id="9_xk1bh"]
+[ext_resource type="AudioStream" uid="uid://6jv45elghbro" path="res://sounds/large_explosion.ogg" id="10_edwur"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lm57y"]
 atlas = ExtResource("4_7htxx")
@@ -1036,6 +1038,19 @@ parameters/looping = false
 
 [node name="small_thruster_sound_right" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_7htxx")
+volume_db = -2.0
+pitch_scale = 1.54
+parameters/looping = false
+
+[node name="small_explosion_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_xk1bh")
+volume_db = -4.955
+pitch_scale = 1.54
+max_polyphony = 16
+parameters/looping = false
+
+[node name="large_explosion_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_edwur")
 volume_db = -2.0
 pitch_scale = 1.54
 parameters/looping = false
