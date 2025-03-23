@@ -23,6 +23,7 @@ var small_thruster_sound_right : AudioStreamPlayer
 var laser_sound : AudioStreamPlayer
 var small_explosion_sound: AudioStreamPlayer
 var large_explosion_sound: AudioStreamPlayer
+var coin_sound: AudioStreamPlayer
 
 var gun : Sprite2D
 
@@ -151,6 +152,7 @@ func _ready() -> void:
 	small_explosion_sound = self.get_node("small_explosion_sound")
 	large_explosion_sound = self.get_node("large_explosion_sound")
 	music_sound = get_tree().root.get_node("exploration/MusicSound") as AudioStreamPlayer
+	coin_sound = self.get_node("coin_sound")
 	
 	visual_thruster_tier1_left = get_node("thruster_left/AnimatedSprite2D_tier1")
 	visual_thruster_tier1_left.visible = false
@@ -476,5 +478,5 @@ func _on_rocket_part_body_entered(target: Node) -> void:
 func _on_coin_coin_grabbed() -> void:
 	coin_count += 1
 	game_state.Coins += 1
-
+	coin_sound.play()
 	coin_value.text = str(coin_count)
