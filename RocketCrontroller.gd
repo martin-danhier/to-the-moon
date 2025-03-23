@@ -41,6 +41,7 @@ var die_sound_played = false
 var crash_texture : Image
 var crash_max_altitude : float
 var crash_max_speed : float
+var explosion_spawned = false
 
 var camera : Camera2D
 
@@ -213,7 +214,9 @@ func _physics_process(delta: float) -> void:
 			target.global_position = to
 
 			if result:
-				if result.collider.name.contains("obstacle_body") and explosion_spawned == false:					# delete obstacles
+				if result.collider.name.contains("obstacle_body") and explosion_spawned == false:
+					explosion_spawned = true
+					# delete obstacles
 					result.collider.get_parent().call_deferred("queue_free")
 
 					# spawn explosion
