@@ -209,8 +209,8 @@ func _on_thruster_2_pressed() -> void:
 func _on_thruster_3_pressed() -> void:
 	game_state.ThrusterTier = 3
 	
-	visual_thruster_tier2_left.visible = true
-	visual_thruster_tier2_right.visible = true
+	visual_thruster_tier3_left.visible = true
+	visual_thruster_tier3_right.visible = true
 
 	visual_thruster_tier2_left.visible = false
 	visual_thruster_tier2_right.visible = false
