@@ -20,12 +20,13 @@ var gun : Node2D
 var kaput = false
 
 var fuel_level = 100.0
-var battery_level = 10000000.0
+var battery_level = 100.0
 
 # only used when rocket dies
 var time_elapsed : float
 var spawned_newspaper = false
 var photo_taken = false
+var die_sound_played = false
 var crash_texture : Image
 var crash_max_altitude : float
 var crash_max_speed : float
@@ -174,19 +175,22 @@ func _process(delta: float) -> void:
 		var rot = rad_to_deg(body.global_rotation)
 		if rot > 30.0 or rot < -30.0:
 			var pull_up = get_tree().root.get_node("exploration/PullUpSound") as AudioStreamPlayer
-			if !pull_up.playing:
+			if !pull_up.playing and !die_sound_played:
 				pull_up.play()
+				die_sound_played = true
 		else:
 			var pull_up = get_tree().root.get_node("exploration/PullUpSound") as AudioStreamPlayer
 			pull_up.stop()
 	elif kaput and !spawned_newspaper:
+		var die_sound = get_tree().root.get_node("exploration/DieSound") as AudioStreamPlayer
+		if !die_sound.playing:
+			die_sound.play()
 		time_elapsed += delta
-		
-		
-		if time_elapsed < 3.0 and time_elapsed > 0.2 and !photo_taken:
+
+		if time_elapsed < 3.6 and time_elapsed > 0.2 and !photo_taken:
 			crash_texture = get_viewport().get_texture().get_image()
 			photo_taken = true
-		elif time_elapsed >= 3.0:
+		elif time_elapsed >= 3.6:
 			var newspaper = load("res://newspaper.tscn").instantiate()
 			newspaper.position = camera.global_position
 			get_tree().root.add_child(newspaper)
@@ -226,6 +230,9 @@ func _process(delta: float) -> void:
 			
 			# clicking to "Suite" relaunch this scene
 			# TODO: should launch editor
+			
+			# end "die sound"
+			die_sound.stop()
 			
 			spawned_newspaper = true
 

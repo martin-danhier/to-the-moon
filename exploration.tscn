@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dw6mypb0mlu15"]
+[gd_scene load_steps=21 format=3 uid="uid://dw6mypb0mlu15"]
 
 [ext_resource type="PackedScene" uid="uid://y8ju2utt1nsd" path="res://rocket.tscn" id="1_1yu1n"]
 [ext_resource type="Texture2D" uid="uid://o4ydiqa067vr" path="res://sprites/panel.png" id="2_770sp"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" path="res://ObstacleAlert.tscn" id="10_qabf2"]
 [ext_resource type="AudioStream" uid="uid://bfmvlfqv6f567" path="res://sounds/pull_up.ogg" id="12_qabf2"]
 [ext_resource type="AudioStream" uid="uid://dukyi7ptlbg2g" path="res://sounds/too_close.ogg" id="13_8wdfd"]
+[ext_resource type="AudioStream" uid="uid://bc8r076m0pnqn" path="res://sounds/dead.ogg" id="14_gaj1u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pgb1d"]
 bg_color = Color(0.258746, 0.824952, 0.629899, 1)
@@ -232,3 +233,6 @@ stream = ExtResource("12_qabf2")
 
 [node name="TooCloseSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_8wdfd")
+
+[node name="DieSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_gaj1u")
