@@ -37,12 +37,12 @@ func _ready():
 	# Define object types here
 
 	#obstacle_defs.push_back(ObstacleDefinition.new(1500.0, 500.0, preload("res://obstacles/obstacle.tscn")))
-	obstacle_defs.push_back(ObstacleDefinition.new(4000.0, 3000.0, preload("res://obstacles/duck.tscn")))
+	obstacle_defs.push_back(ObstacleDefinition.new(4500.0, 2200.0, preload("res://obstacles/duck.tscn")))
 	obstacle_defs.push_back(ObstacleDefinition.new(5600.0, 1800.0, preload("res://obstacles/obstacle.tscn")))
 	obstacle_defs.push_back(ObstacleDefinition.new(27000, 4500, preload("res://obstacles/satellite.tscn")))
 	obstacle_defs.push_back(ObstacleDefinition.new(35000, 5000, preload("res://obstacles/car.tscn")))
-	obstacle_defs.push_back(ObstacleDefinition.new(58000, 7000, preload("res://obstacles/asteroid.tscn")))
-	obstacle_defs.push_back(ObstacleDefinition.new(85000, 6000, preload("res://obstacles/ufo.tscn")))
+	obstacle_defs.push_back(ObstacleDefinition.new(59000, 10000, preload("res://obstacles/asteroid.tscn")))
+	obstacle_defs.push_back(ObstacleDefinition.new(80000, 11000, preload("res://obstacles/ufo.tscn")))
 
 	# Compute max total
 	for obstacle_def in obstacle_defs:
@@ -74,7 +74,7 @@ func maybe_spawn_obstacle():
 
 	var target: Vector2 = rocket_body.global_position + distance * direction
 
-	if target.y > 0.0:
+	if target.y > -600.0:
 		return
 
 	# Choose a point around the target
