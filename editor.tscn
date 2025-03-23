@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://70nmnhiquv13"]
+[gd_scene load_steps=11 format=3 uid="uid://70nmnhiquv13"]
 
 [ext_resource type="Texture2D" uid="uid://byjg40xrc7x0u" path="res://sprites/garage.jpg" id="1_wlowb"]
 [ext_resource type="Texture2D" uid="uid://c38ycs1yil4u4" path="res://sprites/grey.jpg" id="2_vjobr"]
@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://ceixrq4nnx0fy" path="res://assets/PressStart2P-Regular.ttf" id="5_t27w5"]
 [ext_resource type="Texture2D" uid="uid://b6l7konckhsvt" path="res://sprites/potion.png" id="6_t27w5"]
 [ext_resource type="Script" uid="uid://bdgyoraf55o8j" path="res://editor_shop.gd" id="9_k4288"]
+[ext_resource type="PackedScene" uid="uid://y8ju2utt1nsd" path="res://rocket.tscn" id="10_8yjtx"]
 
 [node name="Editor" type="Node2D"]
 
@@ -58,6 +59,8 @@ expand_mode = 1
 [node name="fame_bar" type="ProgressBar" parent="Missions"]
 modulate = Color(0.806302, 0.383843, 0.152949, 1)
 self_modulate = Color(0.79383, 0.476982, 0.207634, 1)
+show_behind_parent = true
+z_index = 1
 texture_filter = 1
 offset_left = 58.0
 offset_top = -103.0
@@ -257,3 +260,145 @@ theme_override_font_sizes/font_size = 9
 text = "Boutique"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Gun" type="TextureButton" parent="Shop"]
+offset_left = -186.0
+offset_top = -90.0
+offset_right = -170.0
+offset_bottom = -72.0
+
+[node name="Head" type="TextureButton" parent="Shop"]
+offset_left = -199.0
+offset_top = -72.0
+offset_right = -158.0
+offset_bottom = -39.0
+
+[node name="Mini_thruster" type="TextureButton" parent="Shop"]
+offset_left = -218.0
+offset_top = -49.0
+offset_right = -203.0
+offset_bottom = -36.0
+
+[node name="Mini_thruster2" type="TextureButton" parent="Shop"]
+offset_left = -154.574
+offset_top = -49.7594
+offset_right = -139.574
+offset_bottom = -36.7594
+
+[node name="Body" type="TextureButton" parent="Shop"]
+offset_left = -201.0
+offset_top = -38.0
+offset_right = -155.0
+offset_bottom = 108.0
+
+[node name="Thruster" type="TextureButton" parent="Shop"]
+offset_left = -153.0
+offset_top = -16.0
+offset_right = -122.0
+offset_bottom = 108.0
+
+[node name="Thruster2" type="TextureButton" parent="Shop"]
+offset_left = -234.475
+offset_top = -16.0
+offset_right = -203.475
+offset_bottom = 108.0
+
+[node name="Basic" type="Button" parent="Shop"]
+texture_filter = 1
+offset_left = -43.0328
+offset_top = -74.3848
+offset_right = 44.9672
+offset_bottom = -21.3848
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 6
+text = "Sélectionnez"
+autowrap_mode = 3
+
+[node name="Coin" type="TextureRect" parent="Shop/Basic"]
+offset_left = 43.888
+offset_top = 39.3327
+offset_right = 58.888
+offset_bottom = 52.3327
+texture = ExtResource("4_1ys5w")
+expand_mode = 1
+
+[node name="Price" type="Label" parent="Shop/Basic"]
+texture_filter = 1
+offset_left = 15.6066
+offset_top = 41.9241
+offset_right = 41.6066
+offset_bottom = 51.9241
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 6
+text = "10"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Standard" type="Button" parent="Shop"]
+texture_filter = 1
+offset_left = -43.0328
+offset_top = -11.9056
+offset_right = 44.9672
+offset_bottom = 41.0944
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 6
+text = "une partie"
+autowrap_mode = 3
+
+[node name="Coin" type="TextureRect" parent="Shop/Standard"]
+offset_left = 43.888
+offset_top = 39.3327
+offset_right = 58.888
+offset_bottom = 52.3327
+texture = ExtResource("4_1ys5w")
+expand_mode = 1
+
+[node name="Price" type="Label" parent="Shop/Standard"]
+texture_filter = 1
+offset_left = 15.6066
+offset_top = 41.9241
+offset_right = 41.6066
+offset_bottom = 51.9241
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 6
+text = "30"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Advanced" type="Button" parent="Shop"]
+texture_filter = 1
+offset_left = -42.5738
+offset_top = 49.963
+offset_right = 45.4262
+offset_bottom = 102.963
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 6
+text = "de la fusée"
+autowrap_mode = 3
+
+[node name="Coin" type="TextureRect" parent="Shop/Advanced"]
+offset_left = 43.888
+offset_top = 39.3327
+offset_right = 58.888
+offset_bottom = 52.3327
+texture = ExtResource("4_1ys5w")
+expand_mode = 1
+
+[node name="Price" type="Label" parent="Shop/Advanced"]
+texture_filter = 1
+offset_left = 15.6066
+offset_top = 41.9241
+offset_right = 41.6066
+offset_bottom = 51.9241
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_t27w5")
+theme_override_font_sizes/font_size = 6
+text = "100"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Rocket" parent="." instance=ExtResource("10_8yjtx")]
+position = Vector2(928, 816)
+scale = Vector2(3, 3)

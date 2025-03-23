@@ -61,3 +61,5 @@ func pay_research2() -> void:
 	var c = int(research_counter.text)
 	if c >= p :
 		research_counter.text = str(c - p)
+		
+# Au moment de changer de scène, pas oublier de retrieve les nouvelles valeurs de research_counter et coin
