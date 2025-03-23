@@ -49,13 +49,16 @@ func sum(x, acc):
 	return x + acc
 
 
-func spawn_obstacle():	
+func spawn_obstacle():
 	# Find where the rocket is pointing at
 	var direction = rocket_body.linear_velocity.normalized()
 	# Determine a position for the new object
 	var distance = randf_range(min_distance, max_distance)
 	
 	var target: Vector2 = rocket_body.position + distance * direction
+	
+	if target.y > 0.0:
+		return
 	
 	# Choose a point around the target
 	target.x += randf_range(-spawn_box_size, spawn_box_size)

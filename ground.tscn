@@ -11,6 +11,7 @@ friction = 0.6
 size = Vector2(5296, 288)
 
 [node name="ground" type="Node2D"]
+position = Vector2(0, -1000)
 
 [node name="ground" type="Node2D" parent="."]
 
@@ -21,6 +22,7 @@ repeat_size = Vector2(960, 0)
 repeat_times = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="ground/trees"]
+texture_filter = 1
 texture = ExtResource("2_tv015")
 centered = false
 
@@ -29,6 +31,7 @@ scale = Vector2(2, 2)
 scroll_offset = Vector2(0, 120)
 
 [node name="Sprite2D" type="Sprite2D" parent="ground/port"]
+texture_filter = 1
 texture = ExtResource("1_t7tip")
 centered = false
 

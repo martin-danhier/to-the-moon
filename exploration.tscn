@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://beqlt2q17j7xk" path="res://altimeter.gd" id="6_88ct5"]
 [ext_resource type="PackedScene" uid="uid://buog8pexxuncu" path="res://ObstacleInstantiator.tscn" id="7_pgb1d"]
 [ext_resource type="PackedScene" uid="uid://l10ttag0717q" path="res://ground.tscn" id="9_pgb1d"]
-[ext_resource type="PackedScene" uid="uid://chm0050y35420" path="res://obstacles/obstacle.tscn" id="10_00hbf"]
+[ext_resource type="Texture2D" uid="uid://j4d3q7xy2f5j" path="res://assets/target.png" id="10_00hbf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pgb1d"]
 bg_color = Color(0.258746, 0.824952, 0.629899, 1)
@@ -42,7 +42,7 @@ base_probability = 0.02
 [node name="Ground" parent="." instance=ExtResource("9_pgb1d")]
 
 [node name="Rocket" parent="." instance=ExtResource("1_1yu1n")]
-position = Vector2(884, 695)
+position = Vector2(886, -292)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -216,8 +216,8 @@ theme_override_fonts/font = ExtResource("6_00hbf")
 theme_override_font_sizes/font_size = 13
 text = "Battery"
 
-[node name="obstacle" parent="." instance=ExtResource("10_00hbf")]
-position = Vector2(885, 471)
-
-[node name="obstacle2" parent="." instance=ExtResource("10_00hbf")]
-position = Vector2(-4, -191)
+[node name="target" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(496, 529)
+scale = Vector2(3.1875, 3.1875)
+texture = ExtResource("10_00hbf")
